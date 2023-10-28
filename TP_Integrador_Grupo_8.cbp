@@ -38,6 +38,7 @@
 		<Unit filename="include/Cliente.h" />
 		<Unit filename="include/DetalleVenta.h" />
 		<Unit filename="include/Editorial.h" />
+		<Unit filename="include/Fecha.h" />
 		<Unit filename="include/Genero.h" />
 		<Unit filename="include/Libro.h" />
 		<Unit filename="include/MedioDePago.h" />
@@ -47,6 +48,7 @@
 		<Unit filename="src/Cliente.cpp" />
 		<Unit filename="src/DetalleVenta.cpp" />
 		<Unit filename="src/Editorial.cpp" />
+		<Unit filename="src/Fecha.cpp" />
 		<Unit filename="src/Genero.cpp" />
 		<Unit filename="src/Libro.cpp" />
 		<Unit filename="src/MedioDePago.cpp" />
