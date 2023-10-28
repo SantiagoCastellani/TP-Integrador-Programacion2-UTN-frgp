@@ -1,0 +1,54 @@
+# depslib dependency file v1.0
+1584205420 source:c:\users\santi\desktop\tp_integrador_grupo_8\main.cpp
+	<iostream>
+
+1698386923 source:c:\users\santi\desktop\tp_integrador_grupo_8\src\editorial.cpp
+	"Editorial.h"
+
+1698386923 c:\users\santi\desktop\tp_integrador_grupo_8\include\editorial.h
+
+1698386949 source:c:\users\santi\desktop\tp_integrador_grupo_8\src\genero.cpp
+	"Genero.h"
+
+1698386949 c:\users\santi\desktop\tp_integrador_grupo_8\include\genero.h
+
+1698386821 source:c:\users\santi\desktop\tp_integrador_grupo_8\src\libro.cpp
+	"Libro.h"
+
+1698386821 c:\users\santi\desktop\tp_integrador_grupo_8\include\libro.h
+
+1698387158 source:c:\users\santi\desktop\tp_integrador_grupo_8\src\autor.cpp
+	"Autor.h"
+
+1698387158 c:\users\santi\desktop\tp_integrador_grupo_8\include\autor.h
+
+1698387137 source:c:\users\santi\desktop\tp_integrador_grupo_8\src\cliente.cpp
+	"Cliente.h"
+
+1698387137 c:\users\santi\desktop\tp_integrador_grupo_8\include\cliente.h
+
+1698515991 source:c:\users\santi\desktop\tp_integrador_grupo_8\src\fecha.cpp
+	"Fecha.h"
+
+1698515991 c:\users\santi\desktop\tp_integrador_grupo_8\include\fecha.h
+
+1698387224 source:c:\users\santi\desktop\tp_integrador_grupo_8\src\mediodepago.cpp
+	"MedioDePago.h"
+
+1698387224 c:\users\santi\desktop\tp_integrador_grupo_8\include\mediodepago.h
+
+1698387193 source:c:\users\santi\desktop\tp_integrador_grupo_8\src\venta.cpp
+	"Venta.h"
+
+1698387193 c:\users\santi\desktop\tp_integrador_grupo_8\include\venta.h
+
+1698519959 source:c:\users\santi\desktop\tp_integrador_grupo_8\src\detalleventa.cpp
+	"DetalleVenta.h"
+	"string.h"
+
+1698520056 c:\users\santi\desktop\tp_integrador_grupo_8\include\detalleventa.h
+	"Fecha.h"
+	"Venta.h"
+	"Libro.h"
+	"Cliente.h"
+
