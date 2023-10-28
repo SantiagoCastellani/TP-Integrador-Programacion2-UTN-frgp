@@ -52,3 +52,59 @@
 	"Libro.h"
 	"Cliente.h"
 
+1698524976 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\main.cpp
+	<iostream>
+	"DetalleVenta.h"
+
+1698523735 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\autor.cpp
+	"Autor.h"
+
+1698523735 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\autor.h
+
+1698523735 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\cliente.cpp
+	"Cliente.h"
+
+1698523735 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\cliente.h
+
+1698524507 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\detalleventa.cpp
+	"DetalleVenta.h"
+	"string.h"
+
+1698524248 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\detalleventa.h
+	"Fecha.h"
+	"Venta.h"
+	"Libro.h"
+	"Cliente.h"
+
+1698523735 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\fecha.h
+
+1698526652 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\venta.h
+	"Fecha.h"
+
+1698523735 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\libro.h
+
+1698523735 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\editorial.cpp
+	"Editorial.h"
+
+1698523735 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\editorial.h
+
+1698523735 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\fecha.cpp
+	"Fecha.h"
+
+1698523735 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\genero.cpp
+	"Genero.h"
+
+1698523735 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\genero.h
+
+1698523735 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\libro.cpp
+	"Libro.h"
+
+1698525617 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\mediodepago.cpp
+	"MedioDePago.h"
+	"string.h"
+
+1698524431 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\mediodepago.h
+
+1698523735 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\venta.cpp
+	"Venta.h"
+

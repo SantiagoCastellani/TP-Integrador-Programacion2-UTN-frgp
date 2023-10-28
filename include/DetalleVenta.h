@@ -12,7 +12,7 @@ class DetalleVenta
         DetalleVenta();
 
         // DetalleVentaCompleto
-        DetalleVenta(int idVenta,
+        DetalleVenta(int,
                      char dniCliente[9],
                      char nombreCliente[50],
                      char telefonoCliente[15],
@@ -25,7 +25,7 @@ class DetalleVenta
                      Fecha fecha);
 
         // DetalleVentaSinId
-        DetalleVenta(char dniCliente[9],
+        DetalleVenta(char *,
                      char nombreCliente[50],
                      char telefonoCliente[15],
                      char emailCliente[100],

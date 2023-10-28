@@ -3,7 +3,7 @@
 
 DetalleVenta::DetalleVenta()
 {
-    int idVenta=0;
+    idVenta=0;
     dniCliente;
     strcpy(dniCliente,"00000000");
     strcpy(nombreCliente,"0000");
