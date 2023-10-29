@@ -43,6 +43,7 @@
 		<Unit filename="include/Libro.h" />
 		<Unit filename="include/MedioDePago.h" />
 		<Unit filename="include/Venta.h" />
+		<Unit filename="include/VentasService.h" />
 		<Unit filename="include/menu.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Autor.cpp" />
@@ -54,6 +55,7 @@
 		<Unit filename="src/Libro.cpp" />
 		<Unit filename="src/MedioDePago.cpp" />
 		<Unit filename="src/Venta.cpp" />
+		<Unit filename="src/VentasService.cpp" />
 		<Unit filename="src/menu.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

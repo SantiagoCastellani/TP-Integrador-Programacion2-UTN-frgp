@@ -1,13 +1,17 @@
 #include <iostream>
-#include "Fecha.h"
-#include "Cliente.h"
-#include "DetalleVenta.h"
-#include "MedioDePago.h"
 #include "menu.h"
+#include "Venta.h"
+#include "VentasService.h"
 
 
 int main()
 {
-    menuInicio();
-    return 0;
+//    VentasService ventasService;
+//    Venta v = ventasService.cargarVenta();
+      menuInicio();
+//    std::cout<<v.getIdVenta()<<std::endl;
+//    ventasService.registrarVenta(v);
+//    std::cout<<v.getDniCliente()<<std::endl;
+//    ventasService.leerArchivoVentas();
+//    return 0;
 }

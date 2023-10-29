@@ -35,6 +35,8 @@ class Venta
         double importeVenta;
         int idMedioDePago;
         Fecha fecha;
+
+
 };
 
 #endif // VENTA_H

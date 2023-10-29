@@ -59,3 +59,5 @@ void Venta::setMedioDePago(int medioDePago){
 void Venta::setFecha(Fecha){
     this->fecha=fecha;
 };
+
+
