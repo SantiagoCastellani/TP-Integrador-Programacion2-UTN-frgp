@@ -1,6 +1,6 @@
 #ifndef FECHA_H
 #define FECHA_H
-
+#include <iostream>
 
 class Fecha
 {
@@ -18,6 +18,9 @@ class Fecha
         void setDia(int);
         void setMes(int);
         void setAnio(int);
+
+        // Fecha Formateada
+        std::string fechaFormateada();
 
     protected:
 

@@ -13,6 +13,10 @@ Fecha::Fecha(int dia,int mes,int anio){
     this->anio=anio;
 };
 
+std::string Fecha::fechaFormateada(){
+    return std::to_string(dia) + "/" + std::to_string(mes)+ "/" + std::to_string(anio);
+}
+
 /// Getters
 int Fecha::getDia(){
     return dia;

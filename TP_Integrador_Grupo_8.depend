@@ -52,7 +52,7 @@
 	"Libro.h"
 	"Cliente.h"
 
-1698553813 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\main.cpp
+1698555737 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\main.cpp
 	<iostream>
 	"Fecha.h"
 	"Cliente.h"
@@ -70,7 +70,7 @@
 	"string.h"
 	"Fecha.h"
 
-1698551881 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\cliente.h
+1698557586 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\cliente.h
 	"FEcha.h"
 
 1698524507 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\detalleventa.cpp
@@ -83,7 +83,8 @@
 	"Libro.h"
 	"Cliente.h"
 
-1698548945 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\fecha.h
+1698557958 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\fecha.h
+	<iostream>
 
 1698526652 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\venta.h
 	"Fecha.h"
@@ -95,7 +96,7 @@
 
 1698523735 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\editorial.h
 
-1698549002 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\fecha.cpp
+1698557966 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\fecha.cpp
 	"Fecha.h"
 
 1698523735 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\genero.cpp
@@ -118,7 +119,7 @@
 
 1698555211 c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\include\menu.h
 
-1698553803 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\menu.cpp
+1698555680 source:c:\users\santi\desktop\tp_integrador_grupo_8\tp-integrador-programacion2-utn-frgp\src\menu.cpp
 	<iostream>
 	"menu.h"
 

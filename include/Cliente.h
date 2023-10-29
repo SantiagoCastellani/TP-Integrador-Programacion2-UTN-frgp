@@ -32,7 +32,7 @@ class Cliente
     private:
         char dni[9];
         char nombre[25];
-        char apellido[25];
+        char apellido[24];
         char telefono[15];
         char email[100];
         Fecha fechaNac;
