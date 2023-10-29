@@ -3,8 +3,13 @@
 
 Venta::Venta()
 {
-    //ctor
-}
+    idVenta=0;
+    strcpy(dniCliente,"000000000");
+    idLibro=0;
+    importeVenta=0;
+    idMedioDePago=0;
+    fecha=Fecha();
+};
 
 Venta::Venta(int id, char* dniCli, int idLibro, double importeVenta, int medioDePago, Fecha fecha){
     this->idVenta=id;

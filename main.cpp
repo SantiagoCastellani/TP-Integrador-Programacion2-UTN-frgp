@@ -1,11 +1,13 @@
 #include <iostream>
+#include "Fecha.h"
+#include "Cliente.h"
 #include "DetalleVenta.h"
+#include "MedioDePago.h"
+#include "menu.h"
 
-using namespace std;
 
 int main()
 {
-    DetalleVenta d = DetalleVenta();
-    cout << "Hola";
+    menuInicio();
     return 0;
 }
