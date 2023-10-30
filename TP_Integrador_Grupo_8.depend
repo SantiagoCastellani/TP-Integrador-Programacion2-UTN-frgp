@@ -144,38 +144,42 @@
 1698612304 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\venta.h
 	"Fecha.h"
 
-1698610422 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\libro.h
+1698638189 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\libro.h
+	"Fecha.h"
 
 1698610422 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\mediodepago.h
 
 1698610422 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\menu.h
 
-1698610422 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\autor.cpp
+1698637697 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\autor.cpp
 	"Autor.h"
+	"string.h"
 
-1698610422 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\autor.h
+1698637741 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\autor.h
 
 1698610422 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\cliente.cpp
 	"Cliente.h"
 	"string.h"
 	"Fecha.h"
 
-1698610422 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\detalleventa.cpp
+1698636866 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\detalleventa.cpp
 	"DetalleVenta.h"
 	"string.h"
 
-1698610422 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\editorial.cpp
+1698637847 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\editorial.cpp
 	"Editorial.h"
+	"string.h"
 
-1698610422 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\editorial.h
+1698637864 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\editorial.h
 
 1698610422 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\fecha.cpp
 	"Fecha.h"
 
-1698610422 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\genero.cpp
+1698637962 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\genero.cpp
 	"Genero.h"
+	"string.h"
 
-1698610422 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\genero.h
+1698637909 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\genero.h
 
 1698610422 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\libro.cpp
 	"Libro.h"
