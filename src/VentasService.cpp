@@ -1,15 +1,14 @@
 #include "VentasService.h"
 #include <cstdio>
 
-VentasService::VentasService()
-{
-    //ctor
-}
+VentasService::VentasService(){};
 
+
+// Devuelve una Venta segun un IdVenta
 Venta VentasService::buscarVentaById(int id){
     Venta v;
     return v;
-}
+};
 
 // Carga una Venta
 Venta VentasService::cargarVenta(){
@@ -48,3 +47,14 @@ void VentasService::leerArchivoVentas(){
     std::cout<<" "<<std::endl;
     fclose(archivo);
 };
+
+// Devuelve un DetalleVenta segun un IdVenta
+DetalleVenta VentasService::detalleDeVenta(int idVenta){
+    Venta v = buscarVentaById(idVenta);
+    ///TODO: traer el cliente y el libro segun los id.
+    Cliente c;
+    Libro l;
+    DetalleVenta d;
+    return d;
+};
+

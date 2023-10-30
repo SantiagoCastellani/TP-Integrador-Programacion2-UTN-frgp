@@ -69,6 +69,20 @@ DetalleVenta::DetalleVenta(
     this->fecha=fecha;
 }
 
+/*
+DetalleVenta::DetalleVenta(Venta venta, Libro libro, Cliente cliente){
+    strcpy(dniCliente,cliente.getDni());
+    strcpy(nombreCliente,cliente.getNombre());
+    strcpy(telefonoCliente,cliente.getTelefono());
+    strcpy(emailCliente,cliente.getEmail());
+    strcpy(tituloLibro,libro.);
+    strcpy(autorLibro,libro.);
+    strcpy(editorialLibro,libro.);
+    this->importeVenta=venta.getImporteVenta();
+    strcpy(medioDePago,venta.getMedioDePago());
+    this->fecha=venta.getFecha();
+}*/
+
 /// GETTERS
 int DetalleVenta::getIdVenta(){
     return idVenta;

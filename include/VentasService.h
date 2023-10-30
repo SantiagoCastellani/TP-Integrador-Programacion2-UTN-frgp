@@ -1,6 +1,7 @@
 #ifndef VENTASSERVICE_
 #define VENTASSERVICE_
 #include "Venta.h"
+#include "DetalleVenta.h"
 
 class VentasService
 {
@@ -21,6 +22,9 @@ class VentasService
 
         // Leer Archivo de Ventas
         void leerArchivoVentas();
+
+        // Devuelve DetalleVenta segun un IdVenta
+        DetalleVenta detalleDeVenta(int);
 
     protected:
 
