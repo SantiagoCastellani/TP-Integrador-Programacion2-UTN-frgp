@@ -25,7 +25,7 @@ _Stock=Stock;
 int Libro::get_IdLibro(){
     return _IdLibro;
 }
-const char* Libro::get_Titulo(){
+char* Libro::get_Titulo(){
     return _Titulo;
 }
 int Libro::get_IdAutor(){

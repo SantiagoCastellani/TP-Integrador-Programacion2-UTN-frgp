@@ -38,9 +38,9 @@ void MedioDePago::setId(int id){
 void MedioDePago::setNombre(const char* nombreP){
     strcpy(nombre,nombreP);
 };
-void MedioDePago::getRecargo(float recargoP){
+void MedioDePago::setRecargo(float recargoP){
     this->recargo=recargoP;
 };
-void MedioDePago::getCantCuotas(int cantCuotasP){
+void MedioDePago::setCantCuotas(int cantCuotasP){
     this->cantCuotas=cantCuotasP;
 };

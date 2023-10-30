@@ -11,7 +11,7 @@ class Libro
 
           /// GETTERS
         int get_IdLibro();
-        const char* get_Titulo();
+        char* get_Titulo();
         int get_IdAutor();
         int get_IdGenero();
         int get_IdEditorial();

@@ -18,8 +18,8 @@ class MedioDePago
         /// SETTERS
         void setId(int);
         void setNombre(const char*);
-        void getRecargo(float);
-        void getCantCuotas(int);
+        void setRecargo(float);
+        void setCantCuotas(int);
 
     protected:
 

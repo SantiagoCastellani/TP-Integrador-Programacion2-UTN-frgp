@@ -1,5 +1,6 @@
 #include "DetalleVenta.h"
 #include "string.h"
+#include "VentasService.h"
 
 DetalleVenta::DetalleVenta()
 {
@@ -69,19 +70,27 @@ DetalleVenta::DetalleVenta(
     this->fecha=fecha;
 }
 
-/*
+
 DetalleVenta::DetalleVenta(Venta venta, Libro libro, Cliente cliente){
+    /// TODO: Se necesita traer la Editorial By Id
+    //Editorial e = libroService.buscarEditorialById(libro.get_IdEditorial);
+    /// TODO: Se necesita traer el Autor By Id
+    //Autor autor = libroService.buscarAutorById(libro.get_IdAutor());
+    /// TODO: Se necesita traer el MedioDePago By Id
+    VentasService ventasService;
+    MedioDePago m = ventasService.buscarMedioDePagoById(venta.getMedioDePago());
+
     strcpy(dniCliente,cliente.getDni());
     strcpy(nombreCliente,cliente.getNombre());
     strcpy(telefonoCliente,cliente.getTelefono());
     strcpy(emailCliente,cliente.getEmail());
-    strcpy(tituloLibro,libro.);
-    strcpy(autorLibro,libro.);
-    strcpy(editorialLibro,libro.);
+    strcpy(tituloLibro,libro.get_Titulo());
+    strcpy(autorLibro,"Julio Cortazar");
+    strcpy(editorialLibro,"Alfaguara");
     this->importeVenta=venta.getImporteVenta();
-    strcpy(medioDePago,venta.getMedioDePago());
+    strcpy(medioDePago,m.getNombre());
     this->fecha=venta.getFecha();
-}*/
+}
 
 /// GETTERS
 int DetalleVenta::getIdVenta(){
