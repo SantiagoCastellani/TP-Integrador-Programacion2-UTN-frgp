@@ -1,6 +1,7 @@
 #include "VentasService.h"
 #include <cstdio>
 #include "string.h"
+#include "../properties.h"
 
 VentasService::VentasService(){};
 
@@ -67,7 +68,7 @@ DetalleVenta VentasService::detalleDeVenta(int idVenta){
 MedioDePago VentasService::buscarMedioDePagoById(int id){
     FILE *archivo;
     MedioDePago medio;
-    archivo = fopen("Medios_de_Pago.dat","rb");
+    archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"rb");
     //if(existeMedioDePago(id)){
     if(true){
         while(fread(&medio,sizeof(MedioDePago),1,archivo)==1){
@@ -104,7 +105,7 @@ MedioDePago VentasService::cargarMedioDePago(){
 // Registrar MedioDePago en Archivo.
 void VentasService::registrarMedioDePago(MedioDePago medio){
     FILE *archivo;
-    archivo = fopen("Medios_de_Pago.dat","ab");
+    archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"ab");
     fwrite(&medio,sizeof(MedioDePago),1,archivo);
     fclose(archivo);
 };
@@ -113,7 +114,7 @@ void VentasService::registrarMedioDePago(MedioDePago medio){
 void VentasService::leerArchivoMedioDePago(){
     FILE *archivo;
     MedioDePago m;
-    archivo = fopen("Medios_de_Pago.dat","rb");
+    archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"rb");
     std::cout<<" "<< std::endl;
     std::cout<<"\tVentas en ARCHIVO"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -137,7 +138,7 @@ void VentasService::modificarMedioDePago(MedioDePago medio){
     FILE *archivo;
     int res=-1;
     MedioDePago m;
-    archivo = fopen("Medios_de_Pago.dat","rb+");
+    archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"rb+");
     while(fread(&m,sizeof(MedioDePago),1,archivo)==1){
         if(medio.getId()==m.getId()){
             std::cin.ignore();

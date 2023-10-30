@@ -9,9 +9,8 @@ int main()
 
       menuInicio();
 
-
-//    VentasService ventasService;
-//    ventasService.leerArchivoMedioDePago();
+    //VentasService ventasService;
+    //ventasService.leerArchivoMedioDePago();
 
 
       return 0;

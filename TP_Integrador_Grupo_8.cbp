@@ -46,6 +46,7 @@
 		<Unit filename="include/VentasService.h" />
 		<Unit filename="include/menu.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="properties.h" />
 		<Unit filename="src/Autor.cpp" />
 		<Unit filename="src/Cliente.cpp" />
 		<Unit filename="src/DetalleVenta.cpp" />
