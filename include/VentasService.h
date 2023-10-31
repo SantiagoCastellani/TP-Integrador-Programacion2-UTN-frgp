@@ -27,6 +27,9 @@ class VentasService
         // Devuelve DetalleVenta segun un IdVenta
         DetalleVenta detalleDeVenta(int);
 
+        // Devuelve el proximo IdVenta (el mayor +1 )
+        int proximoIdVenta();
+
         /// MEDIOS DE PAGO
 
         // Devuelve un MedioDePago ById

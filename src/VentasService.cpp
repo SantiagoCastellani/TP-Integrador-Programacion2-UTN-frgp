@@ -21,13 +21,11 @@ Venta VentasService::buscarVentaById(int id){
 Venta VentasService::cargarVenta(){
     std::cout << "CARGAR VENTA" <<std::endl;
     char dni[9];
-    int idVenta;
+    int idVenta = proximoIdVenta();
     int idLibro;
     double importeVenta;
     int idMedioDePago;
     Fecha fecha(11,8,2023);
-    std::cout << "Ingresar idVenta" <<std::endl;
-    std::cin>>idVenta;
     std::cin.ignore();
     std::cout << "Ingresar DNI CLIENTE" <<std::endl;
     std::cin.getline(dni,9);
@@ -87,6 +85,22 @@ DetalleVenta VentasService::detalleDeVenta(int idVenta){
     return d;
 };
 
+// Devuelve el proximo IdVenta (el mayor +1 )
+int VentasService::proximoIdVenta(){
+    FILE *archivo;
+    Venta v;
+    int id=0;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getIdVenta()>0){
+            id=v.getIdVenta();
+        }
+    }
+    fclose(archivo);
+    return id+1;
+};
+
+
 /*****************************************************************************/
 
 /// MEDIOS DE PAGO
@@ -114,7 +128,6 @@ MedioDePago VentasService::cargarMedioDePago(){
     char nombre[30];
     float recargo;
     int cantCuotas,id;
-    /// TODO: Se requiere que el Id sea automaticamente contado e incremental.
     std::cout << "Ingrese ID de Medio de Pago: ";
     std::cin>>id;
     std::cin.ignore();
