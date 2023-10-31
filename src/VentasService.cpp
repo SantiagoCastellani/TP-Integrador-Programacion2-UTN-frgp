@@ -2,9 +2,13 @@
 #include <cstdio>
 #include "string.h"
 #include "../properties.h"
+#include "Fecha.h"
 
 VentasService::VentasService(){};
 
+/*****************************************************************************/
+
+/// VENTAS
 
 // Devuelve una Venta segun un IdVenta
 Venta VentasService::buscarVentaById(int id){
@@ -12,34 +16,57 @@ Venta VentasService::buscarVentaById(int id){
     return v;
 };
 
+/// TODO: Metodo alternativo para cargar ventas.
 // Carga una Venta
 Venta VentasService::cargarVenta(){
     std::cout << "CARGAR VENTA" <<std::endl;
     char dni[9];
+    int idVenta;
+    int idLibro;
+    double importeVenta;
+    int idMedioDePago;
+    Fecha fecha(11,8,2023);
+    std::cout << "Ingresar idVenta" <<std::endl;
+    std::cin>>idVenta;
+    std::cin.ignore();
+    std::cout << "Ingresar DNI CLIENTE" <<std::endl;
     std::cin.getline(dni,9);
-    Venta v;
-    v.setDniCliente(dni);
+    std::cout << "Ingresar ID LIBRO" <<std::endl;
+    std::cin>>idLibro;
+    std::cout << "Ingresar IMPORTE de VENTA" <<std::endl;
+    std::cin>>importeVenta;
+    std::cout << "Ingresar ID MEDIO de PAGO" <<std::endl;
+    std::cin>>idMedioDePago;
+    Venta v(idVenta,dni,idLibro,importeVenta,idMedioDePago,fecha);
     return v;
 };
 
 // Guarda una Venta en el Archivo
 void VentasService::registrarVenta(Venta venta){
     FILE *archivo;
-    archivo = fopen("Ventas.dat","ab");
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"ab");
     fwrite(&venta,sizeof(Venta),1,archivo);
     fclose(archivo);
 };
 
 // Muestra una Venta determinada
-void VentasService::mostrarVenta(Venta venta){
-    std::cout << venta.getDniCliente() <<std::endl;
+void VentasService::mostrarVenta(Venta v){
+    std::cout << " Nro Venta: "<<v.getIdVenta()<<std::endl;
+    std::cout << " Dni Cliente: "<<v.getDniCliente()<<std::endl;
+    /// TODO: Reemplazar por Titulo de Libro
+    std::cout << " Id LIBRO: "<<v.getIdLibro()<<std::endl;
+    std::cout << " Importe: $"<<v.getImporteVenta()<<std::endl;
+    /// TODO: Reemplazar por Medio de Pago
+    std::cout << " Id Medio de Pago: "<<v.getMedioDePago()<<std::endl;
+    std::cout << " Fecha: "<<v.getFecha().fechaFormateada()<<std::endl;
+    std::cout << "  "<<std::endl;
 };
 
 // Leer Archivo de Ventas
 void VentasService::leerArchivoVentas(){
     FILE *archivo;
     Venta v;
-    archivo = fopen("Ventas.dat","rb");
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
     std::cout<<" "<< std::endl;
     std::cout<<"\tVentas en ARCHIVO"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -60,7 +87,7 @@ DetalleVenta VentasService::detalleDeVenta(int idVenta){
     return d;
 };
 
-
+/*****************************************************************************/
 
 /// MEDIOS DE PAGO
 
@@ -162,3 +189,5 @@ void VentasService::modificarMedioDePago(MedioDePago medio){
         }
     }
 }
+
+/*****************************************************************************/

@@ -123,7 +123,7 @@
 	<iostream>
 	"menu.h"
 
-1698644606 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\main.cpp
+1698711824 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\main.cpp
 	<iostream>
 	"menu.h"
 	"Venta.h"
@@ -202,13 +202,14 @@
 	"Venta.h"
 	"string.h"
 
-1698645607 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\ventasservice.cpp
+1698711724 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\ventasservice.cpp
 	"VentasService.h"
 	<cstdio>
 	"string.h"
 	"../properties.h"
+	"Fecha.h"
 
-1698643954 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\ventasservice.h
+1698711824 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\ventasservice.h
 	"Venta.h"
 	"DetalleVenta.h"
 	"MedioDePago.h"
