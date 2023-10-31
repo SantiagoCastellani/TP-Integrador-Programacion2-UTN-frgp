@@ -24,10 +24,10 @@ class MedioDePago
     protected:
 
     private:
-        int id;
-        char nombre[30];
-        float recargo;
-        int cantCuotas;
+        int _id;
+        char _nombre[30];
+        float _recargo;
+        int _cantCuotas;
 };
 
 #endif // MEDIODEPAGO_H

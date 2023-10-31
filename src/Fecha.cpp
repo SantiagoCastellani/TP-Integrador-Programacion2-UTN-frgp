@@ -2,39 +2,39 @@
 
 Fecha::Fecha()
 {
-    dia=1;
-    mes=1;
-    anio=1900;
+    _dia=1;
+    _mes=1;
+    _anio=1900;
 }
 
 Fecha::Fecha(int dia,int mes,int anio){
-    this->dia=dia;
-    this->mes=mes;
-    this->anio=anio;
+    this->_dia=dia;
+    this->_mes=mes;
+    this->_anio=anio;
 };
 
 std::string Fecha::fechaFormateada(){
-    return std::to_string(dia) + "/" + std::to_string(mes)+ "/" + std::to_string(anio);
+    return std::to_string(_dia) + "/" + std::to_string(_mes)+ "/" + std::to_string(_anio);
 }
 
 /// Getters
 int Fecha::getDia(){
-    return dia;
+    return _dia;
 };
 int Fecha::getMes(){
-    return mes;
+    return _mes;
 };
 int Fecha::getAnio(){
-    return anio;
+    return _anio;
 };
 
 /// Setters
 void Fecha::setDia(int dia){
-    this->dia=dia;
+    this->_dia=dia;
 };
 void Fecha::setMes(int mes){
-    this->mes=mes;
+    this->_mes=mes;
 };
 void Fecha::setAnio(int anio){
-    this->anio=anio;
+    this->_anio=anio;
 };

@@ -6,21 +6,21 @@ class Editorial
 {
     public:
         Editorial();
-        Editorial(int IdEditorial,char* editorial);
+        Editorial(int idEditorial,char* nombre);
 
         /// GETTERS
-        int get_IdEditorial();
-        const char* get_editorial();
+        int getIdEditorial();
+        const char* getNombre();
 
         /// SETTERS
-        void set_IdEditorial(int);
-        void set_editorial(const char*);
+        void setIdEditorial(int);
+        void setNombre(const char*);
 
     protected:
 
     private:
-        int _IdEditorial;
-        char _editorial[30];
+        int _idEditorial;
+        char _nombre[30];
 };
 
 #endif // EDITORIAL_H

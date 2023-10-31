@@ -3,44 +3,44 @@
 
 MedioDePago::MedioDePago()
 {
-    id=0;
-    strcpy(nombre,"000");
-    recargo=0;
-    cantCuotas=0;
+    _id=0;
+    strcpy(_nombre,"000");
+    _recargo=0;
+    _cantCuotas=0;
 }
 
 MedioDePago::MedioDePago(int idP,char* nombreP,float recargoP,int cantCuotasP)
 {
-    this->id=idP;
-    strcpy(nombre,nombreP);
-    this->recargo=recargoP;
-    this->cantCuotas=cantCuotasP;
+    this->_id=idP;
+    strcpy(_nombre,nombreP);
+    this->_recargo=recargoP;
+    this->_cantCuotas=cantCuotasP;
 }
 
 /// GETTERS
 int MedioDePago::getId(){
-    return id;
+    return _id;
 };
 const char* MedioDePago::getNombre(){
-    return nombre;
+    return _nombre;
 };
 float MedioDePago::getRecargo(){
-    return recargo;
+    return _recargo;
 };
 int MedioDePago::getCantCuotas(){
-    return cantCuotas;
+    return _cantCuotas;
 };
 
 /// SETTERS
 void MedioDePago::setId(int id){
-    this->id=id;
+    this->_id=id;
 };
 void MedioDePago::setNombre(const char* nombreP){
-    strcpy(nombre,nombreP);
+    strcpy(_nombre,nombreP);
 };
 void MedioDePago::setRecargo(float recargoP){
-    this->recargo=recargoP;
+    this->_recargo=recargoP;
 };
 void MedioDePago::setCantCuotas(int cantCuotasP){
-    this->cantCuotas=cantCuotasP;
+    this->_cantCuotas=cantCuotasP;
 };

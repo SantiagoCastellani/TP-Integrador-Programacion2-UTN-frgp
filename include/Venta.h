@@ -29,12 +29,12 @@ class Venta
     protected:
 
     private:
-        int idVenta;
-        char dniCliente[9];
-        int idLibro;
-        double importeVenta;
-        int idMedioDePago;
-        Fecha fecha;
+        int _idVenta;
+        char _dniCliente[9];
+        int _idLibro;
+        double _importeVenta;
+        int _idMedioDePago;
+        Fecha _fecha;
 
 
 };

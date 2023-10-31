@@ -25,9 +25,9 @@ class Fecha
     protected:
 
     private:
-        int dia;
-        int mes;
-        int anio;
+        int _dia;
+        int _mes;
+        int _anio;
 };
 
 #endif // FECHA_H

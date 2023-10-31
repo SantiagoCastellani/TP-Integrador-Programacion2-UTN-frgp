@@ -4,37 +4,37 @@
 Autor::Autor(){
 }
 
-Autor::Autor(int IdAutor,char* Nombre,char* Apellido,char* CodAutor){
-    _IdAutor=IdAutor;
-    strcpy(_Nombre,Nombre);
-    strcpy(_Apellido,Apellido);
-    strcpy(_CodAutor,CodAutor);
+Autor::Autor(int idAutor,char* nombre,char* apellido,char* codAutor){
+    _idAutor=idAutor;
+    strcpy(_nombre,nombre);
+    strcpy(_apellido,apellido);
+    strcpy(_codAutor,codAutor);
 }
 
 /// GETTERS
-int Autor::get_IdAutor(){
-    return _IdAutor;
+int Autor::getIdAutor(){
+    return _idAutor;
 }
-const char* Autor::get_Nombre(){
-    return _Nombre;
+const char* Autor::getNombre(){
+    return _nombre;
 }
-const char* Autor::get_Apellido(){
-    return _Apellido;
+const char* Autor::getApellido(){
+    return _apellido;
 }
-const char* Autor::get_CodAutor(){
-    return _CodAutor;
+const char* Autor::getCodAutor(){
+    return _codAutor;
 }
 
 /// SETTERS
-void Autor::set_IdAutor(int IdAutor){
-    _IdAutor=IdAutor;
+void Autor::setIdAutor(int idAutor){
+    _idAutor=idAutor;
 }
-void Autor::set_Nombre(const char* Nombre){
-    strcpy(_Nombre,Nombre);
+void Autor::setNombre(const char* nombre){
+    strcpy(_nombre,nombre);
 }
-void Autor::set_Apellido(const char* Apellido){
-    strcpy(_Apellido,Apellido);
+void Autor::setApellido(const char* apellido){
+    strcpy(_apellido,apellido);
 }
-void Autor::set_CodAutor(const char* CodAutor){
-    strcpy(_CodAutor,CodAutor);
+void Autor::setCodAutor(const char* codAutor){
+    strcpy(_codAutor,codAutor);
 }

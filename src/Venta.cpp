@@ -3,61 +3,61 @@
 
 Venta::Venta()
 {
-    idVenta=0;
-    strcpy(dniCliente,"000000000");
-    idLibro=0;
-    importeVenta=0;
-    idMedioDePago=0;
-    fecha=Fecha();
+    _idVenta=0;
+    strcpy(_dniCliente,"000000000");
+    _idLibro=0;
+    _importeVenta=0;
+    _idMedioDePago=0;
+    _fecha=Fecha();
 };
 
 Venta::Venta(int id, char* dniCli, int idLibro, double importeVenta, int medioDePago, Fecha fecha){
-    this->idVenta=id;
-    strcpy(dniCliente,dniCli);
-    this->idLibro=idLibro;
-    this->importeVenta=importeVenta;
-    this->idMedioDePago=medioDePago;
-    this->fecha=fecha;
+    this->_idVenta=id;
+    strcpy(_dniCliente,dniCli);
+    this->_idLibro=idLibro;
+    this->_importeVenta=importeVenta;
+    this->_idMedioDePago=medioDePago;
+    this->_fecha=fecha;
 };
 
 /// GETTERS
 int Venta::getIdVenta(){
-    return idVenta;
+    return _idVenta;
 };
 const char* Venta::getDniCliente(){
-    return dniCliente;
+    return _dniCliente;
 };
 int Venta::getIdLibro(){
-    return idLibro;
+    return _idLibro;
 };
 double Venta::getImporteVenta(){
-    return importeVenta;
+    return _importeVenta;
 };
 int Venta::getMedioDePago(){
-    return idMedioDePago;
+    return _idMedioDePago;
 };
 Fecha Venta::getFecha(){
-    return fecha;
+    return _fecha;
 };
 
 /// SETTERS
 void Venta::setIdVenta(int id){
-    this->idVenta=id;
+    this->_idVenta=id;
 };
 void Venta::setDniCliente(const char* dniCli){
-    strcpy(dniCliente,dniCli);
+    strcpy(_dniCliente,dniCli);
 };
 void Venta::setIdLibro(int idLibro){
-    this->idLibro=idLibro;
+    this->_idLibro=idLibro;
 };
 void Venta::setImporteVenta(double importeVenta){
-    this->importeVenta=importeVenta;
+    this->_importeVenta=importeVenta;
 };
 void Venta::setMedioDePago(int medioDePago){
-    this->idMedioDePago=medioDePago;
+    this->_idMedioDePago=medioDePago;
 };
-void Venta::setFecha(Fecha){
-    this->fecha=fecha;
+void Venta::setFecha(Fecha fecha){
+    this->_fecha=fecha;
 };
 
 

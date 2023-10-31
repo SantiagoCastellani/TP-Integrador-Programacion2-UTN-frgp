@@ -4,67 +4,67 @@
 
 Cliente::Cliente()
 {
-    strcpy(dni,"00000000");
-    strcpy(nombre,"0000");
-    strcpy(apellido,"getr");
-    strcpy(telefono,"00000000");
-    strcpy(email,"00000000");
-    fechaNac=Fecha();
-    idGeneroFavorito=0;
+    strcpy(_dni,"00000000");
+    strcpy(_nombre,"0000");
+    strcpy(_apellido,"getr");
+    strcpy(_telefono,"00000000");
+    strcpy(_email,"00000000");
+    _fechaNac=Fecha();
+    _idGeneroFavorito=0;
 }
 
 Cliente::Cliente(char* dniP,char* nombreP,char* apellidoP,char* telefonoP,char* emailP,Fecha fecha,int idGeneroFavorito){
-    strcpy(dni,dniP);
-    strcpy(nombre,nombreP);
-    strcpy(apellido,apellidoP);
-    strcpy(telefono,telefonoP);
-    strcpy(email,emailP);
-    this->fechaNac=fecha;
-    this->idGeneroFavorito=idGeneroFavorito;
+    strcpy(_dni,dniP);
+    strcpy(_nombre,nombreP);
+    strcpy(_apellido,apellidoP);
+    strcpy(_telefono,telefonoP);
+    strcpy(_email,emailP);
+    this->_fechaNac=fecha;
+    this->_idGeneroFavorito=idGeneroFavorito;
 };
 
 /// GETTERS
 const char* Cliente::getDni(){
-    return dni;
+    return _dni;
 };
 const char* Cliente::getNombre(){
-    return nombre;
+    return _nombre;
 };
 const char* Cliente::getApellido(){
-    return apellido;
+    return _apellido;
 };
 const char* Cliente::getTelefono(){
-    return telefono;
+    return _telefono;
 };
 const char* Cliente::getEmail(){
-    return email;
+    return _email;
 };
 Fecha Cliente::getFecha(){
-    return fechaNac;
+    return _fechaNac;
 };
 int Cliente::getIdGeneroFavorito(){
-    return idGeneroFavorito;
+    return _idGeneroFavorito;
 };
 
 /// SETTERS
 void Cliente::setDni(const char* dniP){
-    strcpy(dni,dniP);
+    strcpy(_dni,dniP);
 };
 void Cliente::setNombre(const char* nombreP){
-    strcpy(nombre,nombreP);
+    strcpy(_nombre,nombreP);
 };
 void Cliente::setApellido(const char* apellidoP){
-    strcpy(apellido,apellidoP);
+    strcpy(_apellido,apellidoP);
 };
 void Cliente::setTelefono(const char* telefonoP){
-    strcpy(telefono,telefonoP);
+    strcpy(_telefono,telefonoP);
 };
 void Cliente::setEmail(const char* emailP){
-    strcpy(email,emailP);
+    strcpy(_email,emailP);
 };
 void Cliente::setFecha(Fecha fecha){
-    this->fechaNac=fecha;
+    this->_fechaNac=fecha;
 };
-void Cliente::setIdGeneroFavorito(int){
-    this->idGeneroFavorito=idGeneroFavorito;
+void Cliente::setIdGeneroFavorito(int idGeneroFavorito){
+    this->_idGeneroFavorito=idGeneroFavorito;
 };

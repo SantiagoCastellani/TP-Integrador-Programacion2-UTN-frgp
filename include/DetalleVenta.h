@@ -69,17 +69,17 @@ class DetalleVenta
     protected:
 
     private:
-        int idVenta;
-        char dniCliente[9];
-        char nombreCliente[50];
-        char telefonoCliente[15];
-        char emailCliente[100];
-        char tituloLibro[100];
-        char autorLibro[50];
-        char editorialLibro[30];
-        double importeVenta;
-        char medioDePago[30];
-        Fecha fecha;
+        int _idVenta;
+        char _dniCliente[9];
+        char _nombreCliente[50];
+        char _telefonoCliente[15];
+        char _emailCliente[100];
+        char _tituloLibro[100];
+        char _autorLibro[50];
+        char _editorialLibro[30];
+        double _importeVenta;
+        char _medioDePago[30];
+        Fecha _fecha;
 };
 
 #endif // DETALLEVENTA_H

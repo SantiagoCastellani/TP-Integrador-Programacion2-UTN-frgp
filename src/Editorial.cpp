@@ -4,23 +4,23 @@
 Editorial::Editorial(){
 }
 
-Editorial::Editorial(int IdEditorial,char* editorial){
-    _IdEditorial=IdEditorial;
-    strcpy(_editorial,editorial);
+Editorial::Editorial(int idEditorial,char* nombre){
+    _idEditorial=idEditorial;
+    strcpy(_nombre,nombre);
 }
 
 /// GETTERS
-int Editorial::get_IdEditorial(){
-    return _IdEditorial;
+int Editorial::getIdEditorial(){
+    return _idEditorial;
 }
-const char* Editorial::get_editorial(){
-    return _editorial;
+const char* Editorial::getNombre(){
+    return _nombre;
 }
 
 /// SETTERS
-void Editorial::set_IdEditorial(int IdEditorial){
-    _IdEditorial=IdEditorial;
+void Editorial::setIdEditorial(int idEditorial){
+    _idEditorial=idEditorial;
 }
-void Editorial::set_editorial(const char* editorial){
-    strcpy(_editorial,editorial);
+void Editorial::setNombre(const char* nombre){
+    strcpy(_nombre,nombre);
 }

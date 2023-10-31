@@ -9,66 +9,66 @@ Libro::Libro()
 {
 
 }
-Libro::Libro(int IdLibro,char* Titulo,int IdAutor,int IdGenero,int IdEditorial,Fecha FechaPublicacion,float Precio,int Stock)
+Libro::Libro(int idLibro,char* titulo,int idAutor,int idGenero,int idEditorial,Fecha fechaPublicacion,float precio,int stock)
 {
-_IdLibro=IdLibro;
-strcpy(_Titulo,Titulo);
-_IdAutor=IdAutor;
-_IdGenero=IdGenero;
-_IdEditorial=IdEditorial;
-_FechaPublicacion=FechaPublicacion;
-_Precio=Precio;
-_Stock=Stock;
+_idLibro=idLibro;
+strcpy(_titulo,titulo);
+_idAutor=idAutor;
+_idGenero=idGenero;
+_idEditorial=idEditorial;
+_fechaPublicacion=fechaPublicacion;
+_precio=precio;
+_stock=stock;
 };
 
 /// GETTERS
-int Libro::get_IdLibro(){
-    return _IdLibro;
+int Libro::getIdLibro(){
+    return _idLibro;
 }
-char* Libro::get_Titulo(){
-    return _Titulo;
+char* Libro::getTitulo(){
+    return _titulo;
 }
-int Libro::get_IdAutor(){
-    return _IdAutor;
+int Libro::getIdAutor(){
+    return _idAutor;
 }
-int Libro::get_IdGenero(){
-    return _IdGenero;
+int Libro::getIdGenero(){
+    return _idGenero;
 }
-int Libro::get_IdEditorial(){
-    return _IdEditorial;
+int Libro::getIdEditorial(){
+    return _idEditorial;
 }
-Fecha Libro::get_FechaPublicacion(){
-    return _FechaPublicacion;
+Fecha Libro::getFechaPublicacion(){
+    return _fechaPublicacion;
 }
-float Libro::get_Precio(){
-    return _Precio;
+float Libro::getPrecio(){
+    return _precio;
 }
-int Libro::get_Stock(){
-    return _Stock;
+int Libro::getStock(){
+    return _stock;
 }
 
 /// SETTERS
-void Libro::set_IdLibro(int IdLibro){
-    _IdLibro=IdLibro;
+void Libro::setIdLibro(int idLibro){
+    _idLibro=idLibro;
 }
-void Libro::set_Titulo(const char* Titulo){
-    strcpy(_Titulo,Titulo);
+void Libro::setTitulo(const char* titulo){
+    strcpy(_titulo,titulo);
 }
-void Libro::set_IdAutor(int IdAutor){
-    _IdAutor=IdAutor;
+void Libro::setIdAutor(int idAutor){
+    _idAutor=idAutor;
 }
-void Libro::set_IdGenero(int IdGenero){
-    _IdGenero=IdGenero;
+void Libro::setIdGenero(int idGenero){
+    _idGenero=idGenero;
 }
-void Libro::set_IdEditorial(int IdEditorial){
-    _IdEditorial=IdEditorial;
+void Libro::setIdEditorial(int idEditorial){
+    _idEditorial=idEditorial;
 }
-void Libro::set_FechaPublicacion(Fecha FechaPublicacion){
-    _FechaPublicacion=FechaPublicacion;
+void Libro::setFechaPublicacion(Fecha fechaPublicacion){
+    _fechaPublicacion=fechaPublicacion;
 }
-void Libro::set_Precio(float Precio){
-    _Precio=Precio;
+void Libro::setPrecio(float precio){
+    _precio=precio;
 }
-void Libro::set_Stock(int Stock){
-    _Stock=Stock;
+void Libro::setStock(int stock){
+    _stock=stock;
 }

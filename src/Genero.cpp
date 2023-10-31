@@ -3,22 +3,22 @@
 
 Genero::Genero(){
 }
-Genero::Genero(int IdGenero,char* Genero){
-    _IdGenero=IdGenero;
-    strcpy(_Genero,Genero);}
+Genero::Genero(int idGenero,char* genero){
+    _idGenero=idGenero;
+    strcpy(_genero,genero);}
 
 /// GETTERS
-int Genero::get_IdGenero(){
-    return _IdGenero;
+int Genero::getIdGenero(){
+    return _idGenero;
 }
-const char* Genero::get_Genero(){
-    return _Genero;
+const char* Genero::getGenero(){
+    return _genero;
 }
 
 /// SETTERS
-void Genero::set_IdGenero(int IdGenero){
-    _IdGenero=IdGenero;
+void Genero::setIdGenero(int idGenero){
+    _idGenero=idGenero;
 }
-void Genero::set_Genero(const char* Genero){
-    strcpy(_Genero,Genero);
+void Genero::setGenero(const char* genero){
+    strcpy(_genero,genero);
 }

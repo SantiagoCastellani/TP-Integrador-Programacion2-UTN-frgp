@@ -10,36 +10,36 @@ class Libro
         Libro(int IdLibro,char* Titulo,int IdAutor,int IdGenero,int IdEditorial,Fecha FechaPublicacion,float Precio,int Stock);
 
           /// GETTERS
-        int get_IdLibro();
-        char* get_Titulo();
-        int get_IdAutor();
-        int get_IdGenero();
-        int get_IdEditorial();
-        Fecha get_FechaPublicacion();
-        float get_Precio();
-        int get_Stock();
+        int getIdLibro();
+        char* getTitulo();
+        int getIdAutor();
+        int getIdGenero();
+        int getIdEditorial();
+        Fecha getFechaPublicacion();
+        float getPrecio();
+        int getStock();
 
         /// SETTERS
-        void set_IdLibro(int);
-        void set_Titulo(const char*);
-        void set_IdAutor(int);
-        void set_IdGenero(int);
-        void set_IdEditorial(int);
-        void set_FechaPublicacion(Fecha);
-        void set_Precio(float);
-        void set_Stock(int);
+        void setIdLibro(int);
+        void setTitulo(const char*);
+        void setIdAutor(int);
+        void setIdGenero(int);
+        void setIdEditorial(int);
+        void setFechaPublicacion(Fecha);
+        void setPrecio(float);
+        void setStock(int);
 
     protected:
 
     private:
-        int _IdLibro;
-        char _Titulo[100];
-        int _IdAutor;
-        int _IdGenero;
-        int _IdEditorial;
-        Fecha _FechaPublicacion;
-        float _Precio;
-        int _Stock;
+        int _idLibro;
+        char _titulo[100];
+        int _idAutor;
+        int _idGenero;
+        int _idEditorial;
+        Fecha _fechaPublicacion;
+        float _precio;
+        int _stock;
 };
 
 #endif // LIBRO_H

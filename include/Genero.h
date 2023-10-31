@@ -6,21 +6,21 @@ class Genero
 {
     public:
         Genero();
-        Genero(int IdGenero,char* Genero);
+        Genero(int idGenero,char* genero);
 
         /// GETTERS
-        int get_IdGenero();
-        const char* get_Genero();
+        int getIdGenero();
+        const char* getGenero();
 
         /// SETTERS
-        void set_IdGenero(int);
-        void set_Genero(const char*);
+        void setIdGenero(int);
+        void setGenero(const char*);
 
     protected:
 
     private:
-        int _IdGenero;
-        char _Genero[30];
+        int _idGenero;
+        char _genero[30];
 };
 
 #endif // GENERO_H

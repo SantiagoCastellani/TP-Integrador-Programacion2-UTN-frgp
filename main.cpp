@@ -7,18 +7,18 @@
 int main()
 {
 
-      //menuInicio();
+      menuInicio();
 
-    VentasService ventasService;
-    //ventasService.leerArchivoMedioDePago();
+//    VentasService ventasService;
+//    ventasService.leerArchivoMedioDePago();
 
-    for(int x=0;x<3;x++){
-        Venta v = ventasService.cargarVenta();
-        ventasService.registrarVenta(v);
-    }
-
-
-    ventasService.leerArchivoVentas();
+//    for(int x=0;x<3;x++){
+//        Venta v = ventasService.cargarVenta();
+//        ventasService.registrarVenta(v);
+//    }
+//
+//
+//    ventasService.leerArchivoVentas();
 
 
       return 0;

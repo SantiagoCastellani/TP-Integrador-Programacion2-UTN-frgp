@@ -36,11 +36,13 @@
 		</Compiler>
 		<Unit filename="include/Autor.h" />
 		<Unit filename="include/Cliente.h" />
+		<Unit filename="include/ClienteService.h" />
 		<Unit filename="include/DetalleVenta.h" />
 		<Unit filename="include/Editorial.h" />
 		<Unit filename="include/Fecha.h" />
 		<Unit filename="include/Genero.h" />
 		<Unit filename="include/Libro.h" />
+		<Unit filename="include/LibroService.h" />
 		<Unit filename="include/MedioDePago.h" />
 		<Unit filename="include/Venta.h" />
 		<Unit filename="include/VentasService.h" />
@@ -49,11 +51,13 @@
 		<Unit filename="properties.h" />
 		<Unit filename="src/Autor.cpp" />
 		<Unit filename="src/Cliente.cpp" />
+		<Unit filename="src/ClienteService.cpp" />
 		<Unit filename="src/DetalleVenta.cpp" />
 		<Unit filename="src/Editorial.cpp" />
 		<Unit filename="src/Fecha.cpp" />
 		<Unit filename="src/Genero.cpp" />
 		<Unit filename="src/Libro.cpp" />
+		<Unit filename="src/LibroService.cpp" />
 		<Unit filename="src/MedioDePago.cpp" />
 		<Unit filename="src/Venta.cpp" />
 		<Unit filename="src/VentasService.cpp" />

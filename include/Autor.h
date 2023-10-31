@@ -10,24 +10,24 @@ class Autor
         Autor(int IdAutor,char* Nombre,char* Apellido,char* CodAutor);
 
         /// GETTERS
-        int get_IdAutor();
-        const char* get_Nombre();
-        const char* get_Apellido();
-        const char* get_CodAutor();
+        int getIdAutor();
+        const char* getNombre();
+        const char* getApellido();
+        const char* getCodAutor();
 
         /// SETTERS
-        void set_IdAutor(int);
-        void set_Nombre(const char*);
-        void set_Apellido(const char*);
-        void set_CodAutor(const char*);
+        void setIdAutor(int);
+        void setNombre(const char*);
+        void setApellido(const char*);
+        void setCodAutor(const char*);
 
     protected:
 
     private:
-        int _IdAutor;
-        char _Nombre[25];
-        char _Apellido[24];
-        char _CodAutor[5];
+        int _idAutor;
+        char _nombre[25];
+        char _apellido[24];
+        char _codAutor[5];
 };
 
 #endif // AUTOR_H

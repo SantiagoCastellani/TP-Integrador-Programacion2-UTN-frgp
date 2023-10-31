@@ -30,13 +30,13 @@ class Cliente
     protected:
 
     private:
-        char dni[9];
-        char nombre[25];
-        char apellido[24];
-        char telefono[15];
-        char email[100];
-        Fecha fechaNac;
-        int idGeneroFavorito;
+        char _dni[9];
+        char _nombre[25];
+        char _apellido[24];
+        char _telefono[15];
+        char _email[100];
+        Fecha _fechaNac;
+        int _idGeneroFavorito;
 
 };
 
