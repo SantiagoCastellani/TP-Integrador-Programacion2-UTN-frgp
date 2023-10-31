@@ -22,6 +22,9 @@ class Fecha
         // Fecha Formateada
         std::string fechaFormateada();
 
+        // Cargar Fecha
+        Fecha cargarFecha();
+
     protected:
 
     private:

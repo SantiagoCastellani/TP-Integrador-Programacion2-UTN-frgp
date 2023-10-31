@@ -123,13 +123,15 @@
 	<iostream>
 	"menu.h"
 
-1698716407 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\main.cpp
+1698721561 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\main.cpp
 	<iostream>
 	"menu.h"
 	"Venta.h"
 	"VentasService.h"
+	"LibroService.h"
+	"Libro.h"
 
-1698717872 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\fecha.h
+1698721913 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\fecha.h
 	<iostream>
 
 1698718523 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\cliente.h
@@ -144,7 +146,7 @@
 1698717069 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\venta.h
 	"Fecha.h"
 
-1698717647 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\libro.h
+1698721085 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\libro.h
 	"Fecha.h"
 
 1698717174 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\mediodepago.h
@@ -173,7 +175,7 @@
 
 1698717950 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\editorial.h
 
-1698717872 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\fecha.cpp
+1698721983 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\fecha.cpp
 	"Fecha.h"
 
 1698717788 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\genero.cpp
@@ -209,7 +211,7 @@
 	"../properties.h"
 	"Fecha.h"
 
-1698713101 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\ventasservice.h
+1698721085 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\ventasservice.h
 	"Venta.h"
 	"DetalleVenta.h"
 	"MedioDePago.h"
@@ -221,8 +223,9 @@
 
 1698715572 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\clienteservice.h
 
-1698715600 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\libroservice.cpp
+1698722387 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\libroservice.cpp
 	"LibroService.h"
 
-1698715600 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\libroservice.h
+1698721085 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\libroservice.h
+	"Libro.h"
 

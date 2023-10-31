@@ -2,12 +2,14 @@
 #include "menu.h"
 #include "Venta.h"
 #include "VentasService.h"
+#include "LibroService.h"
+#include "Libro.h"
 
 
 int main()
 {
 
-      menuInicio();
+      //menuInicio();
 
 //    VentasService ventasService;
 //    ventasService.leerArchivoMedioDePago();
@@ -20,6 +22,9 @@ int main()
 //
 //    ventasService.leerArchivoVentas();
 
+        LibroService libroService;
+        Libro libro = libroService.cargarLibro();
+        libroService.mostrarLibro(libro);
 
       return 0;
 

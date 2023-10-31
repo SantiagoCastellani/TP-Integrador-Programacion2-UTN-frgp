@@ -7,7 +7,7 @@ class Libro
 {
     public:
         Libro();
-        Libro(int IdLibro,char* Titulo,int IdAutor,int IdGenero,int IdEditorial,Fecha FechaPublicacion,float Precio,int Stock);
+        Libro(int idLibro,char* titulo,int idAutor,int idGenero,int idEditorial,Fecha fechaPublicacion,float precio,int stock);
 
           /// GETTERS
         int getIdLibro();

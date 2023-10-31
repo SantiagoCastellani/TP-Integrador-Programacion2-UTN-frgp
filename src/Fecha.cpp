@@ -17,6 +17,19 @@ std::string Fecha::fechaFormateada(){
     return std::to_string(_dia) + "/" + std::to_string(_mes)+ "/" + std::to_string(_anio);
 }
 
+// Cargar Fecha
+Fecha Fecha::cargarFecha(){
+    int dia,mes,anio;
+    std::cout<<"Dia: ";
+    std::cin>>dia;
+    std::cout<<"Mes: ";
+    std::cin>>mes;
+    std::cout<<"Anio: ";
+    std::cin>>anio;
+    Fecha fecha(dia,mes,anio);
+    return fecha;
+};
+
 /// Getters
 int Fecha::getDia(){
     return _dia;

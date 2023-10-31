@@ -9,6 +9,8 @@ class VentasService
     public:
         VentasService();
 
+        /// VENTAS
+
         // Devuelve una Venta segun un IdVenta
         Venta buscarVentaById(int);
 
