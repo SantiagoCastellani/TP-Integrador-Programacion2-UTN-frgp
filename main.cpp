@@ -5,6 +5,7 @@
 #include "LibroService.h"
 #include "Libro.h"
 #include "Editorial.h"
+#include "Autor.h"
 
 
 int main()
@@ -29,14 +30,22 @@ int main()
 //        libroService.registrarLibro(libro);
 //        libroService.leerArchivoLibros();
 
-        Editorial e;
-        for(int x=0;x<2;x++){
-            Editorial editorial = e.cargarEditorial();
-            e.mostrarEditorial(editorial);
-            e.registrarEditorial(editorial);
-        }
-        e.leerArchivoEditorial();
 
+//        Editorial e;
+//        Editorial editorial = e.buscarEditorialById(3);
+//        e.mostrarEditorial(editorial);
+
+        Autor aS;
+        for(int x=0;x<2;x++){
+            Autor a = aS.cargarAutor();
+            aS.mostrarAutor(a);
+            aS.registrarAutor(a);
+        }
+
+        aS.leerArchivoAutor();
+        std::cout<<"ksfhhskfskl";
+        Autor z = aS.buscarAutorById(1);
+        aS.mostrarAutor(z);
 
       return 0;
 

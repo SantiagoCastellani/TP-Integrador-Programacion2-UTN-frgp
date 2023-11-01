@@ -5,9 +5,32 @@
 class Autor
 {
     public:
+
+        const char *ARCHIVO_AUTORES = "Autores.dat";
+
         Autor();
 
         Autor(int IdAutor,char* Nombre,char* Apellido,char* CodAutor);
+
+        // Cargar AUTOR
+        Autor cargarAutor();
+
+        // REGISTRAR un AUTOR en ARCHIVO
+        void registrarAutor(Autor);
+
+        // Mostrar AUTOR
+        void mostrarAutor(Autor);
+
+        // LEER Archivo de AUTORES
+        void leerArchivoAutor();
+
+        // Devuelve el proximo Id a setear
+        int proximoIdAutor();
+
+        // Devuelve AUTOR By ID
+        Autor buscarAutorById(int);
+
+
 
         /// GETTERS
         int getIdAutor();

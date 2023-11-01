@@ -25,6 +25,9 @@ class Editorial
         // Devuelve el proximo Id a setear
         int proximoIdEditorial();
 
+        // Devuelve EDITORIAL By ID
+        Editorial buscarEditorialById(int);
+
 
 
         /// GETTERS

@@ -84,3 +84,18 @@ int Editorial::proximoIdEditorial(){
     fclose(archivo);
     return id+1;
 };
+
+// Devuelve EDITORIAL By ID
+Editorial Editorial::buscarEditorialById(int id){
+    FILE *archivo;
+    Editorial e;
+    Editorial editorial;
+    archivo = fopen(ARCHIVO_EDITORIAL,"rb");
+    while(fread(&e,sizeof(Editorial),1,archivo)==1){
+        if(e.getIdEditorial()==id){
+            editorial=e;
+        }
+    }
+    fclose(archivo);
+    return editorial;
+};
