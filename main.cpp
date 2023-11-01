@@ -24,7 +24,9 @@ int main()
 
         LibroService libroService;
         Libro libro = libroService.cargarLibro();
-        libroService.mostrarLibro(libro);
+        //libroService.mostrarLibro(libro);
+        libroService.registrarLibro(libro);
+        libroService.leerArchivoLibros();
 
       return 0;
 

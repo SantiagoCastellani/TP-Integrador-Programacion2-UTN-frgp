@@ -4,12 +4,15 @@
 /// ARCHIVOS
 //const char *ARCHIVO_MEDIOSDEPAGO = "MediosdePago.dat";
 //const char *ARCHIVO_REGISTROVENTAS = "RegistrodeVentas.dat";
+//const char *ARCHIVO_LIBROS = "Libros.dat";
 
 /// ARCHIVOS DE TEST
+
 const char *ARCHIVO_MEDIOSDEPAGO = "MediosdePagoTest.dat";
 const char *ARCHIVO_REGISTROVENTAS = "RegistrodeVentasTest.dat";
 
-// ARCHIVOS DE BACKUP
+
+/// ARCHIVOS DE BACKUP
 const char *BACKUP_VENTAS = "Backup-Ventas.bak";
 const char *BACKUP_CLIENTES = "Backup-Clientes.bak";
 const char *BACKUP_LIBROS = "Backup-Libros.bak";
