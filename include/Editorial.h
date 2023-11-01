@@ -5,8 +5,27 @@
 class Editorial
 {
     public:
+        const char *ARCHIVO_EDITORIAL = "Editoriales.dat";
+
         Editorial();
         Editorial(int idEditorial,char* nombre);
+
+        // Cargar EDITORIAL
+        Editorial cargarEditorial();
+
+        // REGISTRAR una EDITORIAL en ARCHIVO
+        void registrarEditorial(Editorial);
+
+        // Mostrar EDITORIAL
+        void mostrarEditorial(Editorial);
+
+        // LEER Archivo de Editoriales
+        void leerArchivoEditorial();
+
+        // Devuelve el proximo Id a setear
+        int proximoIdEditorial();
+
+
 
         /// GETTERS
         int getIdEditorial();
