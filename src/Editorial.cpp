@@ -99,3 +99,18 @@ Editorial Editorial::buscarEditorialById(int id){
     fclose(archivo);
     return editorial;
 };
+
+// Existe Editorial?
+bool Editorial::existeEditorial(int id){
+    FILE *archivo;
+    Editorial e;
+    bool existe = false;
+    archivo = fopen(ARCHIVO_EDITORIAL,"rb");
+    while(fread(&e,sizeof(Editorial),1,archivo)==1){
+        if(e.getIdEditorial()==id){
+            existe=true;
+        }
+    }
+    fclose(archivo);
+    return existe;
+};

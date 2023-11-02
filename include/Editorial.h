@@ -28,6 +28,8 @@ class Editorial
         // Devuelve EDITORIAL By ID
         Editorial buscarEditorialById(int);
 
+        // Existe Editorial?
+        bool existeEditorial(int);
 
 
         /// GETTERS

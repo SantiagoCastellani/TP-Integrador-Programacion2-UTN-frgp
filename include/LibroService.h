@@ -27,6 +27,12 @@ class LibroService
         // LEER Archivo de LIBROS
         void leerArchivoLibros();
 
+        // Buscar LIBRO By ID
+        Libro buscarLibroById(int);
+
+        // Existe LIBRO?
+        bool existeLibro(int);
+
     protected:
 
     private:

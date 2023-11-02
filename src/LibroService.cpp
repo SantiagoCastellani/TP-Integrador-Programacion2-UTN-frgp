@@ -90,6 +90,36 @@ void LibroService::leerArchivoLibros(){
     fclose(archivo);
 };
 
+// Buscar LIBRO By ID
+Libro LibroService::buscarLibroById(int id){
+    FILE *archivo;
+    Libro l;
+    Libro libro;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        if(l.getIdLibro()==id){
+            libro=l;
+        }
+    }
+    fclose(archivo);
+    return libro;
+};
+
+// Existe LIBRO?
+bool LibroService::existeLibro(int id){
+    FILE *archivo;
+    Libro l;
+    bool existe = false;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        if(l.getIdLibro()==id){
+            existe=true;
+        }
+    }
+    fclose(archivo);
+    return existe;
+};
+
 
 
 
