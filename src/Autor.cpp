@@ -25,6 +25,10 @@ const char* Autor::getApellido(){
 const char* Autor::getCodAutor(){
     return _codAutor;
 }
+//std::string Autor::getNombreCompleto(){
+//    return std::to_string(_dia) + "/" + std::to_string(_mes)+ "/" + std::to_string(_anio);
+//    return nombre + " " + apellido;
+//};
 
 /// SETTERS
 void Autor::setIdAutor(int idAutor){
@@ -100,7 +104,6 @@ void Autor::leerArchivoAutor(){
     }
     std::cout<<" "<<std::endl;
     fclose(archivo);
-
 };
 
 // Devuelve el proximo Id a setear
@@ -127,6 +130,86 @@ Autor Autor::buscarAutorById(int id){
     archivo = fopen(ARCHIVO_AUTORES,"rb");
     while(fread(&a,sizeof(Autor),1,archivo)==1){
         if(a.getIdAutor()==id){
+            autor=a;
+        }
+    }
+    fclose(archivo);
+    return autor;
+};
+
+// Devuelve cantidad de AUTORES By CodAutor
+int Autor::cantidadAutoresByCodAutor(char* codigo){
+    int cant=0;
+    int i = 0;
+    while (codigo[i]) {
+        codigo[i] = std::toupper(codigo[i]);
+        i++;
+    }
+    FILE *archivo;
+    Autor a;
+    archivo = fopen(ARCHIVO_AUTORES,"rb");
+    while(fread(&a,sizeof(Autor),1,archivo)==1){
+        if(strcmp(codigo,a.getCodAutor())==0){
+            cant++;
+        }
+    }
+    fclose(archivo);
+    return cant;
+};
+
+// Elegir entre varios Autores
+int Autor::elegirEntreVariosAutores(char* codigo){
+    std::cout<<"\tSe han encontrado "<<cantidadAutoresByCodAutor(codigo)<<" con ese codigo."<<std::endl;
+    std::cout<<"\tPor favor, introduce el id del elegido o cero para salir."<<std::endl;
+    std::cout<<"\tAutores:"<<std::endl;
+    int idElegido=0;
+    int i = 0;
+    while (codigo[i]) {
+        codigo[i] = std::toupper(codigo[i]);
+        i++;
+    }
+    FILE *archivo;
+    Autor a;
+    archivo = fopen(ARCHIVO_AUTORES,"rb");
+    while(fread(&a,sizeof(Autor),1,archivo)==1){
+        if(strcmp(codigo,a.getCodAutor())==0){
+            std::cout<<"\tAutor: "<<a.getNombre()<<" "<<a.getApellido()<<" ID: "<<a.getIdAutor()<<std::endl;
+        }
+    }
+    fclose(archivo);
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tElige un ID de Autor: ";
+    std::cin>>idElegido;
+    return idElegido;
+};
+
+// Setear Autor
+int Autor::elegirAutor(){
+    int idElegido=0;
+    char codigo[5];
+    std::cout<<"\tIngrese el CODIGO de AUTOR: ";
+    std::cin.getline(codigo,5);
+    int cant = cantidadAutoresByCodAutor(codigo);
+    if(cant==0){
+        std::cout<<"\No se ha encontrado ese codigo de Autor."<<std::endl;
+        std::cout<<"\Cargaremos un valor por defecto, y luego podras modificarlo."<<std::endl;
+        std::cout<<"\Recuerda al finalizar el Id de LIBRO."<<std::endl;
+    } else if (cant==1){
+        Autor autorEncontrado = buscarAutorByCodAutor(codigo);
+        idElegido=autorEncontrado.getIdAutor();
+    } else {
+        idElegido=elegirEntreVariosAutores(codigo);
+    }
+    return idElegido;
+};
+
+Autor Autor::buscarAutorByCodAutor(char *codigo){
+    FILE *archivo;
+    Autor a;
+    Autor autor;
+    archivo = fopen(ARCHIVO_AUTORES,"rb");
+    while(fread(&a,sizeof(Autor),1,archivo)==1){
+        if(strcmp(a.getCodAutor(),codigo)==0){
             autor=a;
         }
     }

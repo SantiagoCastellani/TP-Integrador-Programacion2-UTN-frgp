@@ -30,13 +30,23 @@ class Autor
         // Devuelve AUTOR By ID
         Autor buscarAutorById(int);
 
+        // Devuelve cantidad de AUTORES By CodAutor
+        int cantidadAutoresByCodAutor(char* codAutor);
 
+        // Elegir entre varios Autores
+        int elegirEntreVariosAutores(char* codAutor);
+
+        // Setear Autor
+        int elegirAutor();
+
+        Autor buscarAutorByCodAutor(char * codAutor);
 
         /// GETTERS
         int getIdAutor();
         const char* getNombre();
         const char* getApellido();
         const char* getCodAutor();
+        //std::string getNombreCompleto();
 
         /// SETTERS
         void setIdAutor(int);

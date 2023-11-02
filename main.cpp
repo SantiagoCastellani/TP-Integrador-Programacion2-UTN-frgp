@@ -35,17 +35,20 @@ int main()
 //        Editorial editorial = e.buscarEditorialById(3);
 //        e.mostrarEditorial(editorial);
 
-        Autor aS;
-        for(int x=0;x<2;x++){
-            Autor a = aS.cargarAutor();
-            aS.mostrarAutor(a);
-            aS.registrarAutor(a);
-        }
-
-        aS.leerArchivoAutor();
-        std::cout<<"ksfhhskfskl";
-        Autor z = aS.buscarAutorById(1);
-        aS.mostrarAutor(z);
+       Autor aS;
+//        for(int x=0;x<2;x++){
+//            Autor a = aS.cargarAutor();
+//            aS.mostrarAutor(a);
+//            aS.registrarAutor(a);
+//        }
+//
+       aS.leerArchivoAutor();
+//        std::cout<<"ksfhhskfskl";
+//        Autor z = aS.buscarAutorById(1);
+//        aS.mostrarAutor(z);
+int idElegido = aS.elegirAutor();
+Autor au = aS.buscarAutorById(idElegido);
+aS.mostrarAutor(au);
 
       return 0;
 
