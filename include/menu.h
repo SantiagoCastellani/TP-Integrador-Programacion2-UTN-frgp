@@ -14,6 +14,12 @@ void menuVentas();
 // Menu Clientes
 void menuClientes();
 
+//Menu Estadisticas
+void menuEstadisticas();
+
+//Menu Configuraciones
+void menuConfiguraciones();
+
 // Finalizar
 void finalizar();
 
