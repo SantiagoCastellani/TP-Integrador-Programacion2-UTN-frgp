@@ -1,7 +1,15 @@
 #include "LibroService.h"
 #include <cstdio>
+#include "string.h"
+#include "Autor.h"
+#include "Genero.h"
+#include "Editorial.h"
 
 LibroService::LibroService(){}
+
+Autor autorService;
+Genero generoService;
+Editorial editorialService;
 
 /// LIBROS
 
@@ -18,11 +26,16 @@ Libro LibroService::cargarLibro(){
     int stock;
     std::cout << "Ingresar TITULO: ";
     std::cin.getline(titulo,100);
-    /// TODO: Reemplazar por codigo de autor
-    std::cout << "Ingresar ID AUTOR: ";
-    std::cin>>idAutor;
+    // Se elige el autor dentro de la funcion
+    idAutor=autorService.elegirAutor();
+    std::cout << " "<<std::endl;
+    std::cout << "Generos Disponibles: "<<std::endl;
+    generoService.leerArchivoGeneros2();
     std::cout << "Ingresar ID GENERO: ";
     std::cin>>idGenero;
+    std::cout << " "<<std::endl;
+    std::cout << "Editoriales Disponibles: "<<std::endl;
+    editorialService.leerArchivoEditorial2();
     std::cout << "Ingresar ID EDITORIAL: ";
     std::cin>>idEditorial;
     std::cout << "Ingresar FECHA PUBLICACION: "<<std::endl;
@@ -39,15 +52,15 @@ Libro LibroService::cargarLibro(){
 
 // Mostrar un Libro
 void LibroService::mostrarLibro(Libro l){
+    Autor autor = autorService.buscarAutorById(l.getIdAutor());
+    Genero genero = generoService.buscarGeneroById(l.getIdGenero());
+    Editorial editorial = editorialService.buscarEditorialById(l.getIdEditorial());
     std::cout << " Titulo: "<<l.getTitulo()<<std::endl;
-    /// TODO: Reemplazar por AUTOR NOMBRE
-    std::cout << " Autor: "<<l.getIdAutor()<<std::endl;
-    /// TODO: Reemplazar por Nombre Genero
-    std::cout << " Genero: "<<l.getIdGenero()<<std::endl;
-    /// TODO: Reemplazar por Editorial Nombre
-    std::cout << " Editorial: "<<l.getIdEditorial()<<std::endl;
+    std::cout << " Autor: "<<autor.getNombre()<<" "<<autor.getApellido()<<std::endl;
+    std::cout << " Genero: "<<genero.getGenero()<<std::endl;
+    std::cout << " Editorial: "<<editorial.getNombre()<<std::endl;
     std::cout << " Fecha Publicacion: "<<l.getFechaPublicacion().fechaFormateada()<<std::endl;
-    std::cout << " Precio: "<<l.getPrecio()<<std::endl;
+    std::cout << " Precio: $"<<l.getPrecio()<<std::endl;
     std::cout << " Stock: "<<l.getStock()<<std::endl;
     std::cout << "  "<<std::endl;
 };
@@ -120,9 +133,66 @@ bool LibroService::existeLibro(int id){
     return existe;
 };
 
+// Buscar LIBRO por TITULO (si no existe elige 1)
+Libro LibroService::buscarLibroByTitulo(){
+    Libro libro;
+    char titulo[100];
+    std::cout<<" Ingrese el titulo a buscar:";
+    std::cin>>titulo;
+    if(existeTitulo(titulo)){
+        libro=buscarLibroByTitulo(titulo);
+    } else {
+        int idElegido=elegirLibro(titulo);
+        libro=buscarLibroById(idElegido);
+    }
+    return libro;
+};
+
+bool LibroService::existeTitulo(char* titulo){
+    FILE *archivo;
+    Libro l;
+    bool existe = false;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        if(strcmp(l.getTitulo(),titulo)==0){
+            existe=true;
+        }
+    }
+    fclose(archivo);
+    return existe;
+};
 
 
+// Buscar Libto By Titulo
+Libro LibroService::buscarLibroByTitulo(char*titulo){
+    FILE *archivo;
+    Libro l;
+    Libro libro;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        if(strcmp(l.getTitulo(),titulo)==0){
+            libro=l;
+        }
+    }
+    fclose(archivo);
+    return libro;
+};
 
-
-
-
+// Devolver un Libro Elegido
+int LibroService::elegirLibro(char*titulo){
+    int idElegido=0;
+    FILE *archivo;
+    Libro l;
+    Libro libro;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        if(l.getTitulo()[0]==titulo[0]){
+            Autor autor = autorService.buscarAutorById(l.getIdAutor());
+            std::cout<<"ID: "<<l.getIdLibro()<<" "<<l.getTitulo()<<" ("<<autor.getNombre()<<" "<<autor.getApellido()<<")"<<std::endl;
+        }
+    }
+    fclose(archivo);
+    std::cout<<" Elija el ID del LIBRO que esta buscando - (0 en caso de que no este en la lista)"<<std::endl;
+    std::cin>>idElegido;
+    return idElegido;
+}

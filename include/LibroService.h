@@ -33,6 +33,21 @@ class LibroService
         // Existe LIBRO?
         bool existeLibro(int);
 
+        // Buscar LIBRO por TITULO
+        Libro buscarLibroByTitulo();
+
+         // Buscar LIBRO por TITULO
+        Libro buscarLibroByTitulo(char*titulo);
+
+        // Existe TITULO?
+        bool existeTitulo(char*titulo);
+
+        // Elegir entre Posibles LIBROS
+        int devolverIdLibro(char* titulo);
+
+        // Devolver un Id de Libro Elegido
+        int elegirLibro(char*titulo);
+
     protected:
 
     private:

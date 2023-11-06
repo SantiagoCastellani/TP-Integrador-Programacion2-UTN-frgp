@@ -54,6 +54,18 @@ void Genero::mostrarGeneros(Genero genero){
 };
 
 // LEER Archivo de Generos
+void Genero::leerArchivoGeneros2(){
+    FILE *archivo;
+    Genero g;
+    archivo = fopen(ARCHIVO_GENEROS,"rb");
+    while(fread(&g,sizeof(Genero),1,archivo)==1){
+        std::cout << " "<<g.getIdGenero()<<" - "<<g.getGenero()<<std::endl;
+    }
+    std::cout<<" "<<std::endl;
+    fclose(archivo);
+};
+
+// LEER Archivo de Generos
 void Genero::leerArchivoGeneros(){
     FILE *archivo;
     Genero g;

@@ -70,6 +70,17 @@ void Editorial::leerArchivoEditorial(){
     fclose(archivo);
 };
 
+void Editorial::leerArchivoEditorial2(){
+    FILE *archivo;
+    Editorial e;
+    archivo = fopen(ARCHIVO_EDITORIAL,"rb");
+    while(fread(&e,sizeof(Editorial),1,archivo)==1){
+       std::cout << " "<<e.getIdEditorial()<<" - "<<e.getNombre()<<std::endl;
+    }
+    std::cout<<" "<<std::endl;
+    fclose(archivo);
+};
+
 // Devuelve el proximo IdEditorial a setear
 int Editorial::proximoIdEditorial(){
     FILE *archivo;

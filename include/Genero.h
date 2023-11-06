@@ -21,6 +21,7 @@ class Genero
 
         // LEER Archivo de Generos
         void leerArchivoGeneros();
+        void leerArchivoGeneros2();
 
         // Devuelve el proximo Id a setear
         int proximoIdGenero();

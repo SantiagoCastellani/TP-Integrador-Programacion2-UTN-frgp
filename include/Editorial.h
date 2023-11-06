@@ -21,6 +21,7 @@ class Editorial
 
         // LEER Archivo de Editoriales
         void leerArchivoEditorial();
+        void leerArchivoEditorial2();
 
         // Devuelve el proximo Id a setear
         int proximoIdEditorial();

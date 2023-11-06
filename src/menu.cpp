@@ -23,10 +23,12 @@ void menuInicio(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Salir"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
+    std::cout<<" "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     switch(opcion){
     case 1:
         menuLibros();
@@ -56,8 +58,11 @@ void menuInicio(){
 void menuLibros(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\tMenu LIBROS"<<std::endl;
+    std::cout<<"\tLibreia IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tMENU de LIBROS"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t1 - BUSCAR LIBRO"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -69,13 +74,13 @@ void menuLibros(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Salir"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
-        //menuBuscarLibro();
+        //BuscarLibro();
         break;
     case 2:
         //menuCargarLibro();

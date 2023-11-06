@@ -3,6 +3,11 @@
 #include <iostream>
 
 Autor::Autor(){
+    _idAutor=0;
+    strcpy(_nombre,"");
+    strcpy(_apellido,"");
+    strcpy(_codAutor,"0000");
+
 }
 
 Autor::Autor(int idAutor,char* nombre,char* apellido,char* codAutor){
@@ -187,7 +192,7 @@ int Autor::elegirEntreVariosAutores(char* codigo){
 int Autor::elegirAutor(){
     int idElegido=0;
     char codigo[5];
-    std::cout<<"\tIngrese el CODIGO de AUTOR: ";
+    std::cout<<"Ingrese el CODIGO de AUTOR: ";
     std::cin.getline(codigo,5);
     int cant = cantidadAutoresByCodAutor(codigo);
     if(cant==0){
@@ -197,6 +202,7 @@ int Autor::elegirAutor(){
     } else if (cant==1){
         Autor autorEncontrado = buscarAutorByCodAutor(codigo);
         idElegido=autorEncontrado.getIdAutor();
+        std::cout<<"Autor: "<<autorEncontrado.getNombre()<<" "<<autorEncontrado.getApellido()<<std::endl;
     } else {
         idElegido=elegirEntreVariosAutores(codigo);
     }
