@@ -55,6 +55,7 @@ void LibroService::mostrarLibro(Libro l){
     Autor autor = autorService.buscarAutorById(l.getIdAutor());
     Genero genero = generoService.buscarGeneroById(l.getIdGenero());
     Editorial editorial = editorialService.buscarEditorialById(l.getIdEditorial());
+    std::cout << " Id: "<<l.getIdLibro()<<std::endl;
     std::cout << " Titulo: "<<l.getTitulo()<<std::endl;
     std::cout << " Autor: "<<autor.getNombre()<<" "<<autor.getApellido()<<std::endl;
     std::cout << " Genero: "<<genero.getGenero()<<std::endl;
@@ -137,11 +138,15 @@ bool LibroService::existeLibro(int id){
 Libro LibroService::buscarLibroByTitulo(){
     Libro libro;
     char titulo[100];
-    std::cout<<" Ingrese el titulo a buscar:";
+    std::cout<<" Ingrese el titulo a buscar: ";
     std::cin>>titulo;
     if(existeTitulo(titulo)){
         libro=buscarLibroByTitulo(titulo);
     } else {
+        std::cout<<" "<<std::endl;
+        std::cout<<" No se ha encontrado exactamente ese titulo."<<std::endl;
+        std::cout<<" Buscando los titulos con la misma letra inicial."<<std::endl;
+        std::cout<<" "<<std::endl;
         int idElegido=elegirLibro(titulo);
         libro=buscarLibroById(idElegido);
     }
@@ -154,9 +159,12 @@ bool LibroService::existeTitulo(char* titulo){
     bool existe = false;
     archivo = fopen(ARCHIVO_LIBROS,"rb");
     while(fread(&l,sizeof(Libro),1,archivo)==1){
-        if(strcmp(l.getTitulo(),titulo)==0){
-            existe=true;
+        if(compararTitulos(titulo,l.getTitulo())==0){
+            existe = true;
         }
+//        if(strcmp(l.getTitulo(),titulo)==0){
+//            existe=true;
+//        }
     }
     fclose(archivo);
     return existe;
@@ -180,19 +188,57 @@ Libro LibroService::buscarLibroByTitulo(char*titulo){
 
 // Devolver un Libro Elegido
 int LibroService::elegirLibro(char*titulo){
-    int idElegido=0;
+    int band,idElegido=0;
     FILE *archivo;
     Libro l;
     Libro libro;
     archivo = fopen(ARCHIVO_LIBROS,"rb");
     while(fread(&l,sizeof(Libro),1,archivo)==1){
         if(l.getTitulo()[0]==titulo[0]){
+            band++;
             Autor autor = autorService.buscarAutorById(l.getIdAutor());
-            std::cout<<"ID: "<<l.getIdLibro()<<" "<<l.getTitulo()<<" ("<<autor.getNombre()<<" "<<autor.getApellido()<<")"<<std::endl;
+            std::cout<<" ID: "<<l.getIdLibro()<<" "<<l.getTitulo()<<" ("<<autor.getNombre()<<" "<<autor.getApellido()<<")"<<std::endl;
         }
     }
     fclose(archivo);
-    std::cout<<" Elija el ID del LIBRO que esta buscando - (0 en caso de que no este en la lista)"<<std::endl;
-    std::cin>>idElegido;
+    std::cout<<" "<<std::endl;
+    if(band>0){
+        std::cout<<" Elija el ID del LIBRO que esta buscando - (0 en caso de que no este en la lista)"<<std::endl;
+        std::cout<<" Ingrese una opcion: ";
+        std::cin>>idElegido;
+    }
     return idElegido;
 }
+
+/// Funcion Busqueda de LIBRO desde MENU
+void LibroService::buscarLibro(){
+    Libro libro = buscarLibroByTitulo();
+    if(libro.getIdLibro()!=0){
+        std::cout<<" "<<std::endl;
+        std::cout<<" Libro encontrado: "<<std::endl;
+        std::cout<<" "<<std::endl;
+        mostrarLibro(libro);
+    } else {
+        std::cout<<" No pudimos encontrar ningun libro con ese titulo"<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+}
+
+// Comparar los titulos
+int LibroService::compararTitulos(char * tituloBuscado,char *tituloLibro){
+   int result=-1;
+   int i,j=0;
+   while (tituloBuscado[i]){
+       tituloBuscado[i] = std::toupper(tituloBuscado[i]);
+        i++;
+    }
+    while (tituloLibro[j]){
+        tituloLibro[j] = std::toupper(tituloLibro[j]);
+        j++;
+    }
+    result=strcmp(tituloBuscado,tituloLibro);
+    return result;
+}
+
+
+

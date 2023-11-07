@@ -48,6 +48,12 @@ class LibroService
         // Devolver un Id de Libro Elegido
         int elegirLibro(char*titulo);
 
+        // Funcion Busqueda de LIBRO desde MENU
+        void buscarLibro();
+
+        // Comparar Titulos
+        int compararTitulos(char * tituloBuscado,char *tituloLibro);
+
     protected:
 
     private:
