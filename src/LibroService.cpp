@@ -171,14 +171,14 @@ bool LibroService::existeTitulo(char* titulo){
 };
 
 
-// Buscar Libto By Titulo
-Libro LibroService::buscarLibroByTitulo(char*titulo){
+// Buscar Libro By Titulo
+Libro LibroService::buscarLibroByTitulo(char* titulo){
     FILE *archivo;
     Libro l;
     Libro libro;
     archivo = fopen(ARCHIVO_LIBROS,"rb");
     while(fread(&l,sizeof(Libro),1,archivo)==1){
-        if(strcmp(l.getTitulo(),titulo)==0){
+        if(compararTitulos(l.getTitulo(),titulo)==0){
             libro=l;
         }
     }
@@ -210,8 +210,8 @@ int LibroService::elegirLibro(char*titulo){
     return idElegido;
 }
 
-/// Funcion Busqueda de LIBRO desde MENU
-void LibroService::buscarLibro(){
+/// Funcion Busqueda de LIBRO por TITULO desde MENU
+void LibroService::buscarLibroTitulo(){
     Libro libro = buscarLibroByTitulo();
     if(libro.getIdLibro()!=0){
         std::cout<<" "<<std::endl;
@@ -224,7 +224,33 @@ void LibroService::buscarLibro(){
     }
 }
 
-// Comparar los titulos
+
+/// Funcion Busqueda de LIBRO por Nombre y Apellido de AUTOR desde MENU
+void LibroService::buscarLibroCodAutor(){
+    int id=autorService.elegirAutor2();
+    Autor autor = autorService.buscarAutorById(id);
+    int cantLibros=tieneLibrosByIdAutor(id);
+    if(cantLibros!=0){
+        FILE *archivo;
+        Libro l;
+        archivo = fopen(ARCHIVO_LIBROS,"rb");
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLos Libros asociados a "<<autor.getNombre()<<" "<<autor.getApellido()<<" son:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        while(fread(&l,sizeof(Libro),1,archivo)==1){
+            if(l.getIdAutor()==autor.getIdAutor()){
+                mostrarLibro(l);
+            }
+        }
+        fclose(archivo);
+    } else {
+        std::cout<<" "<<std::endl;
+        std::cout<<"\t"<<autor.getNombre()<<" "<<autor.getApellido()<<" No tiene libros asociados."<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+}
+
+// Comparar los titulos llevando ambos a uppercase
 int LibroService::compararTitulos(char * tituloBuscado,char *tituloLibro){
    int result=-1;
    int i,j=0;
@@ -238,6 +264,22 @@ int LibroService::compararTitulos(char * tituloBuscado,char *tituloLibro){
     }
     result=strcmp(tituloBuscado,tituloLibro);
     return result;
+}
+
+
+// Devuelce Cantidad de LIBROS By ID AUTOR
+int LibroService::tieneLibrosByIdAutor(int idAutor){
+    int cant=0;
+    FILE *archivo;
+    Libro l;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        if(l.getIdAutor()==idAutor){
+            cant++;
+        }
+    }
+    fclose(archivo);
+    return cant;
 }
 
 

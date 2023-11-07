@@ -123,7 +123,7 @@
 	<iostream>
 	"menu.h"
 
-1699315376 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\main.cpp
+1699324310 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\main.cpp
 	<iostream>
 	"menu.h"
 	"Venta.h"
@@ -156,12 +156,12 @@
 
 1699315216 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\menu.h
 
-1699311985 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\autor.cpp
+1699325279 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\autor.cpp
 	"Autor.h"
 	"string.h"
 	<iostream>
 
-1698895706 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\autor.h
+1699327727 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\autor.h
 
 1698718629 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\cliente.cpp
 	"Cliente.h"
@@ -203,7 +203,7 @@
 	"MedioDePago.h"
 	"string.h"
 
-1699322049 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\menu.cpp
+1699325667 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\menu.cpp
 	<iostream>
 	"menu.h"
 	"Libro.h"
@@ -236,7 +236,7 @@
 1699205160 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\clienteservice.h
 	"Cliente.h"
 
-1699321989 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\libroservice.cpp
+1699327727 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\libroservice.cpp
 	"LibroService.h"
 	<cstdio>
 	"string.h"
@@ -244,6 +244,6 @@
 	"Genero.h"
 	"Editorial.h"
 
-1699321481 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\libroservice.h
+1699326494 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\libroservice.h
 	"Libro.h"
 

@@ -38,6 +38,7 @@ class Autor
 
         // Setear Autor
         int elegirAutor();
+        int elegirAutor2();
 
         Autor buscarAutorByCodAutor(char * codAutor);
 

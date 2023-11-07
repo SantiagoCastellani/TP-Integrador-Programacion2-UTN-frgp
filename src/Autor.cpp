@@ -222,3 +222,22 @@ Autor Autor::buscarAutorByCodAutor(char *codigo){
     fclose(archivo);
     return autor;
 };
+
+int Autor::elegirAutor2(){
+    int idElegido=0;
+    char codigo[5];
+    std::cout<<"Ingrese el CODIGO de AUTOR: ";
+    std::cin.getline(codigo,5);
+    int cant = cantidadAutoresByCodAutor(codigo);
+    if(cant==0){
+            std::cout<<" "<<std::endl;
+        std::cout<<"\tNo se ha encontrado ese codigo de Autor."<<std::endl;
+    } else if (cant==1){
+        Autor autorEncontrado = buscarAutorByCodAutor(codigo);
+        idElegido=autorEncontrado.getIdAutor();
+        std::cout<<"Autor: "<<autorEncontrado.getNombre()<<" "<<autorEncontrado.getApellido()<<std::endl;
+    } else {
+        idElegido=elegirEntreVariosAutores(codigo);
+    }
+    return idElegido;
+};

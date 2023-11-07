@@ -123,8 +123,10 @@ int opcion;
     std::cout<<" "<<std::endl;
     std::cout<<"\t1 - BUSQUEDA POR TITULO"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t2 - BUSQUEDA POR AUTOR"<<std::endl;
+    std::cout<<"\t2 - BUSQUEDA POR CODIGO de AUTOR"<<std::endl;
     std::cout<<" "<<std::endl;
+//    std::cout<<"\t3 - BUSQUEDA POR CODIGO de AUTOR"<<std::endl;
+//    std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -142,25 +144,29 @@ int opcion;
         std::cout<<" "<<std::endl;
         std::cout<<"\tBUSCAR LIBRO por TITULO"<<std::endl;
         std::cout<<" "<<std::endl;
-        libroService.buscarLibro();
+        libroService.buscarLibroTitulo();
         system("pause");
         menuBuscarLibro();
         break;
-//    case 2:
-//        buscarLibroAutor();
-//        break;
-//    case 3:
-//       buscarLibroGenero();
-//        break;
-//    case 4:
-//       buscarLibroEditorial();
-//        break;
+     case 2:
+        system("cls");
+        std::cin.ignore();
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tBUSCAR LIBRO por AUTOR"<<std::endl;
+        std::cout<<"\t(Primeras 2 letras del nombre y primeras 2 letras del apellido)"<<std::endl;
+        std::cout<<" "<<std::endl;
+        libroService.buscarLibroCodAutor();
+        system("pause");
+        menuBuscarLibro();
+        break;
     case 0:
         menuLibros();
         break;
     default:
         break;
-
     system("pause");
     menuInicio();
   };
