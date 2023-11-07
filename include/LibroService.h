@@ -63,6 +63,17 @@ class LibroService
         // Cantidad de Libros By Id Autor
         int tieneLibrosByIdAutor(int idAutor);
 
+        /// LISTADOS
+
+        // Lista por GENERO
+        void listarPorGenero();
+
+        // Listado By Editorial
+        void listarPorEditorial();
+
+        // Listado por TITULO Alfabeticamente
+        void listarPorTituloAZ();
+
     protected:
 
     private:

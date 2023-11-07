@@ -15,7 +15,8 @@ Editorial editorialService;
 
 // Cargar un Libro
 Libro LibroService::cargarLibro(){
-    std::cout << "CARGAR LIBRO" <<std::endl;
+    //std::cout << "CARGAR LIBRO" <<std::endl;
+    std::cout << " " <<std::endl;
     int idLibro;
     char titulo[100];
     int idAutor;
@@ -26,7 +27,6 @@ Libro LibroService::cargarLibro(){
     int stock;
     std::cout << "Ingresar TITULO: ";
     std::cin.getline(titulo,100);
-    // Se elige el autor dentro de la funcion
     idAutor=autorService.elegirAutor();
     std::cout << " "<<std::endl;
     std::cout << "Generos Disponibles: "<<std::endl;
@@ -282,5 +282,65 @@ int LibroService::tieneLibrosByIdAutor(int idAutor){
     return cant;
 }
 
+/// LISTADOS de LIBROS
 
+// Listado By Genero
+void LibroService::listarPorGenero(){
+    int idGenero;
+    std::cout<<"\tGeneros disponibles:"<<std::endl;
+    std::cout<<" "<<std::endl;
+    generoService.leerArchivoGeneros2();
+    std::cout<<"\tIngrese un ID de Genero: ";
+    std::cin>>idGenero;
+    Genero g = generoService.buscarGeneroById(idGenero);
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tGenero: "<<g.getGenero()<<std::endl;
+    std::cout<<" "<<std::endl;
+    FILE *archivo;
+    Libro l;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        if(l.getIdGenero()==idGenero){
+            mostrarLibro(l);
+        }
+    }
+    fclose(archivo);
+}
+
+// Listado By Editorial
+void LibroService::listarPorEditorial(){
+    int idEditorial;
+    std::cout<<"\tEditoriales disponibles:"<<std::endl;
+    std::cout<<" "<<std::endl;
+    editorialService.leerArchivoEditorial();
+    std::cout<<"\tIngrese un ID de Editorial: ";
+    std::cin>>idEditorial;
+    Editorial e = editorialService.buscarEditorialById(idEditorial);
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tEditorial: "<<e.getNombre()<<std::endl;
+    FILE *archivo;
+    Libro l;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        if(l.getIdEditorial()==idEditorial){
+            mostrarLibro(l);
+        }
+    }
+    fclose(archivo);
+}
+
+// Listado By Titulo de la A a la Z
+//void LibroService::listarPorTituloAZ(){
+//    int cantLibros = proximoIdLibro()-1;
+//    Libro vLibros = new Libro
+//    FILE *archivo;
+//    Libro l;
+//    archivo = fopen(ARCHIVO_LIBROS,"rb");
+//    while(fread(&l,sizeof(Libro),1,archivo)==1){
+//
+//            mostrarLibro(l);
+//
+//    }
+//    fclose(archivo);
+//}
 

@@ -12,6 +12,10 @@
 int main()
 {
     menuInicio();
+//    LibroService ls;
+//    ls.leerArchivoLibros();
+//    int cant = ls.proximoIdLibro()-1;
+//    std::cout<<cant;
 
     return 0;
 }

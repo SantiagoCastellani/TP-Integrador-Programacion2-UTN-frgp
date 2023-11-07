@@ -205,6 +205,10 @@ int Autor::elegirAutor(){
         std::cout<<"Autor: "<<autorEncontrado.getNombre()<<" "<<autorEncontrado.getApellido()<<std::endl;
     } else {
         idElegido=elegirEntreVariosAutores(codigo);
+        if(idElegido!=0){
+             Autor autor=buscarAutorById(idElegido);
+             std::cout<<"\tAutor elegido: "<<autor.getNombre()<<" "<<autor.getApellido()<<std::endl;
+        }
     }
     return idElegido;
 };

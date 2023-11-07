@@ -113,7 +113,7 @@ void menuLibros(){
 
 // MenuBuscarLibro
 void menuBuscarLibro(){
-int opcion;
+    int opcion;
     system("cls");
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -125,8 +125,6 @@ int opcion;
     std::cout<<" "<<std::endl;
     std::cout<<"\t2 - BUSQUEDA POR CODIGO de AUTOR"<<std::endl;
     std::cout<<" "<<std::endl;
-//    std::cout<<"\t3 - BUSQUEDA POR CODIGO de AUTOR"<<std::endl;
-//    std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -174,24 +172,41 @@ int opcion;
 
 // MenuCargarLibro
 void menuCargarLibro(){
-int opcion;
- //   Libro LibroService::cargarLibro();
-  //  Libro LibroService::mostrarLibro(Libro l);
+    int opcion;
+    system("cls");
+    std::cin.ignore();
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"Carga Finalizada. Desea registrarlo? (1=SI / 2=NO) "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tCARGAR LIBRO"<<std::endl;
+    Libro libro = libroService.cargarLibro();
+    std::cout<<" "<<std::endl;
+    std::cout<<"\LIBRO CARGADO: "<<std::endl;
+    libroService.mostrarLibro(libro);
+    std::cout<<" "<<std::endl;
+    std::cout<<"Desea registrarlo? (1=SI / 0=NO):   ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
-   //     Libro LibroService::registrarLibro();
+        libroService.registrarLibro(libro);
+        std::cout<<" "<<std::endl;
+        std::cout<<"El libro ha sido registrado."<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuLibros();
         break;
-    case 2:
-   //     void menuCargarLibro();
+    case 0:
+        std::cout<<" "<<std::endl;
+        std::cout<<"El libro NO se ha registrado."<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuLibros();
         break;
     default:
         break;
-
     system("pause");
-    menuInicio();
+    menuLibros();
     }
 }
 
@@ -204,11 +219,74 @@ void menuModificarLibro(){
 
 //menuListadoLibros
 void menuListadoLibros(){
-
+    int opcion;
+    system("cls");
+    std::cin.ignore();
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tMenu LISTADO de LIBROS"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t1 - Listar por GENERO"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t2 - Listar por EDITORIAL"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t3 - Listar por AUTOR"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" \ Elija una opcion: ";
+    std::cin>>opcion;
+    switch(opcion){
+    case 1:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tListado por GENERO"<<std::endl;
+        std::cout<<" "<<std::endl;
+        libroService.listarPorGenero();
+        system("pause");
+        menuListadoLibros();
+        break;
+    case 2:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tListado por EDITORIAL"<<std::endl;
+        std::cout<<" "<<std::endl;
+        libroService.listarPorEditorial();
+        system("pause");
+        menuListadoLibros();
+    case 3:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tListado por TITULO de la A a la Z"<<std::endl;
+        std::cout<<" "<<std::endl;
+        //libroService.listarPorTituloAZ();
+        system("pause");
+        menuListadoLibros();
+    case 0:
+        menuVentas();
+        break;
+    default:
+        break;
     system("pause");
     menuInicio();
+    }
 }
-//menuConfiguracionesGEA
+
+// menuConfiguracionesGEA
 void menuConfiguracionesGEA(){
 int opcion;
     system("cls");
@@ -227,7 +305,7 @@ int opcion;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
       // cargarGenero();
         break;
@@ -245,7 +323,7 @@ int opcion;
 
     system("pause");
     menuInicio();
-  };
+  }
 }
 
 // Menu Ventas
