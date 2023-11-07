@@ -232,7 +232,7 @@ void menuListadoLibros(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t2 - Listar por EDITORIAL"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t3 - Listar por AUTOR"<<std::endl;
+    std::cout<<"\t3 - Listar por TITULO de la A a la Z"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
@@ -273,7 +273,7 @@ void menuListadoLibros(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tListado por TITULO de la A a la Z"<<std::endl;
         std::cout<<" "<<std::endl;
-        //libroService.listarPorTituloAZ();
+        libroService.listarPorTituloAZ();
         system("pause");
         menuListadoLibros();
     case 0:

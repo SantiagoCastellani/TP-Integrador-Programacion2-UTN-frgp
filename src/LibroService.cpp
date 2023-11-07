@@ -330,17 +330,16 @@ void LibroService::listarPorEditorial(){
 }
 
 // Listado By Titulo de la A a la Z
-//void LibroService::listarPorTituloAZ(){
+void LibroService::listarPorTituloAZ(){
 //    int cantLibros = proximoIdLibro()-1;
 //    Libro vLibros = new Libro
 //    FILE *archivo;
 //    Libro l;
 //    archivo = fopen(ARCHIVO_LIBROS,"rb");
 //    while(fread(&l,sizeof(Libro),1,archivo)==1){
-//
 //            mostrarLibro(l);
-//
 //    }
 //    fclose(archivo);
-//}
+    std::cout<<"Listado de A a la Z";
+}
 
