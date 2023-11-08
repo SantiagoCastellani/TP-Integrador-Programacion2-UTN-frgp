@@ -368,9 +368,11 @@ void menuConfiguracionGenero(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tLibreria IOSTREAM"<<std::endl;
         std::cout<<" "<<std::endl;
-        std::cout<<"\tListado de GENEROS cargados:"<<std::endl;
+        std::cout<<"\tListado de GENEROS ACTIVOS:"<<std::endl;
         std::cout<<" "<<std::endl;
-        gS.leerArchivoGeneros();
+        gS.leerArchivoGenerosActivos();
+        std::cout<<" "<<std::endl;
+        gS.leerArchivoGenerosInactivos();
         std::cout<<" "<<std::endl;
         system("pause");
         menuConfiguracionGenero();
@@ -392,6 +394,15 @@ void menuConfiguracionGenero(){
         menuConfiguracionGenero();
         break;
     case 3:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tModificar GENERO:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        gS.modificarGenero();
+        std::cout<<" "<<std::endl;
         menuConfiguracionGenero();
         break;
     case 0:

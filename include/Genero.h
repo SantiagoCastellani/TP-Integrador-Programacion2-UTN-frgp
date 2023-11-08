@@ -20,8 +20,11 @@ class Genero
         void mostrarGeneros(Genero);
 
         // LEER Archivo de Generos
-        void leerArchivoGeneros();
-        void leerArchivoGeneros2();
+        void leerArchivoGenerosActivos();
+        void leerArchivoGenerosActivos2();
+        void leerArchivoGenerosTodos();
+        void leerArchivoGenerosInactivos();
+        int cantGenerosInactivos();
 
         // Devuelve el proximo Id a setear
         int proximoIdGenero();
@@ -32,20 +35,27 @@ class Genero
         // Existe Genero?
         bool existeGenero(int);
 
+        // Modificar Genero
+        void modificarGenero();
+        void updateGenero(Genero genero);
+
 
         /// GETTERS
         int getIdGenero();
         const char* getGenero();
+        bool getActivo();
 
         /// SETTERS
         void setIdGenero(int);
         void setGenero(const char*);
+        void setActivo(bool);
 
     protected:
 
     private:
         int _idGenero;
         char _genero[30];
+        bool _activo;
 };
 
 #endif // GENERO_H

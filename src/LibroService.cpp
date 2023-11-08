@@ -30,7 +30,7 @@ Libro LibroService::cargarLibro(){
     idAutor=autorService.elegirAutor();
     std::cout << " "<<std::endl;
     std::cout << "Generos Disponibles: "<<std::endl;
-    generoService.leerArchivoGeneros2();
+    generoService.leerArchivoGenerosActivos2();
     std::cout << "Ingresar ID GENERO: ";
     std::cin>>idGenero;
     std::cout << " "<<std::endl;
@@ -289,7 +289,7 @@ void LibroService::listarPorGenero(){
     int idGenero;
     std::cout<<"\tGeneros disponibles:"<<std::endl;
     std::cout<<" "<<std::endl;
-    generoService.leerArchivoGeneros2();
+    generoService.leerArchivoGenerosActivos2();
     std::cout<<"\tIngrese un ID de Genero: ";
     std::cin>>idGenero;
     Genero g = generoService.buscarGeneroById(idGenero);
