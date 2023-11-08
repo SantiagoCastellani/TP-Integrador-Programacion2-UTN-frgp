@@ -2,10 +2,12 @@
 #include "menu.h"
 #include"Libro.h"
 #include"Genero.h"
+#include"Editorial.h"
 #include "LibroService.h"
 
 LibroService libroService;
 Genero gS;
+Editorial eS;
 
 
 void menuInicio(){
@@ -322,7 +324,7 @@ void menuConfiguracionesGEA(){
         menuConfiguracionGenero();
         break;
     case 3:
-        menuConfiguracionGenero();
+        menuConfiguracionEditorial();
         break;
     case 0:
         menuLibros();
@@ -334,7 +336,7 @@ void menuConfiguracionesGEA(){
   }
 }
 
-/// MENU Configuraciones GEA
+/// MENU Configuraciones GENERO
 void menuConfiguracionGenero(){
     int opcion;
     system("cls");
@@ -349,8 +351,6 @@ void menuConfiguracionGenero(){
     std::cout<<"\t2 - Cargar GENERO"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t3 - Modificar GENERO"<<std::endl;
-    std::cout<<" "<<std::endl;
-    std::cout<<"\t4 - Eliminar GENERO"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
@@ -414,6 +414,84 @@ void menuConfiguracionGenero(){
     menuInicio();
   }
 }
+
+/// MENU Configuraciones EDITORIAL
+void menuConfiguracionEditorial(){
+    int opcion;
+    system("cls");
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tConfiguracion de EDITORIALES"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t1 - Listar EDITORIALES"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t2 - Cargar EDITORIAL"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t3 - Modificar EDITORIAL"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" \ Elija una opcion: ";
+    std::cin>>opcion;
+    std::cin.ignore();
+    Editorial editorial;
+    switch(opcion){
+    case 1:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tListado de EDITORIALES ACTIVAS:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        eS.leerArchivoEditorial();
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguracionEditorial();
+        break;
+    case 2:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tCargar nueva EDITORIAL:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        editorial = eS.cargarEditorial();
+        eS.registrarEditorial(editorial);
+        std::cout<<" "<<std::endl;
+        std::cout<<" La Editorial ha sido registrada."<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguracionEditorial();
+        break;
+    case 3:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tModificar EDITORIAL:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        eS.modificarEditorial();
+        std::cout<<" "<<std::endl;
+        menuConfiguracionEditorial();
+        break;
+    case 0:
+        menuLibros();
+        break;
+    default:
+        break;
+    system("pause");
+    menuInicio();
+  }
+}
+
 
 ///*************************************************************************************
 

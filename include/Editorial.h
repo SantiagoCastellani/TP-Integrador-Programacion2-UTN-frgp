@@ -32,6 +32,10 @@ class Editorial
         // Existe Editorial?
         bool existeEditorial(int);
 
+        // Modificar Editorial
+        void modificarEditorial();
+        void updateEditorial(Editorial editorial);
+
 
         /// GETTERS
         int getIdEditorial();
