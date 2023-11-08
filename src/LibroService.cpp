@@ -329,17 +329,63 @@ void LibroService::listarPorEditorial(){
     fclose(archivo);
 }
 
+
+
 // Listado By Titulo de la A a la Z
 void LibroService::listarPorTituloAZ(){
-//    int cantLibros = proximoIdLibro()-1;
-//    Libro vLibros = new Libro
-//    FILE *archivo;
-//    Libro l;
-//    archivo = fopen(ARCHIVO_LIBROS,"rb");
-//    while(fread(&l,sizeof(Libro),1,archivo)==1){
-//            mostrarLibro(l);
-//    }
-//    fclose(archivo);
-    std::cout<<"Listado de A a la Z";
+    int cantLibros = proximoIdLibro()-1;
+    Libro *vectorLibros = new Libro[cantLibros];
+    if(vectorLibros == NULL){
+        exit(1);
+    }
+    // Cargar Vector con los Libros del Registro
+    leerLibrosCargarVector(vectorLibros);
+    // Ordenar Alfabeticamente el Vector
+    ordenarAlfabeticamente(vectorLibros,cantLibros);
+    // Lista el vector Ordenado
+    listarOrdenado(vectorLibros,cantLibros);
+
+    // Libera la memoria
+    delete vectorLibros;
+}
+
+// Cargar el Vector con los Libros del Registro
+void LibroService::leerLibrosCargarVector(Libro *vectorLibros){
+    Libro libro;
+    int i = 0;
+    FILE *archivo;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    if(archivo == NULL){
+        exit(1);
+    }
+    while(fread(&libro, sizeof (Libro), 1, archivo)){
+        vectorLibros[i] = libro;
+        i++;
+    }
+    fclose(archivo);
+}
+
+// Ordenar Alfabeticamente los libros por su titulo
+void LibroService::ordenarAlfabeticamente(Libro *vectorLibros, int cantLibros){
+    int i, j;
+    Libro aux;
+    for(i = 0; i < cantLibros; i++){
+        for(j = 1; j < cantLibros; j++){
+            if(strcmp(vectorLibros[j].getTitulo(), vectorLibros[j-1].getTitulo()) < 0){
+                aux = vectorLibros[j-1];
+                vectorLibros[j-1] = vectorLibros[j];
+                vectorLibros[j] = aux;
+            }
+        }
+    }
+}
+
+// Listar Vector Ordenado
+void LibroService::listarOrdenado(Libro *vectorLibros, int cantLibros){
+    for(int i = 0; i < cantLibros; i++){
+        Autor autor = autorService.buscarAutorById(vectorLibros[i].getIdAutor());
+        vectorLibros[i];
+        std::cout<<"\tID: "<<vectorLibros[i].getIdLibro()<<" - "<< vectorLibros[i].getTitulo()<<"  ("<<autor.getNombre()<<" "<<autor.getApellido()<<") "<<std::endl;
+    }
 }
 

@@ -73,6 +73,10 @@ class LibroService
 
         // Listado por TITULO Alfabeticamente
         void listarPorTituloAZ();
+        void leerLibrosCargarVector(Libro * vectorLibros);
+        void ordenarAlfabeticamente(Libro *vectorLibros,int cantLibros);
+        void listarOrdenado(Libro *vectorLibros,int cantLibros);
+
 
     protected:
 

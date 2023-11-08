@@ -1,9 +1,12 @@
 #include <iostream>
 #include "menu.h"
 #include"Libro.h"
+#include"Genero.h"
 #include "LibroService.h"
 
 LibroService libroService;
+Genero gS;
+
 
 void menuInicio(){
     system("cls");
@@ -274,10 +277,11 @@ void menuListadoLibros(){
         std::cout<<"\tListado por TITULO de la A a la Z"<<std::endl;
         std::cout<<" "<<std::endl;
         libroService.listarPorTituloAZ();
+        std::cout<<" "<<std::endl;
         system("pause");
         menuListadoLibros();
     case 0:
-        menuVentas();
+        menuLibros();
         break;
     default:
         break;
@@ -286,47 +290,125 @@ void menuListadoLibros(){
     }
 }
 
-// menuConfiguracionesGEA
+/// MENU Configuraciones GEA
 void menuConfiguracionesGEA(){
-int opcion;
+    int opcion;
     system("cls");
+    std::cin.ignore();
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu CONFIGURACIONES GEA"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t1 - CARGAR GENERO"<<std::endl;
+    std::cout<<"\t1 - Configuracion GENERO"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t2 - CARGAR AUTOR"<<std::endl;
+    std::cout<<"\t2 - Configuracion AUTOR"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t3 - CARGAR EDITORIAL"<<std::endl;
+    std::cout<<"\t3 - Configuracion EDITORIAL"<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
-      // cargarGenero();
+        menuConfiguracionGenero();
         break;
     case 2:
-      // cargarAutor();
+        menuConfiguracionGenero();
         break;
     case 3:
-      // cargarEditorial();
+        menuConfiguracionGenero();
         break;
     case 0:
         menuLibros();
         break;
     default:
         break;
-
     system("pause");
     menuInicio();
   }
 }
 
-// Menu Ventas
+/// MENU Configuraciones GEA
+void menuConfiguracionGenero(){
+    int opcion;
+    system("cls");
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tConfiguracion de GENEROS"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t1 - Listar GENEROS"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t2 - Cargar GENERO"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t3 - Modificar GENERO"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t4 - Eliminar GENERO"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" \ Elija una opcion: ";
+    std::cin>>opcion;
+    std::cin.ignore();
+    Genero genero;
+    switch(opcion){
+    case 1:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tListado de GENEROS cargados:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        gS.leerArchivoGeneros();
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguracionGenero();
+        break;
+    case 2:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tCargar nuevo GENERO:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        genero = gS.cargarGenero();
+        gS.registrarGenero(genero);
+        std::cout<<" "<<std::endl;
+        std::cout<<" El Genero ha sido registrado."<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguracionGenero();
+        break;
+    case 3:
+        menuConfiguracionGenero();
+        break;
+    case 0:
+        menuLibros();
+        break;
+    default:
+        break;
+    system("pause");
+    menuInicio();
+  }
+}
+
+///*************************************************************************************
+
+/// VENTAS
+
+///Menu Ventas
 void menuVentas(){
     int opcion;
     system("cls");

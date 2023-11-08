@@ -12,8 +12,10 @@
 int main()
 {
     menuInicio();
+//    Genero gs;
+//    gs.leerArchivoGeneros();
 //    LibroService ls;
-//    ls.leerArchivoLibros();
+//    ls.listarPorTituloAZ();
 //    int cant = ls.proximoIdLibro()-1;
 //    std::cout<<cant;
 

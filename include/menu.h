@@ -18,6 +18,8 @@ void menuListadoLibros();
 
 void menuConfiguracionesGEA();
 
+void menuConfiguracionGenero();
+
 // Menu Ventas
 void menuVentas();
 

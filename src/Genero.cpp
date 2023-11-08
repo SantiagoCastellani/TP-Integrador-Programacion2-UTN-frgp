@@ -30,6 +30,7 @@ void Genero::setGenero(const char* genero){
 // Cargar GENERO
 Genero Genero::cargarGenero(){
     std::cout << "CARGAR GENERO" <<std::endl;
+    std::cout << " " <<std::endl;
     int idGenero=proximoIdGenero();
     char nombre[30];
     std::cout << "Ingresar NOMBRE de GENERO: ";
@@ -70,13 +71,9 @@ void Genero::leerArchivoGeneros(){
     FILE *archivo;
     Genero g;
     archivo = fopen(ARCHIVO_GENEROS,"rb");
-    std::cout<<" "<< std::endl;
-    std::cout<<"\tGENEROS en ARCHIVO"<<std::endl;
-    std::cout<<" "<<std::endl;
     while(fread(&g,sizeof(Genero),1,archivo)==1){
         mostrarGeneros(g);
     }
-    std::cout<<" "<<std::endl;
     fclose(archivo);
 };
 
