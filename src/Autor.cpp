@@ -53,14 +53,13 @@ void Autor::setCodAutor(const char* codAutor){
 
 // Cargar AUTOR
 Autor Autor::cargarAutor(){
-    std::cout << "CARGAR AUTOR" <<std::endl;
     int idAutor=proximoIdAutor();
     char nombre[25];
     char apellido[24];
     char codigo[5];
-    std::cout << "Ingresar PRIMER NOMBRE: ";
+    std::cout << "\tIngresar PRIMER NOMBRE: ";
     std::cin.getline(nombre,25);
-    std::cout << "Ingresar APELLIDO: ";
+    std::cout << "\tIngresar APELLIDO: ";
     std::cin.getline(apellido,24);
     strncpy(codigo, nombre, 2);
     codigo[2] = '\0';
@@ -165,7 +164,7 @@ int Autor::cantidadAutoresByCodAutor(char* codigo){
 // Elegir entre varios Autores
 int Autor::elegirEntreVariosAutores(char* codigo){
     std::cout<<"\tSe han encontrado "<<cantidadAutoresByCodAutor(codigo)<<" con ese codigo."<<std::endl;
-    std::cout<<"\tPor favor, introduce el id del elegido o cero para salir."<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<"\tAutores:"<<std::endl;
     int idElegido=0;
     int i = 0;
@@ -183,8 +182,11 @@ int Autor::elegirEntreVariosAutores(char* codigo){
     }
     fclose(archivo);
     std::cout<<" "<<std::endl;
+    std::cout<<"\tPor favor, introduce el id del elegido o cero para salir."<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<"\tElige un ID de Autor: ";
     std::cin>>idElegido;
+    std::cout<<" "<<std::endl;
     return idElegido;
 };
 
@@ -230,18 +232,87 @@ Autor Autor::buscarAutorByCodAutor(char *codigo){
 int Autor::elegirAutor2(){
     int idElegido=0;
     char codigo[5];
-    std::cout<<"Ingrese el CODIGO de AUTOR: ";
+    std::cout<<"\tIngrese el CODIGO de AUTOR: ";
     std::cin.getline(codigo,5);
     int cant = cantidadAutoresByCodAutor(codigo);
+    std::cout<<" "<<std::endl;
     if(cant==0){
-            std::cout<<" "<<std::endl;
         std::cout<<"\tNo se ha encontrado ese codigo de Autor."<<std::endl;
     } else if (cant==1){
         Autor autorEncontrado = buscarAutorByCodAutor(codigo);
         idElegido=autorEncontrado.getIdAutor();
-        std::cout<<"Autor: "<<autorEncontrado.getNombre()<<" "<<autorEncontrado.getApellido()<<std::endl;
+        //std::cout<<"\tAutor encontrado: "<<autorEncontrado.getNombre()<<" "<<autorEncontrado.getApellido()<<std::endl;
     } else {
         idElegido=elegirEntreVariosAutores(codigo);
     }
     return idElegido;
+};
+
+// Modificar AUTOR
+void Autor::modificarAutor(){
+    int idElegido = elegirAutor2();
+    if(idElegido!=0){
+        int opcion=0;
+//        std::cout<<" "<<std::endl;
+        //std::cout<<"\tAutor a modificar: "<<std::endl;
+        Autor autor=buscarAutorById(idElegido);
+        //mostrarAutor(autor);
+        std::cout<<"\tAutor a modificar: "<<autor.getNombre()<<" "<<autor.getApellido()<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tDesea modificar los datos del Autor? (SI = 1 | NO = 0 ): ";
+        std::cin>>opcion;
+        if(opcion==1){
+            std::cout<<" "<<std::endl;
+            updateAutor(autor);
+        } else {
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tVolver al menu."<<std::endl;
+            std::cout<<" "<<std::endl;
+        }
+    }
+    system("pause");
+}
+
+
+
+// GUARDAR AUTOR MODIFICADO en el Registro.
+void Autor::updateAutor(Autor autor){
+    FILE *archivo;
+    int res=-1;
+    Autor a;
+    char nombre[25];
+    char apellido[24];
+    char codigo[5];
+    archivo = fopen(ARCHIVO_AUTORES,"rb+");
+    while(fread(&a,sizeof(Autor),1,archivo)==1){
+        if(autor.getIdAutor()==a.getIdAutor()){
+            std::cin.ignore();
+            fseek(archivo,ftell(archivo)-sizeof(Autor),0);
+            std::cout<<"\tIngrese el NOMBRE del Autor a Modificar: ";
+            std::cin.getline(nombre,25);
+            std::cout<<"\tIngrese el APELLIDO del Autor a Modificar: ";
+            std::cin.getline(apellido,24);
+            strncpy(codigo, nombre, 2);
+            codigo[2] = '\0';
+            strncat(codigo, apellido, 2);
+            int i = 0;
+            while (codigo[i]) {
+                codigo[i] = std::toupper(codigo[i]);
+                i++;
+            }
+            Autor a(autor.getIdAutor(),nombre,apellido,codigo);
+            res = fwrite(&a,sizeof(Autor),1,archivo);
+            fclose(archivo);
+        }
+    }
+    fclose(archivo);
+    if(res==1){
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOK: El Autor se modifico satisfactoriamente"<<std::endl;
+        std::cout<<" "<<std::endl;
+    } else {
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tPor algun motivo no pudo modificarse los datos."<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
 };

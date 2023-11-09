@@ -20,6 +20,8 @@ void menuConfiguracionesGEA();
 
 void menuConfiguracionGenero();
 
+void  menuConfiguracionAutor();
+
 void menuConfiguracionEditorial();
 
 // Menu Ventas

@@ -42,6 +42,10 @@ class Autor
 
         Autor buscarAutorByCodAutor(char * codAutor);
 
+        // Modificar Autor
+        void modificarAutor();
+        void updateAutor(Autor autor);
+
         /// GETTERS
         int getIdAutor();
         const char* getNombre();

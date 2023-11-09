@@ -3,12 +3,17 @@
 #include"Libro.h"
 #include"Genero.h"
 #include"Editorial.h"
+#include "Autor.h"
 #include "LibroService.h"
 
 LibroService libroService;
 Genero gS;
 Editorial eS;
+Autor aS;
 
+/*************************************************************************************/
+
+/// MENU INICIAL
 
 void menuInicio(){
     system("cls");
@@ -62,8 +67,10 @@ void menuInicio(){
     }
 }
 
+/****************************************************************************************/
 
-// Menu Libros
+/// MENU LIBROS
+
 void menuLibros(){
     int opcion;
     system("cls");
@@ -116,7 +123,8 @@ void menuLibros(){
 };
 }
 
-// MenuBuscarLibro
+/// Menu BUSCAR LIBRO -----------------------------
+
 void menuBuscarLibro(){
     int opcion;
     system("cls");
@@ -175,7 +183,8 @@ void menuBuscarLibro(){
   };
 }
 
-// MenuCargarLibro
+/// Menu CARGAR LIBRO -----------------------------
+
 void menuCargarLibro(){
     int opcion;
     system("cls");
@@ -215,14 +224,16 @@ void menuCargarLibro(){
     }
 }
 
-// menuModificarLibro
+/// Menu MODIFICAR LIBRO -----------------------------
+
 void menuModificarLibro(){
 
     system("pause");
     menuInicio();
 }
 
-//menuListadoLibros
+/// Menu LISTADO de LIBROS -----------------------------
+
 void menuListadoLibros(){
     int opcion;
     system("cls");
@@ -292,7 +303,8 @@ void menuListadoLibros(){
     }
 }
 
-/// MENU Configuraciones GEA
+/// MENU Configuraciones GEA -------------------------------------------
+
 void menuConfiguracionesGEA(){
     int opcion;
     system("cls");
@@ -321,7 +333,7 @@ void menuConfiguracionesGEA(){
         menuConfiguracionGenero();
         break;
     case 2:
-        menuConfiguracionGenero();
+        menuConfiguracionAutor();
         break;
     case 3:
         menuConfiguracionEditorial();
@@ -336,7 +348,8 @@ void menuConfiguracionesGEA(){
   }
 }
 
-/// MENU Configuraciones GENERO
+/// MENU Configuraciones GENERO -----------------------------------------
+
 void menuConfiguracionGenero(){
     int opcion;
     system("cls");
@@ -415,7 +428,86 @@ void menuConfiguracionGenero(){
   }
 }
 
-/// MENU Configuraciones EDITORIAL
+/// MENU Configuraciones AUTOR ---------------------------------------------------
+
+void menuConfiguracionAutor(){
+    int opcion;
+    system("cls");
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tConfiguracion de AUTORES"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t1 - Listar AUTORES"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t2 - Cargar AUTOR"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t3 - Modificar AUTOR"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" \ Elija una opcion: ";
+    std::cin>>opcion;
+    std::cin.ignore();
+    Autor autor;
+    switch(opcion){
+    case 1:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tListado de AUTORES:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        aS.leerArchivoAutor();
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguracionAutor();
+        break;
+    case 2:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tCargar Nuevo AUTOR:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        autor = aS.cargarAutor();
+        aS.registrarAutor(autor);
+        std::cout<<" "<<std::endl;
+        std::cout<<" El Autor ha sido registrado."<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguracionAutor();
+        break;
+    case 3:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tModificar AUTOR:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        aS.modificarAutor();
+        std::cout<<" "<<std::endl;
+        menuConfiguracionAutor();
+        break;
+    case 0:
+        menuLibros();
+        break;
+    default:
+        break;
+    system("pause");
+    menuInicio();
+  }
+}
+
+/// MENU Configuraciones EDITORIAL -------------------------------------------------
+
 void menuConfiguracionEditorial(){
     int opcion;
     system("cls");

@@ -50,8 +50,8 @@ void Editorial::registrarEditorial(Editorial e){
 
 // Mostrar EDITORIAL
 void Editorial::mostrarEditorial(Editorial editorial){
-    std::cout << " ID: "<<editorial.getIdEditorial()<<std::endl;
-    std::cout << " Nombre: "<<editorial.getNombre()<<std::endl;
+    std::cout << "\tID: "<<editorial.getIdEditorial()<<std::endl;
+    std::cout << "\tNombre: "<<editorial.getNombre()<<std::endl;
     std::cout << "  "<<std::endl;
 };
 
@@ -141,13 +141,12 @@ void Editorial::modificarEditorial(){
         mostrarEditorial(editorial);
         std::cout<<" "<<std::endl;
         std::cout<<"\tDesea modificar la Editorial? (SI = 1 | NO = 0 ): ";
-        std::cout<<" "<<std::endl;
         std::cin>>opcion;
         if(opcion==1){
             updateEditorial(editorial);
         } else {
             std::cout<<" "<<std::endl;
-            std::cout<<"\Volver al menu."<<std::endl;
+            std::cout<<"\tVolver al menu."<<std::endl;
             std::cout<<" "<<std::endl;
         }
     } else {
