@@ -105,7 +105,16 @@ void menuLibros(){
         menuCargarLibro();
         break;
     case 3:
-        menuModificarLibro();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tMODIFICAR LIBRO"<<std::endl;
+        std::cout<<" "<<std::endl;
+        libroService.modificarLibro();
+        system("pause");
+        menuLibros();
         break;
     case 4:
         menuListadoLibros();

@@ -17,6 +17,7 @@ class LibroService
 
         // Mostrar un Libro
         void mostrarLibro(Libro);
+        void mostrarLibro2(Libro);
 
         // Devuelve el proximo Id a setear
         int proximoIdLibro();
@@ -76,6 +77,10 @@ class LibroService
         void leerLibrosCargarVector(Libro * vectorLibros);
         void ordenarAlfabeticamente(Libro *vectorLibros,int cantLibros);
         void listarOrdenado(Libro *vectorLibros,int cantLibros);
+
+        // Modificar Libros
+        void modificarLibro();
+        void updateLibro(Libro libro);
 
 
     protected:
