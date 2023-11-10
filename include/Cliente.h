@@ -27,6 +27,8 @@ class Cliente
         void setFecha(Fecha);
         void setIdGeneroFavorito(int);
 
+        std::string nombreCompleto();
+
     protected:
 
     private:

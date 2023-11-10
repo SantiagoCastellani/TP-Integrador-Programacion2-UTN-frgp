@@ -14,55 +14,53 @@ class DetalleVenta
         // DetalleVentaCompleto
         DetalleVenta(int,
                      char dniCliente[9],
-                     char nombreCliente[50],
+                     char nombreCliente[25],
+                     char apellidoCliente[24],
                      char telefonoCliente[15],
                      char emailCliente[100],
                      char tituloLibro[100],
-                     char autorLibro[50],
+                     char nombreAutor[25],
+                     char apellidoAutor[24],
                      char editorialLibro[30],
                      double importeVenta,
-                     char medioDePago[30],
+                     int medioDePago,
                      Fecha fecha);
 
-        // DetalleVentaSinId
-        DetalleVenta(char *,
-                     char nombreCliente[50],
-                     char telefonoCliente[15],
-                     char emailCliente[100],
-                     char tituloLibro[100],
-                     char autorLibro[50],
-                     char editorialLibro[30],
-                     double importeVenta,
-                     char medioDePago[30],
-                     Fecha fecha);
 
-        // Detalle Venta (Venta, Cliente, Libro)
-        DetalleVenta(Venta venta, Libro libro,Cliente cliente);
+        // Detalle Venta (Venta)
+        DetalleVenta(Venta venta);
+
+        // Imprimir DETALLE
+        void imprimirDetalle(Venta venta);
 
         /// GETTERS
         int getIdVenta();
         const char* getDniCliente();
         const char* getNombreCliente();
+        const char* getApellidoCliente();
         const char* getTelefonoCliente();
         const char* getEmailCliente();
         const char* getTituloLibro();
-        const char* getAutorLibro();
+        const char* getNombreAutor();
+        const char* getApellidoAutor();
         const char* getEditorialLibro();
         double getImporteVenta();
-        const char* getMedioDePago();
+        int getMedioDePago();
         Fecha getFecha();
 
         /// SETTERS
         void setIdVenta(int);
         void setDniCliente(const char*);
         void setNombreCliente(const char*);
+        void setApellidoCliente(const char*);
         void setTelefonoCliente(const char*);
         void setEmailCliente(const char*);
         void setTituloLibro(const char*);
-        void setAutorLibro(const char*);
+        void setNombreAutor(const char*);
+        void setApellidoAutor(const char*);
         void setEditorialLibro(const char*);
         void setImporteVenta(double);
-        void setMedioDePago(const char*);
+        void setMedioDePago(int);
         void setFecha(Fecha);
 
 
@@ -71,14 +69,16 @@ class DetalleVenta
     private:
         int _idVenta;
         char _dniCliente[9];
-        char _nombreCliente[50];
+        char _nombreCliente[25];
+        char _apellidoCliente[24];
         char _telefonoCliente[15];
         char _emailCliente[100];
         char _tituloLibro[100];
-        char _autorLibro[50];
+        char _nombreAutor[25];
+        char _apellidoAutor[24];
         char _editorialLibro[30];
         double _importeVenta;
-        char _medioDePago[30];
+        int _medioDePago;
         Fecha _fecha;
 };
 

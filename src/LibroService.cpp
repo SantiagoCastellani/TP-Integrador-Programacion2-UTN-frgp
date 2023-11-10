@@ -494,3 +494,39 @@ void LibroService::updateLibro(Libro libro){
         std::cout<<" "<<std::endl;
     }
 };
+
+/// Hay STOCK
+bool LibroService::hayStock(int id){
+    bool stock = false;
+    Libro libro = buscarLibroById(id);
+    if(libro.getStock()>0){
+        stock=true;
+    }
+    return stock;
+}
+
+/// Reducir STOCK en VENTA.
+void LibroService::reducirStock(int id){
+    if(hayStock(id)){
+        Libro libro = buscarLibroById(id);
+        libro.setStock(libro.getStock()-1);
+        updatearLibroPosVenta(libro);
+    }
+
+};
+
+/// UPDATEAR STOCK en LIBRO Registro.
+void LibroService::updatearLibroPosVenta(Libro libro){
+    FILE *archivo;
+    int res=-1;
+    Libro l;
+    archivo = fopen(ARCHIVO_LIBROS,"rb+");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        if(libro.getIdLibro()==l.getIdLibro()){
+            fseek(archivo,ftell(archivo)-sizeof(Libro),0);
+            res = fwrite(&libro,sizeof(Libro),1,archivo);
+            fclose(archivo);
+        }
+    }
+    fclose(archivo);
+};

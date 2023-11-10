@@ -68,3 +68,9 @@ void Cliente::setFecha(Fecha fecha){
 void Cliente::setIdGeneroFavorito(int idGeneroFavorito){
     this->_idGeneroFavorito=idGeneroFavorito;
 };
+
+
+/// FUNCIONES
+std::string Cliente::nombreCompleto(){
+    return strcat(_nombre,_apellido);
+}

@@ -82,6 +82,11 @@ class LibroService
         void modificarLibro();
         void updateLibro(Libro libro);
 
+        // Ventas de Libros
+        bool hayStock(int id);
+        void reducirStock(int id);
+        void updatearLibroPosVenta(Libro libro);
+
 
     protected:
 

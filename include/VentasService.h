@@ -16,6 +16,7 @@ class VentasService
 
         // Carga una Venta
         Venta cargarVenta();
+        Venta cargarVentaDesdeMenu();
 
         // Guarda una Venta en el Archivo
         void registrarVenta(Venta);
@@ -45,12 +46,24 @@ class VentasService
 
         // Leer Archivo de Medios de Pago
         void leerArchivoMedioDePago();
+        void leerArchivoMedioDePagoMenu();
 
         // Mostrar MedioDePago
         void mostrarMedioDePago(MedioDePago);
+        void mostrarMedioDePagoMenu(MedioDePago);
+        void mostrarMedioDePagoDetalle(MedioDePago);
 
         // Modificar MedioDePago
         void modificarMedioDePago(MedioDePago);
+
+        // Buscar y  Mostrar Venta
+        void buscarYMostrarVenta(int id);
+
+        // Existe Venta?
+        bool existeVenta(int id);
+
+        // Generar Comprobante
+        void generarComprobante(int id);
 
     protected:
 

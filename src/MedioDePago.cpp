@@ -44,3 +44,6 @@ void MedioDePago::setRecargo(float recargoP){
 void MedioDePago::setCantCuotas(int cantCuotasP){
     this->_cantCuotas=cantCuotasP;
 };
+
+
+

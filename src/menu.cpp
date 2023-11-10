@@ -5,11 +5,13 @@
 #include"Editorial.h"
 #include "Autor.h"
 #include "LibroService.h"
+#include "VentasService.h"
 
+VentasService ventasService;
 LibroService libroService;
-Genero gS;
-Editorial eS;
-Autor aS;
+Genero gServ;
+Editorial eServ;
+Autor aServ;
 
 /*************************************************************************************/
 
@@ -392,9 +394,9 @@ void menuConfiguracionGenero(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tListado de GENEROS ACTIVOS:"<<std::endl;
         std::cout<<" "<<std::endl;
-        gS.leerArchivoGenerosActivos();
+        gServ.leerArchivoGenerosActivos();
         std::cout<<" "<<std::endl;
-        gS.leerArchivoGenerosInactivos();
+        gServ.leerArchivoGenerosInactivos();
         std::cout<<" "<<std::endl;
         system("pause");
         menuConfiguracionGenero();
@@ -407,8 +409,8 @@ void menuConfiguracionGenero(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tCargar nuevo GENERO:"<<std::endl;
         std::cout<<" "<<std::endl;
-        genero = gS.cargarGenero();
-        gS.registrarGenero(genero);
+        genero = gServ.cargarGenero();
+        gServ.registrarGenero(genero);
         std::cout<<" "<<std::endl;
         std::cout<<" El Genero ha sido registrado."<<std::endl;
         std::cout<<" "<<std::endl;
@@ -423,7 +425,7 @@ void menuConfiguracionGenero(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tModificar GENERO:"<<std::endl;
         std::cout<<" "<<std::endl;
-        gS.modificarGenero();
+        gServ.modificarGenero();
         std::cout<<" "<<std::endl;
         menuConfiguracionGenero();
         break;
@@ -472,7 +474,7 @@ void menuConfiguracionAutor(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tListado de AUTORES:"<<std::endl;
         std::cout<<" "<<std::endl;
-        aS.leerArchivoAutor();
+        aServ.leerArchivoAutor();
         std::cout<<" "<<std::endl;
         system("pause");
         menuConfiguracionAutor();
@@ -485,8 +487,8 @@ void menuConfiguracionAutor(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tCargar Nuevo AUTOR:"<<std::endl;
         std::cout<<" "<<std::endl;
-        autor = aS.cargarAutor();
-        aS.registrarAutor(autor);
+        autor = aServ.cargarAutor();
+        aServ.registrarAutor(autor);
         std::cout<<" "<<std::endl;
         std::cout<<" El Autor ha sido registrado."<<std::endl;
         std::cout<<" "<<std::endl;
@@ -501,7 +503,7 @@ void menuConfiguracionAutor(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tModificar AUTOR:"<<std::endl;
         std::cout<<" "<<std::endl;
-        aS.modificarAutor();
+        aServ.modificarAutor();
         std::cout<<" "<<std::endl;
         menuConfiguracionAutor();
         break;
@@ -550,7 +552,7 @@ void menuConfiguracionEditorial(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tListado de EDITORIALES ACTIVAS:"<<std::endl;
         std::cout<<" "<<std::endl;
-        eS.leerArchivoEditorial();
+        eServ.leerArchivoEditorial();
         std::cout<<" "<<std::endl;
         system("pause");
         menuConfiguracionEditorial();
@@ -563,8 +565,8 @@ void menuConfiguracionEditorial(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tCargar nueva EDITORIAL:"<<std::endl;
         std::cout<<" "<<std::endl;
-        editorial = eS.cargarEditorial();
-        eS.registrarEditorial(editorial);
+        editorial = eServ.cargarEditorial();
+        eServ.registrarEditorial(editorial);
         std::cout<<" "<<std::endl;
         std::cout<<" La Editorial ha sido registrada."<<std::endl;
         std::cout<<" "<<std::endl;
@@ -579,7 +581,7 @@ void menuConfiguracionEditorial(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tModificar EDITORIAL:"<<std::endl;
         std::cout<<" "<<std::endl;
-        eS.modificarEditorial();
+        eServ.modificarEditorial();
         std::cout<<" "<<std::endl;
         menuConfiguracionEditorial();
         break;
@@ -602,6 +604,9 @@ void menuConfiguracionEditorial(){
 void menuVentas(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu VENTAS"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -613,13 +618,14 @@ void menuVentas(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t4 - ANULAR VENTA"<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
         menuCargarVenta();
         break;
@@ -642,35 +648,97 @@ void menuVentas(){
 };
 }
 
-// menuCargarVenta
+/// Menu Cargar VENTA
 void menuCargarVenta(){
-int opcion;
- //   Venta VentaService::cargarVenta();
-  //  Venta VentaService::mostrarVenta(Venta v);
+    Venta venta;
+    int opcion;
+    system("cls");
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"Carga Finalizada. Desea registrarlo? (1=SI / 2=NO) "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tCARGAR VENTA de LIBRO:"<<std::endl;
+    std::cout<<" "<<std::endl;
+    venta = ventasService.cargarVentaDesdeMenu();
+    std::cout<<"\tSe ha cargado la siguiente venta:"<<std::endl;
+    ventasService.mostrarVenta(venta);
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tDesea registrarla? (1=SI / 2=NO) "<<std::endl;
     std::cin>>opcion;
+    std::cout<<" "<<std::endl;
+    if(opcion==1){
+        ventasService.registrarVenta(venta);
+        libroService.reducirStock(venta.getIdLibro());
+        std::cout<<"\tVENTA REGISTRADA - Nro: "<<venta.getIdVenta()<<std::endl;
+    } else {
+        std::cout<<"\tVolver al menu."<<std::endl;
+    }
+    system("pause");
+    menuVentas();
+}
+
+/// Menu DETALLE VENTA
+void menuDetalleVenta(){
+    int opcion;
+    system("cls");
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tBuscar DETALLE de VENTA"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t1 - Buscar por Numero de VENTA (id)"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t2 - Buscar por DNI Cliente"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" \ Elija una opcion: ";
+    std::cin>>opcion;
+    std::cin.ignore();
+    int id;
+    char  dni[9];
     switch(opcion){
     case 1:
-   //     Venta VentaService::registrarVenta();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tDETALLE de VENTA por Numero de Factura (id)"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tIngrese el numero de Venta: ";
+        std::cin>>id;
+        ventasService.buscarYMostrarVenta(id);
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuVentas();
         break;
     case 2:
-   //     void menuCargarVenta();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tDETALLE de VENTA por DNI del Cliente"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tIngrese el numero de DNI: "<<std::endl;
+        std::cin>>id;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuVentas();
+        break;
+    case 0:
+        menuLibros();
         break;
     default:
         break;
-
     system("pause");
     menuInicio();
-    }
-}
-
-// menuDetalleVenta
-void menuDetalleVenta(){
-// DetalleVenta VentasService::detalleDeVenta(int idVenta);
-
-    system("pause");
-    menuInicio();
+  }
 }
 
 //menuListadoVentas

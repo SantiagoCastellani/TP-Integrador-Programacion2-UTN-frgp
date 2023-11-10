@@ -4,6 +4,8 @@
 #include "../properties.h"
 #include "Fecha.h"
 
+MedioDePago ms;
+
 VentasService::VentasService(){};
 
 /*****************************************************************************/
@@ -173,6 +175,28 @@ void VentasService::mostrarMedioDePago(MedioDePago m){
     std::cout<<"Cant CUOTAS: "<< m.getCantCuotas()<< std::endl;
 };
 
+void VentasService::mostrarMedioDePagoMenu(MedioDePago m){
+    std::cout<<"ID: "<< m.getId()<<" - "<< m.getNombre()<<" - Cuotas: " << m.getCantCuotas()<< std::endl;
+};
+
+void VentasService::mostrarMedioDePagoDetalle(MedioDePago m){
+    std::cout<<"\t"<<m.getNombre()<<" - Cuotas: " << m.getCantCuotas()<<" - (Rec:"<<m.getRecargo()<<")"<<std::endl;
+};
+
+void VentasService::leerArchivoMedioDePagoMenu(){
+    FILE *archivo;
+    MedioDePago m;
+    archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"rb");
+    std::cout<<" "<< std::endl;
+    std::cout<<"\tMedios de Pago Disponibles"<<std::endl;
+    std::cout<<" "<<std::endl;
+    while(fread(&m,sizeof(MedioDePago),1,archivo)==1){
+        mostrarMedioDePagoMenu(m);
+    }
+    std::cout<<" "<<std::endl;
+    fclose(archivo);
+};
+
 // Modificar MedioDePago
 void VentasService::modificarMedioDePago(MedioDePago medio){
     FILE *archivo;
@@ -204,3 +228,73 @@ void VentasService::modificarMedioDePago(MedioDePago medio){
 }
 
 /*****************************************************************************/
+
+// Carga VENTA desde MENU
+Venta VentasService::cargarVentaDesdeMenu(){
+    Fecha fS;
+    char dni[9];
+    int idVenta = proximoIdVenta();
+    int idLibro;
+    double importeVenta;
+    int idMedioDePago;
+    std::cout << "\tIngresar ID LIBRO: ";
+    std::cin>>idLibro;
+    std::cin.ignore();
+    std::cout << "\tIngresar DNI CLIENTE: ";
+    std::cin.getline(dni,9);
+    std::cout << "\tIngresar IMPORTE de VENTA: ";
+    std::cin>>importeVenta;
+    leerArchivoMedioDePagoMenu();
+    std::cout << "Ingresar ID MEDIO de PAGO: ";
+    std::cin>>idMedioDePago;
+    std::cout << "Ingresar Fecha:" <<std::endl;
+    Fecha fecha = fS.cargarFecha();
+    Venta v(idVenta,dni,idLibro,importeVenta,idMedioDePago,fecha);
+    return v;
+};
+
+// Buscar y  Mostrar Venta
+void VentasService::buscarYMostrarVenta(int id){
+    bool existe = existeVenta(id);
+    if(existe){
+        system("cls");
+        generarComprobante(id);
+    } else {
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tEl numero de venta NO esta registrado."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+}
+
+// Existe Venta?
+bool VentasService::existeVenta(int id){
+    bool existe = false;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getIdVenta()==id){
+            existe=true;
+        }
+    }
+    fclose(archivo);
+    return existe;
+};
+
+// Generar Comprobante
+void VentasService::generarComprobante(int id){
+    FILE *archivo;
+    Venta v;
+    Venta venta;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getIdVenta()==id){
+            venta=v;
+        }
+    }
+    fclose(archivo);
+    DetalleVenta dVS;
+    dVS.imprimirDetalle(venta);
+};

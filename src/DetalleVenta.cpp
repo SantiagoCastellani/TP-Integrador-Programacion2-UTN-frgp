@@ -1,6 +1,20 @@
 #include "DetalleVenta.h"
 #include "string.h"
 #include "VentasService.h"
+#include "Cliente.h"
+#include "LibroService.h"
+#include "MedioDePago.h"
+#include "Editorial.h"
+#include "Genero.h"
+#include "Autor.h"
+
+Cliente cS;
+LibroService lS;
+VentasService vS;
+MedioDePago mS;
+Editorial eS;
+Genero gS;
+Autor aS;
 
 DetalleVenta::DetalleVenta()
 {
@@ -8,13 +22,15 @@ DetalleVenta::DetalleVenta()
     _dniCliente;
     strcpy(_dniCliente,"00000000");
     strcpy(_nombreCliente,"0000");
+    strcpy(_apellidoCliente,"0000");
     strcpy(_telefonoCliente,"0000");
     strcpy(_emailCliente,"0000");
     strcpy(_tituloLibro,"0000");
-    strcpy(_autorLibro,"0000");
+    strcpy(_nombreAutor,"0000");
+    strcpy(_apellidoAutor,"0000");
     strcpy(_editorialLibro,"0000");
     _importeVenta=0.00;
-    strcpy(_medioDePago,"0000");
+    _medioDePago=0;
     _fecha=Fecha();
 }
 
@@ -22,14 +38,16 @@ DetalleVenta::DetalleVenta()
 DetalleVenta::DetalleVenta(
              int idVenta,
              char dniCli[9],
-             char nombreCli[50],
+             char nombreCli[25],
+             char apellidoCli[24],
              char telefonoCli[15],
              char emailCli[100],
              char tituloLi[100],
-             char autorLi[50],
+             char nombreAutor[25],
+             char apellidoAutor[24],
              char editorialLi[30],
              double importeVenta,
-             char medioPago[30],
+             int medioPago,
              Fecha fecha )
 {
     this->_idVenta=idVenta;
@@ -38,59 +56,40 @@ DetalleVenta::DetalleVenta(
     strcpy(_telefonoCliente,telefonoCli);
     strcpy(_emailCliente,emailCli);
     strcpy(_tituloLibro,tituloLi);
-    strcpy(_autorLibro,autorLi);
+    strcpy(_nombreAutor,nombreAutor);
+    strcpy(_apellidoAutor,apellidoAutor);
     strcpy(_editorialLibro,editorialLi);
     this->_importeVenta=importeVenta;
-    strcpy(_medioDePago,medioPago);
-    this->_fecha=fecha;
-}
-
-// Detalle Venta Sin Id
-DetalleVenta::DetalleVenta(
-             char dniCli[9],
-             char nombreCli[50],
-             char telefonoCli[15],
-             char emailCli[100],
-             char tituloLi[100],
-             char autorLi[50],
-             char editorialLi[30],
-             double importeVenta,
-             char medioPago[30],
-             Fecha fecha )
-{
-    strcpy(_dniCliente,dniCli);
-    strcpy(_nombreCliente,nombreCli);
-    strcpy(_telefonoCliente,telefonoCli);
-    strcpy(_emailCliente,emailCli);
-    strcpy(_tituloLibro,tituloLi);
-    strcpy(_autorLibro,autorLi);
-    strcpy(_editorialLibro,editorialLi);
-    this->_importeVenta=importeVenta;
-    strcpy(_medioDePago,medioPago);
+    this->_medioDePago=medioPago;
     this->_fecha=fecha;
 }
 
 
-DetalleVenta::DetalleVenta(Venta venta, Libro libro, Cliente cliente){
-    /// TODO: Se necesita traer la Editorial By Id
-    //Editorial e = libroService.buscarEditorialById(libro.get_IdEditorial);
-    /// TODO: Se necesita traer el Autor By Id
-    //Autor autor = libroService.buscarAutorById(libro.get_IdAutor());
-    /// TODO: Se necesita traer el MedioDePago By Id
-    VentasService ventasService;
-    MedioDePago m = ventasService.buscarMedioDePagoById(venta.getMedioDePago());
-
+// Detalle Venta By Venta
+DetalleVenta::DetalleVenta(Venta venta){
+    Fecha f(5,10,1999);
+    //Cliente cliente = cS.buscarClienteByDni(venta.getDniCliente());
+    Cliente cliente("12345678","Juan","Gomez","5555555","juan@email.com",f,1);
+    Libro libro = lS.buscarLibroById(venta.getIdLibro());
+    Genero genero = gS.buscarGeneroById(libro.getIdGenero());
+    Editorial editorial = eS.buscarEditorialById(libro.getIdEditorial());
+    Autor autor = aS.buscarAutorById(libro.getIdAutor());
+    this->_idVenta=venta.getIdVenta();
     strcpy(_dniCliente,cliente.getDni());
     strcpy(_nombreCliente,cliente.getNombre());
+    strcpy(_apellidoCliente,cliente.getApellido());
     strcpy(_telefonoCliente,cliente.getTelefono());
     strcpy(_emailCliente,cliente.getEmail());
     strcpy(_tituloLibro,libro.getTitulo());
-    strcpy(_autorLibro,"Julio Cortazar");
-    strcpy(_editorialLibro,"Alfaguara");
+    strcpy(_nombreAutor,autor.getNombre());
+    strcpy(_apellidoAutor,autor.getApellido());
+    strcpy(_editorialLibro,editorial.getNombre());
     this->_importeVenta=venta.getImporteVenta();
-    strcpy(_medioDePago,m.getNombre());
+    this->_medioDePago=venta.getMedioDePago();
     this->_fecha=venta.getFecha();
 }
+
+
 
 /// GETTERS
 int DetalleVenta::getIdVenta(){
@@ -102,6 +101,9 @@ const char* DetalleVenta::getDniCliente(){
 const char* DetalleVenta::getNombreCliente(){
     return _nombreCliente;
 };
+const char* DetalleVenta::getApellidoCliente(){
+    return _apellidoCliente;
+};
 const char* DetalleVenta::getTelefonoCliente(){
     return _telefonoCliente;
 };
@@ -111,8 +113,11 @@ const char* DetalleVenta::getEmailCliente(){
 const char* DetalleVenta::getTituloLibro(){
     return _tituloLibro;
 };
-const char* DetalleVenta::getAutorLibro(){
-    return _autorLibro;
+const char* DetalleVenta::getNombreAutor(){
+    return _nombreAutor;
+};
+const char* DetalleVenta::getApellidoAutor(){
+    return _apellidoAutor;
 };
 const char* DetalleVenta::getEditorialLibro(){
     return _editorialLibro;
@@ -120,7 +125,7 @@ const char* DetalleVenta::getEditorialLibro(){
 double DetalleVenta::getImporteVenta(){
     return _importeVenta;
 };
-const char* DetalleVenta::getMedioDePago(){
+int DetalleVenta::getMedioDePago(){
     return _medioDePago;
 };
 Fecha DetalleVenta::getFecha(){
@@ -137,6 +142,9 @@ void DetalleVenta::setDniCliente(const char* dniCli){
 void DetalleVenta::setNombreCliente(const char* nombreCli){
     strcpy(_nombreCliente,nombreCli);
 };
+void DetalleVenta::setApellidoCliente(const char* apellidoCli){
+    strcpy(_apellidoCliente,apellidoCli);
+};
 void DetalleVenta::setTelefonoCliente(const char* telefonoCli){
     strcpy(_telefonoCliente,telefonoCli);
 };
@@ -146,8 +154,11 @@ void DetalleVenta::setEmailCliente(const char* emailCli){
 void DetalleVenta::setTituloLibro(const char* tituloLi){
     strcpy(_tituloLibro,tituloLi);
 };
-void DetalleVenta::setAutorLibro(const char* autorLi){
-    strcpy(_autorLibro,autorLi);
+void DetalleVenta::setNombreAutor(const char* nombreAutor){
+    strcpy(_nombreAutor,nombreAutor);
+};
+void DetalleVenta::setApellidoAutor(const char* apellidoAutor){
+    strcpy(_apellidoAutor,apellidoAutor);
 };
 void DetalleVenta::setEditorialLibro(const char* editorialLi){
     strcpy(_editorialLibro,editorialLi);
@@ -155,11 +166,48 @@ void DetalleVenta::setEditorialLibro(const char* editorialLi){
 void DetalleVenta::setImporteVenta(double importeVenta){
     this->_importeVenta=importeVenta;
 };
-void DetalleVenta::setMedioDePago(const char* medioPago){
-    strcpy(_medioDePago,medioPago);
+void DetalleVenta::setMedioDePago(int medioPago){
+    this->_medioDePago=medioPago;
 };
 void DetalleVenta::setFecha(Fecha fecha){
     this->_fecha=fecha;
 };
+
+/// FUNCIONES
+
+// Imprimir DETALLE
+void DetalleVenta::imprimirDetalle(Venta venta){
+    DetalleVenta detalle(venta);
+    MedioDePago medio = vS.buscarMedioDePagoById(detalle.getMedioDePago());
+    std::cout<<" "<<std::endl;
+    std::cout<<"..............................................."<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM  -  Recibo de VENTA"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tNumero de FACTURA: "<<detalle.getIdVenta()<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLIBRO: "<<detalle.getTituloLibro()<<" ("<<detalle.getNombreAutor()<<" "<<detalle.getApellidoAutor()<<")"<<std::endl;
+    std::cout<<"\tEditorial: "<<detalle.getEditorialLibro()<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tDNI de Cliente: "<<detalle.getDniCliente()<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tCliente: "<<detalle.getNombreCliente()<<" "<<detalle.getApellidoCliente()<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tTelefono: "<<detalle.getTelefonoCliente()<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tEmail: "<<detalle.getEmailCliente()<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tIMPORTE: "<<detalle.getImporteVenta()<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tMedio de Pago:"<<std::endl;
+    vS.mostrarMedioDePagoDetalle(medio);
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tFecha de la Venta: "<<detalle.getFecha().fechaFormateada()<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"..............................................."<<std::endl;
+    std::cout<<" "<<std::endl;
+}
 
 
