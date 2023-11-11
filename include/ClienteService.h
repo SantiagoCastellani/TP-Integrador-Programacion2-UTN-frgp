@@ -6,7 +6,7 @@ class ClienteService
 {
     public:
 
-        //const char *ARCHIVO_CLIENTES = "ClientesTest.dat";
+        const char *ARCHIVO_CLIENTES = "ClientesTest.dat";
 
         ClienteService();
 

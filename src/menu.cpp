@@ -883,7 +883,7 @@ void menuClientes(){
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
         cargarCliente();
         menuClientes();
@@ -947,13 +947,11 @@ void cargarCliente(){
     std::cin.ignore();
     int opcion;
     char dni[9];
-    std::cout<<"ingrese DNI: "<<std::endl;
+    std::cout<<"ingrese DNI: ";
     std::cin.getline(dni,9);
-    system("cls");
     bool existe=clienteService.existeCliente(dni);
     if(!existe){
-        Cliente cliente=clienteService.cargarCliente(dni);
-        system("cls");
+        Cliente cliente = clienteService.cargarCliente(dni);
         std::cout<<"Cliente cargado exitosamente"<<std::endl;
         clienteService.mostrarCliente(cliente);
         std::cout<<" "<<std::endl;
@@ -970,7 +968,9 @@ void cargarCliente(){
              break;
         };
     }
-    else{std::cout<<"ya existe un cliente con ese dni"<<std::endl;};
+    else{
+        std::cout<<"Ya existe un cliente con ese dni"<<std::endl;
+    };
     system("pause");
     menuInicio();
 

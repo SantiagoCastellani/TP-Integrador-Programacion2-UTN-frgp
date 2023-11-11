@@ -7,7 +7,7 @@
 
 ClienteService::ClienteService(){}
 
-const char *ARCHIVO_CLIENTES = "ClientesTest.dat";
+
 
 Cliente ClienteService::cargarCliente(char* dni){
     std::cout << "CARGAR CLIENTE" <<std::endl;
@@ -57,12 +57,12 @@ void ClienteService::registrarCliente(Cliente cliente){
 //extisteCliente
 bool ClienteService::existeCliente(char* dni){
     FILE *archivo;
-    Cliente cliente;
+    Cliente c;
     bool existe = false;
     archivo = fopen(ARCHIVO_CLIENTES,"rb");
-    while(fread(&cliente,sizeof(Cliente),1,archivo)==1){
-        if(strcmp(cliente.getDni(),dni)==0){
-            existe =true;
+    while(fread(&c,sizeof(Cliente),1,archivo)==1){
+        if(strcmp(c.getDni(),dni)==0){
+            existe = true;
         }
     }
     fclose(archivo);
@@ -98,12 +98,12 @@ FILE *archivo;
 
 //buscarClienteDni
 Cliente ClienteService::buscarClientexDni(char* dni){
-FILE *archivo;
+    FILE *archivo;
     Cliente cliente;
     Cliente clienteBuscado;
     archivo = fopen(ARCHIVO_CLIENTES,"rb");
     while(fread(&cliente,sizeof(Cliente),1,archivo)==1){
-        if(strcmp(cliente.getDni(),dni)==1){
+        if(strcmp(cliente.getDni(),dni)==0){
             clienteBuscado=cliente;
         }
     }
@@ -215,8 +215,8 @@ void ClienteService::modificarCliente(){
     char dni[9];
     std::cout<<"\tIngrese DNI del Cliente a Modificar: "<<std::endl;
     std::cin.getline(dni,9);
-    system("cls");
     bool existe=existeCliente(dni);
+    std::cout<<existe;
     if(existe){
         Cliente cliente=buscarClientexDni(dni);
         std::cout<<"\tCliente encontrado: "<<std::endl;
