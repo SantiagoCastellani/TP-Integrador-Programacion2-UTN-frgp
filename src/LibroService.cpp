@@ -15,7 +15,6 @@ Editorial editorialService;
 
 // Cargar un Libro
 Libro LibroService::cargarLibro(){
-    //std::cout << "CARGAR LIBRO" <<std::endl;
     std::cout << " " <<std::endl;
     int idLibro;
     char titulo[100];

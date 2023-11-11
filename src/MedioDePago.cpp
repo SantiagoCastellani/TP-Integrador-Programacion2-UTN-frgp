@@ -1,5 +1,6 @@
 #include "MedioDePago.h"
 #include "string.h"
+#include <cstdio>
 
 MedioDePago::MedioDePago()
 {
@@ -44,6 +45,8 @@ void MedioDePago::setRecargo(float recargoP){
 void MedioDePago::setCantCuotas(int cantCuotasP){
     this->_cantCuotas=cantCuotasP;
 };
+
+
 
 
 

@@ -1,6 +1,7 @@
 #include "DetalleVenta.h"
 #include "string.h"
 #include "VentasService.h"
+#include "ClienteService.h"
 #include "Cliente.h"
 #include "LibroService.h"
 #include "MedioDePago.h"
@@ -8,7 +9,7 @@
 #include "Genero.h"
 #include "Autor.h"
 
-Cliente cS;
+ClienteService cS;
 LibroService lS;
 VentasService vS;
 MedioDePago mS;
@@ -67,9 +68,9 @@ DetalleVenta::DetalleVenta(
 
 // Detalle Venta By Venta
 DetalleVenta::DetalleVenta(Venta venta){
-    Fecha f(5,10,1999);
-    //Cliente cliente = cS.buscarClienteByDni(venta.getDniCliente());
-    Cliente cliente("12345678","Juan","Gomez","5555555","juan@email.com",f,1);
+    char dni[9];
+    strcpy(dni,venta.getDniCliente());
+    Cliente cliente = cS.buscarClientexDni(dni);
     Libro libro = lS.buscarLibroById(venta.getIdLibro());
     Genero genero = gS.buscarGeneroById(libro.getIdGenero());
     Editorial editorial = eS.buscarEditorialById(libro.getIdEditorial());

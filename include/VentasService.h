@@ -40,6 +40,7 @@ class VentasService
 
         // Cargar un MedioDePago
         MedioDePago cargarMedioDePago();
+        bool existeMedio(int id);
 
         // Registrar MedioDePago en Archivo.
         void registrarMedioDePago(MedioDePago);
@@ -64,6 +65,17 @@ class VentasService
 
         // Generar Comprobante
         void generarComprobante(int id);
+
+        // Listar Ventas por DNI Cliente;
+        void ventasByCliente();
+        void ventasByGenero();
+        void mostrarDetalleReducido(DetalleVenta detalle);
+        bool existeVentaByDni(char * dni);
+        bool existeVentaByIdGenero(int id);
+        bool existeVentaByIdEditorial(int id);
+        void ventasByEditorial();
+        bool existeVentaByIdMedio(int id);
+        void ventasByMedioDePago();
 
     protected:
 

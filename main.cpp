@@ -11,15 +11,15 @@
 
 int main()
 {
-    menuInicio();
+   menuInicio();
 //    Genero gs;
 //    gs.leerArchivoGeneros();
-//    LibroService ls;
+    //LibroService ls;
 //    ls.listarPorTituloAZ();
 //    int cant = ls.proximoIdLibro()-1;
 //    std::cout<<cant;
 //VentasService vS;
-//vS.leerArchivoVentas();
+//vS.ventasByCliente();
 
     return 0;
 }

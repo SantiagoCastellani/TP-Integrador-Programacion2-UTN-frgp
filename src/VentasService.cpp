@@ -1,10 +1,18 @@
 #include "VentasService.h"
+#include "ClienteService.h"
+#include "LibroService.h"
 #include <cstdio>
 #include "string.h"
 #include "../properties.h"
 #include "Fecha.h"
+#include "Genero.h"
+#include "Editorial.h"
 
 MedioDePago ms;
+ClienteService cServ;
+LibroService lServ;
+Genero gSe;
+Editorial eSe;
 
 VentasService::VentasService(){};
 
@@ -123,6 +131,21 @@ MedioDePago VentasService::buscarMedioDePagoById(int id){
     }
     fclose(archivo);
     return medio;
+};
+
+// Existe Genero?
+bool VentasService::existeMedio(int id){
+    FILE *archivo;
+    MedioDePago m;
+    bool existe=false;
+    archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"rb");
+    while(fread(&m,sizeof(MedioDePago),1,archivo)==1){
+        if(m.getId()==id){
+            existe=true;
+        }
+    }
+    fclose(archivo);
+    return existe;
 };
 
 // Cargar un MedioDePago
@@ -298,3 +321,222 @@ void VentasService::generarComprobante(int id){
     DetalleVenta dVS;
     dVS.imprimirDetalle(venta);
 };
+
+// Listar VENTAS por DNI Cliente
+void VentasService::ventasByCliente(){
+    char dni[9];
+    std::cin.ignore();
+    std::cout<<"\tIngrese el DNI del Cliente: ";
+    std::cin.getline(dni,9);
+    bool existe = cServ.existeCliente(dni);
+    Cliente cliente = cServ.buscarClientexDni(dni);
+    int tieneVenta=0;
+    if(existe){
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tCliente Registrado:"<<std::endl;
+        std::cout<<" "<<std::endl;
+        cServ.mostrarClienteRegistrado(cliente);
+        if(existeVentaByDni(dni)){
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tHa realizado las siguientes compras: "<<std::endl;
+        }
+        FILE *archivo;
+        Venta v;
+        archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+        while(fread(&v,sizeof(Venta),1,archivo)==1){
+            if(strcmp(v.getDniCliente(),dni)==0){
+                tieneVenta++;
+                DetalleVenta detalle(v);
+                mostrarDetalleReducido(detalle);
+            }
+        }
+        fclose(archivo);
+        if(tieneVenta==0){
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tEl cliente NO ha realizado ninguna compra."<<std::endl;
+            std::cout<<" "<<std::endl;
+        }
+    } else {
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tEl dni NO pertenece a ningun Cliente Registrado"<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+}
+
+void VentasService::mostrarDetalleReducido(DetalleVenta detalle){
+    std::cout<<"\tNro: "<<detalle.getIdVenta()<<" - Libro: "<<detalle.getTituloLibro()<<" - $"<<detalle.getImporteVenta()<<" - Fecha: "<<detalle.getFecha().fechaFormateada()<<std::endl;
+}
+
+bool VentasService::existeVentaByDni(char * dni){
+    bool existe = false;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(strcmp(v.getDniCliente(),dni)==0){
+            existe=true;
+        }
+    }
+    fclose(archivo);
+    return existe;
+};
+
+bool VentasService::existeVentaByIdGenero(int id){
+    bool existe = false;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        Libro libro = lServ.buscarLibroById(v.getIdLibro());
+        if(libro.getIdGenero()==id){
+            existe=true;
+        }
+    }
+    fclose(archivo);
+    return existe;
+};
+
+bool VentasService::existeVentaByIdEditorial(int id){
+    bool existe = false;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        Libro libro = lServ.buscarLibroById(v.getIdLibro());
+        if(libro.getIdEditorial()==id){
+            existe=true;
+        }
+    }
+    fclose(archivo);
+    return existe;
+};
+
+bool VentasService::existeVentaByIdMedio(int id){
+    bool existe = false;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getMedioDePago()==id){
+            existe=true;
+        }
+    }
+    fclose(archivo);
+    return existe;
+};
+
+// Listar VENTAS por DNI Genero
+void VentasService::ventasByGenero(){
+    int idGenero;
+    std::cin.ignore();
+    std::cout<<" Generos Disponibles: "<<std::endl;
+    gSe.leerArchivoGenerosActivos2();
+    std::cout<<"\tIngrese el ID del Genero: ";
+    std::cin>>idGenero;
+    bool existeG = gSe.existeGenero(idGenero);
+    int tieneVenta=0;
+    if(existeG){
+        if(existeVentaByIdGenero(idGenero)){
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tSe han realizado las siguientes compras: "<<std::endl;
+        }
+        FILE *archivo;
+        Venta v;
+        archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+        while(fread(&v,sizeof(Venta),1,archivo)==1){
+            Libro libro = lServ.buscarLibroById(v.getIdLibro());
+            if(libro.getIdGenero()==idGenero){
+                tieneVenta++;
+                DetalleVenta detalle(v);
+                mostrarDetalleReducido(detalle);
+            }
+        }
+        fclose(archivo);
+        if(tieneVenta==0){
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tEl Genero No tuvo ninguna Venta asociada."<<std::endl;
+            std::cout<<" "<<std::endl;
+        }
+    } else {
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tId de Genero Incorrecto"<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+}
+
+// Listar VENTAS por DNI Genero
+void VentasService::ventasByEditorial(){
+    int idEditorial;
+    std::cin.ignore();
+    std::cout<<" Editoriales Disponibles: "<<std::endl;
+    eSe.leerArchivoEditorial2();
+    std::cout<<"\tIngrese el ID de la Editorial: ";
+    std::cin>>idEditorial;
+    bool existeE = eSe.existeEditorial(idEditorial);
+    int tieneVenta=0;
+    if(existeE){
+        if(existeVentaByIdEditorial(idEditorial)){
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tSe han realizado las siguientes compras: "<<std::endl;
+        }
+        FILE *archivo;
+        Venta v;
+        archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+        while(fread(&v,sizeof(Venta),1,archivo)==1){
+            Libro libro = lServ.buscarLibroById(v.getIdLibro());
+            if(libro.getIdEditorial()==idEditorial){
+                tieneVenta++;
+                DetalleVenta detalle(v);
+                mostrarDetalleReducido(detalle);
+            }
+        }
+        fclose(archivo);
+        if(tieneVenta==0){
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tLa editorial No tuvo ninguna Venta asociada."<<std::endl;
+            std::cout<<" "<<std::endl;
+        }
+    } else {
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tId de Editorial Incorrecto"<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+}
+
+// Listar VENTAS por DNI MEDIO DE PAGO
+void VentasService::ventasByMedioDePago(){
+    int id;
+    std::cin.ignore();
+    std::cout<<" Medios de Pago Disponibles: "<<std::endl;
+    leerArchivoMedioDePagoMenu();
+    std::cout<<"\tIngrese el ID de Medio De Pago: ";
+    std::cin>>id;
+    bool existeM = existeMedio(id);
+    int tieneVenta=0;
+    if(existeM){
+        if(existeVentaByIdMedio(id)){
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tSe han realizado las siguientes compras: "<<std::endl;
+        }
+        FILE *archivo;
+        Venta v;
+        archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+        while(fread(&v,sizeof(Venta),1,archivo)==1){
+            if(v.getMedioDePago()==id){
+                tieneVenta++;
+                DetalleVenta detalle(v);
+                mostrarDetalleReducido(detalle);
+            }
+        }
+        fclose(archivo);
+        if(tieneVenta==0){
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tEl Medio de Pago No tuvo ninguna Venta asociada."<<std::endl;
+            std::cout<<" "<<std::endl;
+        }
+    } else {
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tId de Medio de Pago Incorrecto"<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+}

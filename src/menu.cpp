@@ -6,7 +6,9 @@
 #include "Autor.h"
 #include "LibroService.h"
 #include "VentasService.h"
+#include "ClienteService.h"
 
+ClienteService clienteService;
 VentasService ventasService;
 LibroService libroService;
 Genero gServ;
@@ -741,49 +743,99 @@ void menuDetalleVenta(){
   }
 }
 
-//menuListadoVentas
+/// Listar VENTAS
 void menuListadoVentas(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu LISTADO VENTAS"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t1 - VENTAS POR FECHA"<<std::endl;
+    std::cout<<"\t1 - Entre FECHAS"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t2 - VENTAS POR CLIENTE"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t3 - VENTAS POR LIBRO"<<std::endl;
+    std::cout<<"\t3 - VENTAS POR GENERO"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t4 - VENTAS POR GENERO"<<std::endl;
+    std::cout<<"\t4 - VENTAS POR EDITORIAL"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t5 - VENTAS POR EDITORIAL"<<std::endl;
+    std::cout<<"\t5 - VENTAS POR MEDIO DE PAGO"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t6 - VENTAS POR MEDIO DE PAGO"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tElija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
-       // ventasByFecha();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tVENTAS por GENERO"<<std::endl;
+        std::cout<<" "<<std::endl;
+        ventasService.ventasByGenero();
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuVentas();
         break;
     case 2:
-       // ventasByCliente();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tVENTAS por CLIENTE"<<std::endl;
+        std::cout<<" "<<std::endl;
+        ventasService.ventasByCliente();
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuVentas();
         break;
     case 3:
-        //menuListadoLibro();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tVENTAS por GENERO"<<std::endl;
+        std::cout<<" "<<std::endl;
+        ventasService.ventasByGenero();
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuVentas();
         break;
     case 4:
-        //ventasByGenero();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tVENTAS por EDITORIAL"<<std::endl;
+        std::cout<<" "<<std::endl;
+        ventasService.ventasByEditorial();
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuVentas();
         break;
      case 5:
-        //ventasByEditorial();
-        break;
-     case 6:
-        //ventasByMediodePago();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tVENTAS por MEDIO de PAGO"<<std::endl;
+        std::cout<<" "<<std::endl;
+        ventasService.ventasByMedioDePago();
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuVentas();
         break;
     case 0:
         menuVentas();
@@ -802,10 +854,17 @@ void menuAnularVenta(){
     menuInicio();
 }
 
-// Menu Clientes
+///*************************************************************************************
+
+///CLIENTES
+
+/// Menu Clientes
 void menuClientes(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu CLIENTES"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -817,31 +876,38 @@ void menuClientes(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t4 - MODIFICAR CLIENTE"<<std::endl;
     std::cout<<" "<<std::endl;
-    ///TODOS: REVISAR POSIBLE OPCION EXTRA
-  //  std::cout<<"\t5 - EXTRA?"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
        switch(opcion){
     case 1:
-        menuCargarCliente();
+        cargarCliente();
+        menuClientes();
         break;
     case 2:
-        menuBuscarCliente();
+        buscarCliente();
+        system("pause");
+        menuClientes();
         break;
     case 3:
         menuListadoClientes();
         break;
     case 4:
-        menuModificarCliente();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tMODIFICAR CLIENTE"<<std::endl;
+        std::cout<<" "<<std::endl;
+        clienteService.modificarCliente();
+        system("pause");
+        menuClientes();
         break;
-   // case 5:
-
-     //   break;
     case 0:
         menuInicio();
         break;
@@ -853,41 +919,71 @@ void menuClientes(){
 };
 }
 
-// menuBuscarCliente
-void menuBuscarCliente(){
-//Cliente ClienteService::buscarClientexDni(char* dni)
+/// Menu BUSCAR CLIENTE -----------------------------
+
+void buscarCliente(){
+char dni[9];
+std::cin.ignore();
+std::cout << "\tIngrese DNI a Buscar: "<<std::endl;
+std::cin.getline(dni,9);
+bool existe=clienteService.existeCliente(dni);
+std::cout<<existe;
+system("pause");
+if(existe){
+    Cliente cliente=clienteService.buscarClientexDni(dni);
+    clienteService.mostrarCliente(cliente);
+}
+else {std::cout<< "Cliente no Registrado"<<std::endl; };
+
 
     system("pause");
     menuInicio();
 }
 
-// menuCargarCliente
-void menuCargarCliente(){
-int opcion;
- //   Cliente ClienteService::cargarCliente();
-  //  Cliente ClienteService::mostrarCliente(Cliente cliente);
-    std::cout<<" "<<std::endl;
-    std::cout<<"Carga Finalizada. Desea registrarlo? (1=SI / 2=NO) "<<std::endl;
-    std::cin>>opcion;
-    switch(opcion){
-    case 1:
-   //     Cliente ClienteService::registrarCliente(Cliente cliente);
-        break;
-    case 2:
-   //     void menuCargarCliente();
-        break;
-    default:
-        break;
+/// Menu CARGAR CLIENTE -----------------------------
 
-    system("pause");
-    menuInicio();
+void cargarCliente(){
+    system("cls");
+    std::cin.ignore();
+    int opcion;
+    char dni[9];
+    std::cout<<"ingrese DNI: "<<std::endl;
+    std::cin.getline(dni,9);
+    system("cls");
+    bool existe=clienteService.existeCliente(dni);
+    if(!existe){
+        Cliente cliente=clienteService.cargarCliente(dni);
+        system("cls");
+        std::cout<<"Cliente cargado exitosamente"<<std::endl;
+        clienteService.mostrarCliente(cliente);
+        std::cout<<" "<<std::endl;
+        std::cout<<"Carga Finalizada. Desea registrarlo? (1=SI / 0=NO) "<<std::endl;
+        std::cin>>opcion;
+        switch(opcion){
+            case 1:
+             clienteService.registrarCliente(cliente);
+             break;
+            case 0:
+             menuClientes();
+             break;
+            default:
+             break;
+        };
     }
+    else{std::cout<<"ya existe un cliente con ese dni"<<std::endl;};
+    system("pause");
+    menuInicio();
+
 }
 
-// menuListadoClientes
+/// Menu LISTADO CLIENTES -----------------------------
+
 void menuListadoClientes(){
   int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu LISTADO CLIENTES"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -897,16 +993,22 @@ void menuListadoClientes(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
        switch(opcion){
     case 1:
-       // listarClientesByApellido();
+       system("cls");
+       clienteService.listarClientesByApellido();
+       system("pause");
+       menuClientes();
         break;
     case 2:
-       // listarClientesByFechaNacimiento();
+       system("cls");
+       clienteService.listarClientesByFechaNacimiento();
+       system("pause");
+       menuClientes();
         break;
     case 0:
         menuClientes();
@@ -918,16 +1020,9 @@ void menuListadoClientes(){
     menuInicio();
 };
 }
-///TODOS: QUEDA PENDIENTE LA FUNCION MODIFICAR CLIENTE EN CLIENTE SERVICE
-// menuModificarCliente
-void menuModificarCliente(){
-// Cliente Clienteservice::modificarCliente();
 
-    system("pause");
-    menuInicio();
-}
+/// Menu ESTADISTICAS -----------------------------
 
-//Menu Estadisticas
 void menuEstadisticas(){
     int opcion;
     system("cls");
@@ -946,7 +1041,7 @@ void menuEstadisticas(){
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
         menuEstadisticasLibros();
         break;
@@ -964,8 +1059,48 @@ void menuEstadisticas(){
 
     system("pause");
     menuInicio();
-};
+    }
 }
+
+//Menu Estadisticas
+//void menuEstadisticas(){
+//    int opcion;
+//    system("cls");
+//    std::cout<<" "<<std::endl;
+//    std::cout<<"\tMenu ESTADISTICAS"<<std::endl;
+//    std::cout<<" "<<std::endl;
+//    std::cout<<"\t1 - ESTADISTICAS DE LIBROS"<<std::endl;
+//    std::cout<<" "<<std::endl;
+//    std::cout<<"\t2 - ESTADISTICAS DE RECAUDACION"<<std::endl;
+//    std::cout<<" "<<std::endl;
+//    std::cout<<"\t3 - ESTADISTICAS CLIENTES"<<std::endl;
+//    std::cout<<" "<<std::endl;
+//    std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
+//    std::cout<<" "<<std::endl;
+//    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+//    std::cout<<" "<<std::endl;
+//    std::cout<<" \ Elija una opcion: ";
+//    std::cin>>opcion;
+//       switch(opcion){
+//    case 1:
+//        menuEstadisticasLibros();
+//        break;
+//    case 2:
+//        menuEstadisticasRecaudacion();
+//        break;
+//    case 3:
+//        menuEstadisticasCliente();
+//        break;
+//    case 0:
+//        menuInicio();
+//        break;
+//    default:
+//        break;
+//
+//    system("pause");
+//    menuInicio();
+//
+//}
 
 // menuEstadisticasLibros
 void menuEstadisticasLibros(){

@@ -38,13 +38,11 @@ void menuAnularVenta();
 // Menu Clientes
 void menuClientes();
 
-void menuBuscarCliente();
+void buscarCliente();
 
-void menuCargarCliente();
+void cargarCliente();
 
 void menuListadoClientes();
-
-void menuModificarCliente();
 
 //Menu Estadisticas
 void menuEstadisticas();

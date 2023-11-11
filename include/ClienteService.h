@@ -14,7 +14,7 @@ class ClienteService
        // cargarCliente
 
 //        void setIdGeneroFavorito(int);
-       Cliente cargarCliente();
+       Cliente cargarCliente(char* dni);
 
        //mostrarCliente
        void mostrarCliente(Cliente);
@@ -33,6 +33,22 @@ class ClienteService
 
        //clienteMayorGasto
 
+       //listarClientes
+       int obtenerCantidadClientes();
+       void cargarRegistroClientes(Cliente *);
+       void ordenarVectorPorNombres(Cliente *,int);
+       void ordenarVectorPorFecha(Cliente *,int);
+       void mostrarVectorOrdenadoPorApellido(Cliente *,int);
+       void mostrarVectorOrdenadoPorFecha(Cliente *,int);
+       void listarClientesByApellido();
+       void listarClientesByFechaNacimiento();
+
+       //modificarCliente
+       void modificarCliente();
+
+       void editarCliente(Cliente);
+
+       void mostrarClienteRegistrado(Cliente cliente);
 
     protected:
 
