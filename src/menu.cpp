@@ -15,6 +15,7 @@ Genero gServ;
 Editorial eServ;
 Autor aServ;
 
+
 /*************************************************************************************/
 
 /// MENU INICIAL
@@ -618,8 +619,6 @@ void menuVentas(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t3 - LISTADO DE VENTAS"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t4 - ANULAR VENTA"<<std::endl;
-    std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -636,9 +635,6 @@ void menuVentas(){
         break;
     case 3:
         menuListadoVentas();
-        break;
-    case 4:
-        menuAnularVenta();
         break;
     case 0:
         menuInicio();
@@ -763,6 +759,8 @@ void menuListadoVentas(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t5 - VENTAS POR MEDIO DE PAGO"<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<"\t6 - TODAS las VENTAS"<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -833,6 +831,19 @@ void menuListadoVentas(){
         std::cout<<"\tVENTAS por MEDIO de PAGO"<<std::endl;
         std::cout<<" "<<std::endl;
         ventasService.ventasByMedioDePago();
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuVentas();
+        break;
+    case 6:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tListado de VENTAS completo"<<std::endl;
+        std::cout<<" "<<std::endl;
+        ventasService.leerArchivoVentas();
         std::cout<<" "<<std::endl;
         system("pause");
         menuVentas();
@@ -979,7 +990,7 @@ void cargarCliente(){
 /// Menu LISTADO CLIENTES -----------------------------
 
 void menuListadoClientes(){
-  int opcion;
+    int opcion;
     system("cls");
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -997,7 +1008,7 @@ void menuListadoClientes(){
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
        system("cls");
        clienteService.listarClientesByApellido();
@@ -1018,14 +1029,21 @@ void menuListadoClientes(){
 
     system("pause");
     menuInicio();
-};
+    };
 }
+
+///*************************************************************************************
+
+/// ESTADISTICAS
 
 /// Menu ESTADISTICAS -----------------------------
 
 void menuEstadisticas(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu ESTADISTICAS"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1037,7 +1055,7 @@ void menuEstadisticas(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
@@ -1062,50 +1080,13 @@ void menuEstadisticas(){
     }
 }
 
-//Menu Estadisticas
-//void menuEstadisticas(){
-//    int opcion;
-//    system("cls");
-//    std::cout<<" "<<std::endl;
-//    std::cout<<"\tMenu ESTADISTICAS"<<std::endl;
-//    std::cout<<" "<<std::endl;
-//    std::cout<<"\t1 - ESTADISTICAS DE LIBROS"<<std::endl;
-//    std::cout<<" "<<std::endl;
-//    std::cout<<"\t2 - ESTADISTICAS DE RECAUDACION"<<std::endl;
-//    std::cout<<" "<<std::endl;
-//    std::cout<<"\t3 - ESTADISTICAS CLIENTES"<<std::endl;
-//    std::cout<<" "<<std::endl;
-//    std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
-//    std::cout<<" "<<std::endl;
-//    std::cout<<" - - - - - - - - - - - - "<<std::endl;
-//    std::cout<<" "<<std::endl;
-//    std::cout<<" \ Elija una opcion: ";
-//    std::cin>>opcion;
-//       switch(opcion){
-//    case 1:
-//        menuEstadisticasLibros();
-//        break;
-//    case 2:
-//        menuEstadisticasRecaudacion();
-//        break;
-//    case 3:
-//        menuEstadisticasCliente();
-//        break;
-//    case 0:
-//        menuInicio();
-//        break;
-//    default:
-//        break;
-//
-//    system("pause");
-//    menuInicio();
-//
-//}
+
 
 // menuEstadisticasLibros
 void menuEstadisticasLibros(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu ESTADISTICAS DE LIBROS"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1115,7 +1096,7 @@ void menuEstadisticasLibros(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
@@ -1141,6 +1122,7 @@ void menuEstadisticasLibros(){
 void menuEstadisticasRecaudacion(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu ESTADISTICAS DE RECAUDACION"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1158,7 +1140,7 @@ void menuEstadisticasRecaudacion(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
@@ -1196,6 +1178,7 @@ void menuEstadisticasRecaudacion(){
 void menuEstadisticasCliente(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu ESTADISTICAS CLIENTES"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1205,11 +1188,11 @@ void menuEstadisticasCliente(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
       //  clienteMayorGastoMes();
         break;
@@ -1224,26 +1207,32 @@ void menuEstadisticasCliente(){
 
     system("pause");
     menuInicio();
-};
+    };
 }
+
+/****************************************************************************************/
+
+/// MENU CONFIGUARCIONES
 
 // Menu Configuraciones
 void menuConfiguraciones(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu CONFIGURACIONES"<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<"\t1 - REALIZAR BACKUP"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t2 - RESTAURAR ARCHIVOS"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
         menuRealizarBackup();
         break;
@@ -1255,16 +1244,16 @@ void menuConfiguraciones(){
         break;
     default:
         break;
-
     system("pause");
     menuInicio();
-};
+    };
 }
 
 // menuRealizarBackup
 void menuRealizarBackup(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu BACKUP"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1276,7 +1265,7 @@ void menuRealizarBackup(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
@@ -1304,6 +1293,7 @@ void menuRealizarBackup(){
 void  menuRestaurarArchivos(){
     int opcion;
     system("cls");
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu RESTAURAR ARCHIVOS"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1319,7 +1309,7 @@ void  menuRestaurarArchivos(){
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
       //  restaurarLibros();
         break;
@@ -1333,10 +1323,9 @@ void  menuRestaurarArchivos(){
         break;
     default:
         break;
-
     system("pause");
     menuInicio();
-};
+    };
 }
 
 // Finalizar

@@ -9,6 +9,9 @@ class Fecha
 
         Fecha(int dia,int mes,int anio);
 
+        bool esAnteriorA(Fecha fecha);
+        bool esPosteriorA(Fecha fecha);
+
         /// Getters
         int getDia();
         int getMes();

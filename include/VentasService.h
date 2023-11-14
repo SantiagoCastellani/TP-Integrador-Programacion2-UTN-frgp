@@ -38,9 +38,13 @@ class VentasService
         // Devuelve un MedioDePago ById
         MedioDePago buscarMedioDePagoById(int);
 
+        float devolverRecargo(int id);
+
         // Cargar un MedioDePago
         MedioDePago cargarMedioDePago();
         bool existeMedio(int id);
+        double aplicarRecargo(double importe, float recargo);
+
 
         // Registrar MedioDePago en Archivo.
         void registrarMedioDePago(MedioDePago);

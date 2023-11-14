@@ -51,3 +51,38 @@ void Fecha::setMes(int mes){
 void Fecha::setAnio(int anio){
     this->_anio=anio;
 };
+
+
+/// FUNCIONES
+
+//ES ANTERIOR
+bool Fecha::esAnteriorA(Fecha fecha){
+    bool esAnterior=false;
+    if(this->_anio<fecha.getAnio()){
+        esAnterior=true;
+    } else if(this->_anio==fecha.getAnio()){
+        if(this->_mes<fecha.getMes()){
+            esAnterior=true;
+        } else if(this->_mes==fecha.getMes()){
+            if(this->_dia<fecha.getDia()){
+                esAnterior=true;
+            }
+        }
+    }
+}
+
+// ES POSTERIOR
+bool Fecha::esPosteriorA(Fecha fecha){
+    bool esPosterior=false;
+    if(this->_anio>fecha.getAnio()){
+        esPosterior=true;
+    } else if(this->_anio==fecha.getAnio()){
+        if(this->_mes>fecha.getMes()){
+            esPosterior=true;
+        } else if(this->_mes==fecha.getMes()){
+            if(this->_dia>fecha.getDia()){
+                esPosterior=true;
+            }
+        }
+    }
+}

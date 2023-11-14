@@ -529,3 +529,10 @@ void LibroService::updatearLibroPosVenta(Libro libro){
     }
     fclose(archivo);
 };
+
+// INFO Basica LIBRO
+void LibroService::infoBasicaLibro(int id){
+    Libro libro = buscarLibroById(id);
+    Autor autor = autorService.buscarAutorById(libro.getIdAutor());
+    std::cout<<"\t"<<libro.getTitulo()<<" ("<<autor.getNombre()<<" "<<autor.getApellido()<<")"<<std::endl;
+}

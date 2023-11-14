@@ -18,6 +18,7 @@ class LibroService
         // Mostrar un Libro
         void mostrarLibro(Libro);
         void mostrarLibro2(Libro);
+        void infoBasicaLibro(int id);
 
         // Devuelve el proximo Id a setear
         int proximoIdLibro();
