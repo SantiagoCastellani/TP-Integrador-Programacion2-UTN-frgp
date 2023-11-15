@@ -37,6 +37,7 @@
 		<Unit filename="include/Autor.h" />
 		<Unit filename="include/Cliente.h" />
 		<Unit filename="include/ClienteService.h" />
+		<Unit filename="include/Config.h" />
 		<Unit filename="include/DetalleVenta.h" />
 		<Unit filename="include/Editorial.h" />
 		<Unit filename="include/Fecha.h" />
@@ -52,6 +53,7 @@
 		<Unit filename="src/Autor.cpp" />
 		<Unit filename="src/Cliente.cpp" />
 		<Unit filename="src/ClienteService.cpp" />
+		<Unit filename="src/Config.cpp" />
 		<Unit filename="src/DetalleVenta.cpp" />
 		<Unit filename="src/Editorial.cpp" />
 		<Unit filename="src/Fecha.cpp" />

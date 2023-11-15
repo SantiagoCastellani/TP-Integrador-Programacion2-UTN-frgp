@@ -10,17 +10,15 @@ Cliente::Cliente()
     strcpy(_telefono,"00000000");
     strcpy(_email,"00000000");
     _fechaNac=Fecha();
-    _idGeneroFavorito=0;
 }
 
-Cliente::Cliente(char* dniP,char* nombreP,char* apellidoP,char* telefonoP,char* emailP,Fecha fecha,int idGeneroFavorito){
+Cliente::Cliente(char* dniP,char* nombreP,char* apellidoP,char* telefonoP,char* emailP,Fecha fecha){
     strcpy(_dni,dniP);
     strcpy(_nombre,nombreP);
     strcpy(_apellido,apellidoP);
     strcpy(_telefono,telefonoP);
     strcpy(_email,emailP);
     this->_fechaNac=fecha;
-    this->_idGeneroFavorito=idGeneroFavorito;
 };
 
 /// GETTERS
@@ -42,9 +40,6 @@ const char* Cliente::getEmail(){
 Fecha Cliente::getFecha(){
     return _fechaNac;
 };
-int Cliente::getIdGeneroFavorito(){
-    return _idGeneroFavorito;
-};
 
 /// SETTERS
 void Cliente::setDni(const char* dniP){
@@ -64,9 +59,6 @@ void Cliente::setEmail(const char* emailP){
 };
 void Cliente::setFecha(Fecha fecha){
     this->_fechaNac=fecha;
-};
-void Cliente::setIdGeneroFavorito(int idGeneroFavorito){
-    this->_idGeneroFavorito=idGeneroFavorito;
 };
 
 

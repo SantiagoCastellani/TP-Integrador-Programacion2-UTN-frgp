@@ -608,6 +608,55 @@ void VentasService::ventasByMedioDePago(){
     }
 }
 
+// Contar Ventas entre FECHAS
+int VentasService::contarVentasEntreFechas(Fecha fechaDesde,Fecha fechaHasta){
+    int cant=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getFecha().esAnteriorA(fechaHasta)&&v.getFecha().esPosteriorA(fechaDesde)){
+            cant++;
+        }
+    }
+    fclose(archivo);
+    return cant;
+}
+
+// Listar Ventas entre FECHAS
+void VentasService::ventasEntreFechas(){
+    Fecha fS;
+    std::cin.ignore();
+    std::cout<<" Ingrese la FECHA DESDE: "<<std::endl;
+    Fecha fechaDesde = fS.cargarFecha();
+    std::cout<<" Ingrese la FECHA HASTA: "<<std::endl;
+    Fecha fechaHasta = fS.cargarFecha();
+    std::cin.ignore();
+    int cantVentas = contarVentasEntreFechas(fechaDesde,fechaHasta);
+    if(cantVentas>0){
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tVentas entre el "<<fechaDesde.fechaFormateada()<<" y el "<<fechaHasta.fechaFormateada()<<std::endl;
+        std::cout<<" "<<std::endl;
+        FILE *archivo;
+        Venta v;
+        archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+        while(fread(&v,sizeof(Venta),1,archivo)==1){
+            if(v.getFecha().esAnteriorA(fechaHasta)&&v.getFecha().esPosteriorA(fechaDesde)){
+                DetalleVenta detalle(v);
+                mostrarDetalleReducido(detalle);
+            }
+        }
+        fclose(archivo);
+    } else {
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tNo se realizaron Ventas entre las fechas dadas."<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+}
+
+
+
+
 // Aplicar recargo segun Medio de Pago
 double VentasService::aplicarRecargo(double importe, float recargo){
     return importe*recargo;

@@ -7,6 +7,7 @@
 #include "LibroService.h"
 #include "VentasService.h"
 #include "ClienteService.h"
+#include "Config.h"
 
 ClienteService clienteService;
 VentasService ventasService;
@@ -14,6 +15,7 @@ LibroService libroService;
 Genero gServ;
 Editorial eServ;
 Autor aServ;
+Config configService;
 
 
 /*************************************************************************************/
@@ -776,9 +778,9 @@ void menuListadoVentas(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tLibreria IOSTREAM"<<std::endl;
         std::cout<<" "<<std::endl;
-        std::cout<<"\tVENTAS por GENERO"<<std::endl;
+        std::cout<<"\tVENTAS entre FECHAS"<<std::endl;
         std::cout<<" "<<std::endl;
-        ventasService.ventasByGenero();
+        ventasService.ventasEntreFechas();
         std::cout<<" "<<std::endl;
         system("pause");
         menuVentas();
@@ -1088,6 +1090,8 @@ void menuEstadisticasLibros(){
     system("cls");
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<"\tMenu ESTADISTICAS DE LIBROS"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t1 - LIBRO MAS VENDIDO DEL Anio"<<std::endl;
@@ -1123,6 +1127,8 @@ void menuEstadisticasRecaudacion(){
     int opcion;
     system("cls");
     std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu ESTADISTICAS DE RECAUDACION"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1180,6 +1186,8 @@ void menuEstadisticasCliente(){
     system("cls");
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<"\tMenu ESTADISTICAS CLIENTES"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t1 - CLIENTE DE MAYOR GASTO DEL MES"<<std::endl;
@@ -1220,6 +1228,8 @@ void menuConfiguraciones(){
     system("cls");
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<"\tMenu CONFIGURACIONES"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t1 - REALIZAR BACKUP"<<std::endl;
@@ -1255,13 +1265,15 @@ void menuRealizarBackup(){
     system("cls");
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<"\tMenu BACKUP"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t1 - REALIZAR BACKUP ARCHIVO DE LIBROS"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t2 - REALIZAR BACKUP ARCHIVO DE CLIENTES"<<std::endl;
+    std::cout<<"\t2 - REALIZAR BACKUP ARCHIVO DE VENTAS"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t3 - REALIZAR BACKUP ARCHIVO DE VENTAS"<<std::endl;
+    std::cout<<"\t3 - REALIZAR BACKUP ARCHIVO DE CLIENTES"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1269,21 +1281,57 @@ void menuRealizarBackup(){
     std::cout<<" "<<std::endl;
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
-      //  realizarBackupLibros();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tBACKUP de LIBROS"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        configService.backupLibros();
+        std::cout<<" "<<std::endl;
+        std::cout<<"*************************************************"<<std::endl;
+        system("pause");
+        menuInicio();
         break;
     case 2:
-      //  realizarBackupClientes();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tBACKUP de VENTAS"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        configService.backupVentas();
+        std::cout<<" "<<std::endl;
+        std::cout<<"*************************************************"<<std::endl;
+        system("pause");
+        menuInicio();
         break;
     case 3:
-      //  realizarBackupVentas();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tBACKUP de CLIENTES"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        configService.backupClientes();
+        std::cout<<" "<<std::endl;
+        std::cout<<"*************************************************"<<std::endl;
+        system("pause");
+        menuInicio();
+        break;
     case 0:
         menuConfiguraciones();
         break;
     default:
         break;
-
     system("pause");
     menuInicio();
 };
@@ -1295,13 +1343,15 @@ void  menuRestaurarArchivos(){
     system("cls");
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<"\tMenu RESTAURAR ARCHIVOS"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t1 - RESTAURAR ARCHIVO DE LIBROS"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t2 - RESTAURAR ARCHIVO DE CLIENTES"<<std::endl;
+    std::cout<<"\t2 - RESTAURAR ARCHIVO DE VENTAS"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t3 - RESTAURAR ARCHIVO DE VENTAS"<<std::endl;
+    std::cout<<"\t3 - RESTAURAR ARCHIVO DE CLIENTES"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1311,13 +1361,50 @@ void  menuRestaurarArchivos(){
     std::cin>>opcion;
     switch(opcion){
     case 1:
-      //  restaurarLibros();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tRESTAURAR ARCHIVO de  LIBROS"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        configService.restaurarArchivosLibros();
+        std::cout<<" "<<std::endl;
+        std::cout<<"*************************************************"<<std::endl;
+        system("pause");
+        menuInicio();
         break;
     case 2:
-      //  restaurarClientes();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tRESTAURAR ARCHIVO de VENTAS"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        configService.restaurarArchivosVentas();
+        std::cout<<" "<<std::endl;
+        std::cout<<"*************************************************"<<std::endl;
+        system("pause");
+        menuInicio();
         break;
     case 3:
-      //  restaurarVentas();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tRESTAURAR ARCHIVO de CLIENTES"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        configService.restaurarArchivosClientes();
+        std::cout<<" "<<std::endl;
+        std::cout<<"*************************************************"<<std::endl;
+        system("pause");
+        menuInicio();
+        break;
     case 0:
         menuConfiguraciones();
         break;

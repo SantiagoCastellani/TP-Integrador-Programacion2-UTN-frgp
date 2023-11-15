@@ -80,6 +80,8 @@ class VentasService
         void ventasByEditorial();
         bool existeVentaByIdMedio(int id);
         void ventasByMedioDePago();
+        void ventasEntreFechas();
+        int contarVentasEntreFechas(Fecha fechaDesde,Fecha fechaHasta);
 
     protected:
 

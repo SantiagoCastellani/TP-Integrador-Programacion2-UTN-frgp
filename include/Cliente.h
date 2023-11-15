@@ -7,7 +7,7 @@ class Cliente
     public:
         Cliente();
 
-        Cliente(char* dni,char* nombre,char* apellido,char* telefono,char* email,Fecha fecha,int idGeneroFavorito);
+        Cliente(char* dni,char* nombre,char* apellido,char* telefono,char* email,Fecha fecha);
 
         /// GETTERS
         const char* getDni();
@@ -16,7 +16,6 @@ class Cliente
         const char* getTelefono();
         const char* getEmail();
         Fecha getFecha();
-        int getIdGeneroFavorito();
 
         /// SETTERS
         void setDni(const char*);
@@ -25,7 +24,6 @@ class Cliente
         void setTelefono(const char*);
         void setEmail(const char*);
         void setFecha(Fecha);
-        void setIdGeneroFavorito(int);
 
         std::string nombreCompleto();
 
@@ -38,8 +36,6 @@ class Cliente
         char _telefono[15];
         char _email[100];
         Fecha _fechaNac;
-        int _idGeneroFavorito;
-
 };
 
 #endif // CLIENTE_H

@@ -17,7 +17,6 @@ Cliente ClienteService::cargarCliente(char* dni){
     char telefono[15];
     char email[100];
     Fecha fecha;
-    int idGeneroFavorito;
     strcpy(Ndni,dni);
     std::cout<< "Ingrese Nombre: "<<std::endl;
     std::cin.getline(nombre,25);
@@ -29,10 +28,7 @@ Cliente ClienteService::cargarCliente(char* dni){
     std::cin.getline(email,100);
     std::cout<< "Ingrese fecha de nacimiento: "<<std::endl;
     Fecha fechaNacimiento = fecha.cargarFecha();
-    std::cout<< "Ingrese IdGenero Favorito: "<<std::endl;
-    std::cin>>idGeneroFavorito;
-    std::cin.ignore();
-    Cliente c(Ndni,nombre,apellido,telefono,email,fechaNacimiento,idGeneroFavorito);
+    Cliente c(Ndni,nombre,apellido,telefono,email,fechaNacimiento);
     return c;
 }
 
@@ -77,7 +73,6 @@ void ClienteService::mostrarCliente(Cliente cliente){
     std::cout << " Telefono: "<<cliente.getTelefono()<<std::endl;
     std::cout << " Email: "<<cliente.getEmail()<<std::endl;
     std::cout << " Fecha Nacimiento: "<<cliente.getFecha().fechaFormateada()<<std::endl;
-    std::cout << " IdGenero Favorito: "<<cliente.getIdGeneroFavorito()<<std::endl;
     std::cout << "  "<<std::endl;
 }
 
@@ -258,10 +253,7 @@ void ClienteService::editarCliente(Cliente cliente){
             std::cin.getline(email,100);
             std::cout<< "Ingrese fecha de nacimiento: "<<std::endl;
             Fecha fechaNacimiento = fecha.cargarFecha();
-            std::cout<< "Ingrese IdGenero Favorito: "<<std::endl;
-            std::cin>>idGeneroFavorito;
-            std::cin.ignore();
-            Cliente clienteEditado(dni,nombre,apellido,telefono,email,fechaNacimiento,idGeneroFavorito);
+            Cliente clienteEditado(dni,nombre,apellido,telefono,email,fechaNacimiento);
             res = fwrite(&clienteEditado,sizeof(Cliente),1,archivo);
             fclose(archivo);
         }
