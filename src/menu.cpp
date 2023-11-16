@@ -46,7 +46,7 @@ void menuInicio(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
@@ -102,7 +102,7 @@ void menuLibros(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
@@ -159,7 +159,7 @@ void menuBuscarLibro(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     ///TODOS: COLOCAR LAS FUNCIONES PARA BUSQUEDAS
     switch(opcion){
@@ -212,7 +212,7 @@ void menuCargarLibro(){
     std::cout<<"\tCARGAR LIBRO"<<std::endl;
     Libro libro = libroService.cargarLibro();
     std::cout<<" "<<std::endl;
-    std::cout<<"\LIBRO CARGADO: "<<std::endl;
+    std::cout<<"\tLIBRO CARGADO: "<<std::endl;
     libroService.mostrarLibro(libro);
     std::cout<<" "<<std::endl;
     std::cout<<"Desea registrarlo? (1=SI / 0=NO):   ";
@@ -271,7 +271,7 @@ void menuListadoLibros(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
@@ -342,7 +342,7 @@ void menuConfiguracionesGEA(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
@@ -386,7 +386,7 @@ void menuConfiguracionGenero(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     std::cin.ignore();
     Genero genero;
@@ -466,7 +466,7 @@ void menuConfiguracionAutor(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     std::cin.ignore();
     Autor autor;
@@ -544,7 +544,7 @@ void menuConfiguracionEditorial(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     std::cin.ignore();
     Editorial editorial;
@@ -626,7 +626,7 @@ void menuVentas(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
@@ -696,7 +696,7 @@ void menuDetalleVenta(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     std::cin.ignore();
     int id;
@@ -894,7 +894,7 @@ void menuClientes(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
@@ -1008,7 +1008,7 @@ void menuListadoClientes(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
@@ -1059,7 +1059,7 @@ void menuEstadisticas(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
@@ -1102,7 +1102,7 @@ void menuEstadisticasLibros(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
        switch(opcion){
     case 1:
@@ -1148,7 +1148,7 @@ void menuEstadisticasRecaudacion(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
        switch(opcion){
     case 1:
@@ -1186,8 +1186,6 @@ void menuEstadisticasCliente(){
     system("cls");
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\tLibreria IOSTREAM"<<std::endl;
-    std::cout<<" "<<std::endl;
     std::cout<<"\tMenu ESTADISTICAS CLIENTES"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t1 - CLIENTE DE MAYOR GASTO DEL MES"<<std::endl;
@@ -1201,12 +1199,28 @@ void menuEstadisticasCliente(){
     std::cout<<" \ Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
-    case 1:
-      //  clienteMayorGastoMes();
-        break;
-    case 2:
-      //  clienteMayorGastoAnio();
-        break;
+    case 1:{
+        system("cls");
+        Cliente m=clienteService.clienteMayorGastoMes();
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tMenu ESTADISTICAS CLIENTES"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" El cliente que mas gasto en el mes elegido fue: "<<m.getApellido()<<" DNI: "<<m.getDni()<<std::endl;
+        system("pause");
+        menuEstadisticasCliente();
+        break;}
+    case 2:{
+        system("cls");
+        Cliente a=clienteService.clienteMayorGastoAnio();
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tMenu ESTADISTICAS CLIENTES"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" El cliente que mas gasto en el anio elegido fue: "<<a.getApellido()<<" DNI: "<<a.getDni()<<std::endl;
+        system("pause");
+        menuEstadisticasCliente();
+        break;}
     case 0:
         menuEstadisticas();
         break;
@@ -1240,7 +1254,7 @@ void menuConfiguraciones(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
@@ -1279,7 +1293,7 @@ void menuRealizarBackup(){
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:
@@ -1357,7 +1371,7 @@ void  menuRestaurarArchivos(){
     std::cout<<" "<<std::endl;
     std::cout<<" - - - - - - - - - - - - "<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \ Elija una opcion: ";
+    std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
     switch(opcion){
     case 1:

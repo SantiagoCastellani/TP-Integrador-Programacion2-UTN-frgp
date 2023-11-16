@@ -155,7 +155,7 @@ void Genero::modificarGenero(){
             updateGenero(genero);
         } else {
             std::cout<<" "<<std::endl;
-            std::cout<<"\Volver al menu."<<std::endl;
+            std::cout<<"\tVolver al menu."<<std::endl;
             std::cout<<" "<<std::endl;
         }
     } else {

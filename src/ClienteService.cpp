@@ -3,6 +3,7 @@
 #include "Cliente.h"
 #include "Fecha.h"
 #include "string.h"
+#include "VentasService.h"
 
 
 ClienteService::ClienteService(){}
@@ -275,3 +276,97 @@ void ClienteService::mostrarClienteRegistrado(Cliente cliente){
     std::cout<<"\t"<<cliente.getNombre()<<" "<<cliente.getApellido()<<" - email: "<<cliente.getEmail()<<std::endl;
 };
 
+
+/// ESTADISTICAS
+
+float ClienteService::ventasXclienteAnio(char* dni,int anio){
+    Venta venta;
+    double importe=0;
+    FILE *archivo;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&venta,sizeof(Venta),1,archivo)==1){
+      if(anio==venta.getFecha().getAnio()){
+       if(strcmp(dni,venta.getDniCliente())==0){
+        importe+=venta.getImporteVenta();
+       }
+      }}
+
+    fclose(archivo);
+    return importe;
+}
+
+float ClienteService::ventasXclienteMes(char* dni,int anio,int mes){
+    Venta venta;
+    double importe=0;
+    FILE *archivo;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&venta,sizeof(Venta),1,archivo)==1){
+        if(anio==venta.getFecha().getAnio()){
+        if(mes==venta.getFecha().getMes()){
+         if(strcmp(dni,venta.getDniCliente())==0){
+        importe+=venta.getImporteVenta();
+         }
+        }
+      }
+    }
+    fclose(archivo);
+    return importe;
+}
+
+Cliente ClienteService::clienteMayorGastoAnio(){
+    Cliente cliente;
+    Cliente clienteDeMayorGasto;
+    double mayorGasto=0;
+    int anio;
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tMenu ESTADISTICAS CLIENTES"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tIngrese anio buscado: ";
+    std::cin>>anio;
+    system("cls");
+    FILE *archivo;
+    archivo = fopen(ARCHIVO_CLIENTES,"rb");
+    while(fread(&cliente,sizeof(Cliente),1,archivo)==1){
+        double acuGasto=0;
+        char dniCliente[9];
+        strcpy(dniCliente,cliente.getDni());
+        acuGasto=ventasXclienteAnio(dniCliente,anio);
+        if(acuGasto>mayorGasto){
+            mayorGasto=acuGasto;
+            clienteDeMayorGasto=cliente;
+        }
+    }
+    fclose(archivo);
+    return clienteDeMayorGasto;
+}
+
+Cliente ClienteService::clienteMayorGastoMes(){
+    Cliente cliente;
+    Cliente clienteDeMayorGasto;
+    double mayorGasto=0;
+    int anio;
+    int mes;
+    std::cout<<"*************************************************"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tMenu ESTADISTICAS CLIENTES"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\tIngrese anio buscado: ";
+    std::cin>>anio;
+    std::cout<<"\tIngrese mes buscado: ";
+    std::cin>>mes;
+    system("cls");
+    FILE *archivo;
+    archivo = fopen(ARCHIVO_CLIENTES,"rb");
+    while(fread(&cliente,sizeof(Cliente),1,archivo)==1){
+          double acuGasto=0;
+          char dniCliente[9];
+          strcpy(dniCliente,cliente.getDni());
+          acuGasto=ventasXclienteMes(dniCliente,anio,mes);
+          if(acuGasto>mayorGasto){
+              mayorGasto=acuGasto;
+              clienteDeMayorGasto=cliente;}
+    }
+    fclose(archivo);
+    return clienteDeMayorGasto;
+}

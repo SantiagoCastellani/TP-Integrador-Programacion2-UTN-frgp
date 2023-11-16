@@ -7,6 +7,7 @@ class ClienteService
     public:
 
         const char *ARCHIVO_CLIENTES = "Clientes.dat";
+        const char *ARCHIVO_REGISTROVENTAS = "RegistrodeVentas.dat";
 
         ClienteService();
 
@@ -49,6 +50,12 @@ class ClienteService
        void editarCliente(Cliente);
 
        void mostrarClienteRegistrado(Cliente cliente);
+
+       /// EStadisticas
+       float ventasXclienteAnio(char* dni,int anio);
+       float ventasXclienteMes(char* dni,int anio,int mes);
+       Cliente clienteMayorGastoAnio();
+       Cliente clienteMayorGastoMes();
 
     protected:
 
