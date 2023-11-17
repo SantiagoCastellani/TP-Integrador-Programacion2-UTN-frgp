@@ -9,6 +9,8 @@
 #include "Editorial.h"
 #include "menu.h"
 
+const char *ARCHIVO_EDITORIAL = "Editoriales.dat";
+const char *ARCHIVO_GENEROS = "Generos.dat";
 
 MedioDePago ms;
 ClienteService cServ;
@@ -88,7 +90,7 @@ void VentasService::leerArchivoVentas(){
     fclose(archivo);
 };
 
-// Devuelve un DetalleVenta segun un IdVenta
+/// Devuelve un DetalleVenta segun un IdVenta
 DetalleVenta VentasService::detalleDeVenta(int idVenta){
     Venta v = buscarVentaById(idVenta);
     ///TODO: traer el cliente y el libro segun los id.
@@ -662,3 +664,332 @@ double VentasService::aplicarRecargo(double importe, float recargo){
     return importe*recargo;
 }
 
+/*****************************************************************************/
+
+/// ESTADISTICAS
+
+/// Recaudacion Total TOTAL
+double VentasService::recaudacionTotal(){
+    double recaudacionTotal=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        recaudacionTotal+=v.getImporteVenta();
+    }
+    fclose(archivo);
+    return recaudacionTotal;
+}
+
+/// Recaudacion por MES por ANIO
+void VentasService::recaudacionTotal(int anio){
+    double recaudacionPorMes[12]={};
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getFecha().getAnio()==anio){
+            int mes=v.getFecha().getMes();
+            recaudacionPorMes[mes-1]+=v.getImporteVenta();
+        }
+    }
+    fclose(archivo);
+    for(int x=0;x<12;x++){
+        if(recaudacionPorMes[x]!=0){
+            std::cout<<"\tEn el mes "<<x+1<<" se recaudaron $"<<recaudacionPorMes[x]<<std::endl;
+        }
+
+    }
+}
+
+/// Recaudacion por ANIO
+double VentasService::recaudacionTotalAnual(int anio){
+    double recaudacionAnual=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getFecha().getAnio()==anio){
+            recaudacionAnual+=v.getImporteVenta();
+        }
+    }
+    fclose(archivo);
+    return recaudacionAnual;
+}
+
+/// BALANCE de VENTAS By EDITORIAL TOTAL
+void VentasService::recaudacionByEditorial(){
+    double editorialMayorVenta=0;
+    int idMayorVenta;
+    FILE *archivo;
+    Editorial e;
+    archivo = fopen(ARCHIVO_EDITORIAL,"rb");
+    while(fread(&e,sizeof(Editorial),1,archivo)==1){
+        double recaudacionEditorial=ventasPorEditorial(e.getIdEditorial());
+        if(recaudacionEditorial>editorialMayorVenta){
+            editorialMayorVenta=recaudacionEditorial;
+            idMayorVenta=e.getIdEditorial();
+            if(recaudacionEditorial!=0){
+                std::cout<<"\tEditorial "<<e.getNombre()<<" recaudo $"<<recaudacionEditorial<<std::endl;
+            }
+        }
+    }
+    fclose(archivo);
+    std::cout<<" "<<std::endl;
+    Editorial edit = eSe.buscarEditorialById(idMayorVenta);
+    std::cout<<"\tLa Editorial de mayor recaudacion es "<<edit.getNombre()<<std::endl;
+    std::cout<<"\tHa recaudado $"<<editorialMayorVenta<<std::endl;
+    std::cout<<" "<<std::endl;
+};
+
+double VentasService::ventasPorEditorial(int idEditorial){
+    double recaudacionEditorial=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        Libro libro = lServ.buscarLibroById(v.getIdLibro());
+        if(libro.getIdEditorial()==idEditorial){
+            recaudacionEditorial+=v.getImporteVenta();
+        }
+    }
+    fclose(archivo);
+    return recaudacionEditorial;
+}
+
+/// BALANCE de VENTAS By EDITORIAL By ANIO
+void VentasService::recaudacionByEditorial(int anio){
+    double editorialMayorVenta=0;
+    int idMayorVenta;
+    FILE *archivo;
+    Editorial e;
+    archivo = fopen(ARCHIVO_EDITORIAL,"rb");
+    while(fread(&e,sizeof(Editorial),1,archivo)==1){
+        double recaudacionEditorial=ventasPorEditorial(e.getIdEditorial(),anio);
+        if(recaudacionEditorial>editorialMayorVenta){
+            editorialMayorVenta=recaudacionEditorial;
+            idMayorVenta=e.getIdEditorial();
+            if(recaudacionEditorial!=0){
+                std::cout<<"\tEditorial "<<e.getNombre()<<" recaudo $"<<recaudacionEditorial<<std::endl;
+            }
+        }
+    }
+    fclose(archivo);
+    if(editorialMayorVenta!=0){
+        std::cout<<" "<<std::endl;
+        Editorial edit = eSe.buscarEditorialById(idMayorVenta);
+        std::cout<<"\tLa Editorial de mayor recaudacion es "<<edit.getNombre()<<std::endl;
+        std::cout<<"\tHa recaudado $"<<editorialMayorVenta<<std::endl;
+    } else {
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tSnif Snif, no hubo ventas."<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+};
+
+double VentasService::ventasPorEditorial(int idEditorial,int anio){
+    double recaudacionEditorial=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getFecha().getAnio()==anio){
+            Libro libro = lServ.buscarLibroById(v.getIdLibro());
+            if(libro.getIdEditorial()==idEditorial){
+                recaudacionEditorial+=v.getImporteVenta();
+            }
+        }
+    }
+    fclose(archivo);
+    return recaudacionEditorial;
+}
+
+
+/// BALANCE de VENTAS By GENERO TOTAL
+void VentasService::recaudacionByGenero(){
+    double generoMayorVenta=0;
+    int idMayorVenta;
+    FILE *archivo;
+    Genero g;
+    archivo = fopen(ARCHIVO_GENEROS,"rb");
+    while(fread(&g,sizeof(Genero),1,archivo)==1){
+        double recaudacionGenero=ventasPorGenero(g.getIdGenero());
+        if(recaudacionGenero>generoMayorVenta){
+            generoMayorVenta=recaudacionGenero;
+            idMayorVenta=g.getIdGenero();
+            if((recaudacionGenero!=0)&&(g.getActivo())){
+                std::cout<<"\tGenero: "<<g.getGenero()<<" | Recaudacion: $"<<recaudacionGenero<<std::endl;
+            }
+        }
+    }
+    fclose(archivo);
+    std::cout<<" "<<std::endl;
+    Genero genero = gSe.buscarGeneroById(idMayorVenta);
+    std::cout<<"\tEl Genero de mayor recaudacion es "<<genero.getGenero()<<std::endl;
+    std::cout<<"\tHa recaudado $"<<generoMayorVenta<<std::endl;
+    std::cout<<" "<<std::endl;
+};
+
+double VentasService::ventasPorGenero(int idGenero){
+    double recaudacionGenero=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+            Genero genero = gSe.buscarGeneroById(idGenero);
+        Libro libro = lServ.buscarLibroById(v.getIdLibro());
+        if((libro.getIdGenero()==idGenero)&&(genero.getActivo())){
+            recaudacionGenero+=v.getImporteVenta();
+        }
+    }
+    fclose(archivo);
+    return recaudacionGenero;
+}
+
+
+/// BALANCE de VENTAS By GENERO By ANIO
+void VentasService::recaudacionByGenero(int anio){
+    double generoMayorVenta=0;
+    int idMayorVenta;
+    FILE *archivo;
+    Genero g;
+    archivo = fopen(ARCHIVO_GENEROS,"rb");
+    while(fread(&g,sizeof(Genero),1,archivo)==1){
+        double recaudacionGenero=ventasPorGenero(g.getIdGenero(),anio);
+        if(recaudacionGenero>generoMayorVenta){
+            generoMayorVenta=recaudacionGenero;
+            idMayorVenta=g.getIdGenero();
+            if((recaudacionGenero!=0)&&(g.getActivo())){
+                std::cout<<"\tGenero: "<<g.getGenero()<<" | Recaudacion: $"<<recaudacionGenero<<std::endl;
+            }
+        }
+    }
+    fclose(archivo);
+    std::cout<<" "<<std::endl;
+    Genero genero = gSe.buscarGeneroById(idMayorVenta);
+    std::cout<<"\tEl Genero de mayor recaudacion es "<<genero.getGenero()<<std::endl;
+    std::cout<<"\tHa recaudado $"<<generoMayorVenta<<std::endl;
+    std::cout<<" "<<std::endl;
+};
+
+double VentasService::ventasPorGenero(int idGenero,int anio){
+    double recaudacionGenero=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        Genero genero = gSe.buscarGeneroById(idGenero);
+        Libro libro = lServ.buscarLibroById(v.getIdLibro());
+        if((libro.getIdGenero()==idGenero)&&(genero.getActivo())&&(v.getFecha().getAnio()==anio)){
+            recaudacionGenero+=v.getImporteVenta();
+        }
+    }
+    fclose(archivo);
+    return recaudacionGenero;
+}
+
+
+/// BALANCE de VENTAS By MEDIO DE PAGO
+void VentasService::recaudacionByMedio(){
+    double medioMayorVenta=0;
+    int idMayorVenta;
+    FILE *archivo;
+    MedioDePago m;
+    archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"rb");
+    while(fread(&m,sizeof(MedioDePago),1,archivo)==1){
+        double recaudacionMedio=ventasPorMedioDePago(m.getId());
+        if(recaudacionMedio>medioMayorVenta){
+            medioMayorVenta=recaudacionMedio;
+            idMayorVenta=m.getId();
+            if((recaudacionMedio!=0)){
+                std::cout<<"\tMedio de Pago: "<<m.getNombre()<<" | Recaudacion: $"<<recaudacionMedio<<std::endl;
+            }
+        }
+    }
+    fclose(archivo);
+    std::cout<<" "<<std::endl;
+    MedioDePago medio = buscarMedioDePagoById(idMayorVenta);
+    std::cout<<"\tEl Medio de Pago de mayor recaudacion es "<<medio.getNombre()<<std::endl;
+    std::cout<<"\tHa recaudado $"<<medioMayorVenta<<std::endl;
+    std::cout<<" "<<std::endl;
+};
+
+double VentasService::ventasPorMedioDePago(int idMedio){
+    double recaudacionMedio=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getMedioDePago()==idMedio){
+            recaudacionMedio+=v.getImporteVenta();
+        }
+    }
+    fclose(archivo);
+    return recaudacionMedio;
+}
+
+/// BALANCE de VENTAS By MEDIO DE PAGO BY ANIO
+void VentasService::recaudacionByMedio(int anio){
+    double medioMayorVenta=0;
+    int idMayorVenta;
+    FILE *archivo;
+    MedioDePago m;
+    archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"rb");
+    while(fread(&m,sizeof(MedioDePago),1,archivo)==1){
+        double recaudacionMedio=ventasPorMedioDePago(m.getId(),anio);
+        if(recaudacionMedio>medioMayorVenta){
+            medioMayorVenta=recaudacionMedio;
+            idMayorVenta=m.getId();
+            if((recaudacionMedio!=0)){
+                std::cout<<"\tMedio de Pago: "<<m.getNombre()<<" | Recaudacion: $"<<recaudacionMedio<<std::endl;
+            }
+        }
+    }
+    fclose(archivo);
+    std::cout<<" "<<std::endl;
+    MedioDePago medio = buscarMedioDePagoById(idMayorVenta);
+    std::cout<<"\tEl Medio de Pago de mayor recaudacion es "<<medio.getNombre()<<std::endl;
+    std::cout<<"\tHa recaudado $"<<medioMayorVenta<<std::endl;
+    std::cout<<" "<<std::endl;
+};
+
+double VentasService::ventasPorMedioDePago(int idMedio,int anio){
+    double recaudacionMedio=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if((v.getMedioDePago()==idMedio)&&(v.getFecha().getAnio()==anio)){
+            recaudacionMedio+=v.getImporteVenta();
+        }
+    }
+    fclose(archivo);
+    return recaudacionMedio;
+}
+
+void VentasService::recaudacionByTitulo(){
+    Libro libro = lServ.buscarLibroByTitulo();
+    double recaudacion = ventasPorTitulo(libro.getIdLibro());
+    if(recaudacion!=0){
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tTitulo: "<<libro.getTitulo()<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tHa recaudado: $"<<recaudacion<<std::endl;
+        std::cout<<" "<<std::endl;
+    }
+
+}
+
+double VentasService::ventasPorTitulo(int idLibro){
+    double recaudacionTitulo=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getIdLibro()==idLibro){
+            recaudacionTitulo+=v.getImporteVenta();
+        }
+    }
+    fclose(archivo);
+    return recaudacionTitulo;
+}

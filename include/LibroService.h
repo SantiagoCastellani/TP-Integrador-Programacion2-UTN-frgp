@@ -7,6 +7,7 @@ class LibroService
     public:
 
         const char *ARCHIVO_LIBROS = "Libros.dat";
+        const char *ARCHIVO_REGISTROVENTAS = "RegistrodeVentas.dat";
 
         LibroService();
 
@@ -87,6 +88,18 @@ class LibroService
         bool hayStock(int id);
         void reducirStock(int id);
         void updatearLibroPosVenta(Libro libro);
+
+        // El LIBRO mas VENDIDO
+        Libro libroMasVendido();
+        int copiasVendidas(int idLibro);
+
+        // El LIBRO mas VENDIDO del ANIO
+        Libro libroMasVendido(int anio);
+        int copiasVendidas(int idLibro,int anio);
+
+        // El LIBRO mas VENDIDO del MES
+        Libro libroMasVendido(int anio,int mes);
+        int copiasVendidas(int idLibro,int anio,int mes);
 
 
     protected:

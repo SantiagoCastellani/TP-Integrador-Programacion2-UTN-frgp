@@ -229,4 +229,3 @@ void Editorial::updateEditorial(Editorial editorial){
 //    fclose(archivo);
 //    return cant;
 //}
-

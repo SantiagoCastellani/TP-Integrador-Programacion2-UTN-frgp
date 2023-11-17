@@ -83,6 +83,34 @@ class VentasService
         void ventasEntreFechas();
         int contarVentasEntreFechas(Fecha fechaDesde,Fecha fechaHasta);
 
+        /// ESTADISTICAS
+        double recaudacionTotal();
+        // Recaudacion por MES por ANIO
+        void recaudacionTotal(int anio);
+        // Recaudacion por ANIO
+        double recaudacionTotalAnual(int anio);
+
+        // Recaudacion por Editorial
+        void recaudacionByEditorial();
+        double ventasPorEditorial(int idEditorial);
+        double ventasPorEditorial(int idEditorial,int anio);
+        void recaudacionByEditorial(int anio);
+
+        // BALANCE de VENTAS By GENERO TOTAL
+        void recaudacionByGenero();
+        double ventasPorGenero(int idGenero);
+        void recaudacionByGenero(int anio);
+        double ventasPorGenero(int idGenero,int anio);
+
+        // BALANCE de VENTAS By MEDIO DE PAGO
+        void recaudacionByMedio();
+        double ventasPorMedioDePago(int idMedio);
+        void recaudacionByMedio(int anio);
+        double ventasPorMedioDePago(int idMedio,int anio);
+
+        void recaudacionByTitulo();
+        double ventasPorTitulo(int idLibro);
+
     protected:
 
     private:

@@ -4,6 +4,7 @@
 #include "Autor.h"
 #include "Genero.h"
 #include "Editorial.h"
+#include "Venta.h"
 
 LibroService::LibroService(){}
 
@@ -535,4 +536,103 @@ void LibroService::infoBasicaLibro(int id){
     Libro libro = buscarLibroById(id);
     Autor autor = autorService.buscarAutorById(libro.getIdAutor());
     std::cout<<"\t"<<libro.getTitulo()<<" ("<<autor.getNombre()<<" "<<autor.getApellido()<<")"<<std::endl;
+}
+
+
+/// ESTADISTICAS
+
+// El LIBRO mas VENDIDO
+Libro LibroService::libroMasVendido(){
+    int cantVentas=0;
+    Libro masVendido;
+    FILE *archivo;
+    Libro l;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        int copias=copiasVendidas(l.getIdLibro());
+        if(copias>cantVentas){
+            cantVentas=copias;
+            masVendido=l;
+        }
+    }
+    fclose(archivo);
+    return masVendido;
+}
+
+int LibroService::copiasVendidas(int idLibro){
+    int copias=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if(v.getIdLibro()==idLibro){
+            copias++;
+        }
+    }
+    fclose(archivo);
+    return copias;
+}
+
+// El LIBRO mas VENDIDO del ANIO
+Libro LibroService::libroMasVendido(int anio){
+    int cantVentas=0;
+    Libro masVendido;
+    FILE *archivo;
+    Libro l;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        int copias=copiasVendidas(l.getIdLibro(),anio);
+        if(copias>cantVentas){
+            cantVentas=copias;
+            masVendido=l;
+        }
+    }
+    fclose(archivo);
+    return masVendido;
+}
+
+int LibroService::copiasVendidas(int idLibro,int anio){
+    int copias=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if((v.getIdLibro()==idLibro)&&(v.getFecha().getAnio()==anio)){
+            copias++;
+        }
+    }
+    fclose(archivo);
+    return copias;
+}
+
+// El LIBRO mas VENDIDO del MES
+Libro LibroService::libroMasVendido(int anio,int mes){
+    int cantVentas=0;
+    Libro masVendido;
+    FILE *archivo;
+    Libro l;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        int copias=copiasVendidas(l.getIdLibro(),anio,mes);
+        if(copias>cantVentas){
+            cantVentas=copias;
+            masVendido=l;
+        }
+    }
+    fclose(archivo);
+    return masVendido;
+}
+
+int LibroService::copiasVendidas(int idLibro,int anio,int mes){
+    int copias=0;
+    FILE *archivo;
+    Venta v;
+    archivo = fopen(ARCHIVO_REGISTROVENTAS,"rb");
+    while(fread(&v,sizeof(Venta),1,archivo)==1){
+        if((v.getIdLibro()==idLibro)&&(v.getFecha().getAnio()==anio)&&(v.getFecha().getMes()==mes)){
+            copias++;
+        }
+    }
+    fclose(archivo);
+    return copias;
 }

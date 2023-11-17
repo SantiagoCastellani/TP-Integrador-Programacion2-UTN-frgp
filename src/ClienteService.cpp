@@ -359,13 +359,14 @@ Cliente ClienteService::clienteMayorGastoMes(){
     FILE *archivo;
     archivo = fopen(ARCHIVO_CLIENTES,"rb");
     while(fread(&cliente,sizeof(Cliente),1,archivo)==1){
-          double acuGasto=0;
-          char dniCliente[9];
-          strcpy(dniCliente,cliente.getDni());
-          acuGasto=ventasXclienteMes(dniCliente,anio,mes);
-          if(acuGasto>mayorGasto){
-              mayorGasto=acuGasto;
-              clienteDeMayorGasto=cliente;}
+        double acuGasto=0;
+        char dniCliente[9];
+        strcpy(dniCliente,cliente.getDni());
+        acuGasto=ventasXclienteMes(dniCliente,anio,mes);
+        if(acuGasto>mayorGasto){
+            mayorGasto=acuGasto;
+            clienteDeMayorGasto=cliente;
+        }
     }
     fclose(archivo);
     return clienteDeMayorGasto;

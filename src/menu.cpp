@@ -1055,6 +1055,7 @@ void menuEstadisticas(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t3 - ESTADISTICAS CLIENTES"<<std::endl;
     std::cout<<" "<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
@@ -1094,22 +1095,99 @@ void menuEstadisticasLibros(){
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu ESTADISTICAS DE LIBROS"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t1 - LIBRO MAS VENDIDO DEL Anio"<<std::endl;
+    std::cout<<"\t1 - LIBRO mas VENDIDO"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t2 - LIBRO MAS VENDIDO DEL MES"<<std::endl;
+    std::cout<<"\t2 - LIBRO mas VENDIDO del ANIO"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t3 - LIBRO mas VENDIDO del MES"<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" \t Elija una opcion: ";
+    std::cout<<"\tElija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    Libro libro;
+    int anio,mes;
+    switch(opcion){
     case 1:
-       // libroMayorVentaAnio();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLIBRO mas VENDIDO"<<std::endl;
+        std::cout<<" "<<std::endl;
+        libro = libroService.libroMasVendido();
+        if(libroService.copiasVendidas(libro.getIdLibro())!=0){
+            libroService.mostrarLibro(libro);
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tSe vendieron: "<<libroService.copiasVendidas(libro.getIdLibro())<<" copias."<<std::endl;
+            std::cout<<" "<<std::endl;
+        } else {
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tSnif snif, aun no se han vendido libros:"<<std::endl;
+            std::cout<<" "<<std::endl;
+        }
+        system("pause");
+        menuEstadisticasLibros();
         break;
     case 2:
-       // libroMayorVentaMes();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLIBRO mas VENDIDO del ANIO"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tIngrese el anio: ";
+        std::cin>>anio;
+        libro = libroService.libroMasVendido(anio);
+        if(libroService.copiasVendidas(libro.getIdLibro(),anio)!=0){
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tEl LIBRO mas vendido del anio "<<anio<<"es: "<<std::endl;
+            std::cout<<" "<<std::endl;
+            libroService.mostrarLibro(libro);
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tSe vendieron: "<<libroService.copiasVendidas(libro.getIdLibro(),anio)<<" copias."<<std::endl;
+            std::cout<<" "<<std::endl;
+        } else {
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tSnif snif, NO se ha vendido ningun libro ese anio."<<std::endl;
+            std::cout<<" "<<std::endl;
+        }
+        system("pause");
+        menuEstadisticasLibros();
+        break;
+    case 3:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLIBRO mas VENDIDO del MES"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tIngrese el anio: ";
+        std::cin>>anio;
+        std::cout<<"\tIngrese el Mes: ";
+        std::cin>>mes;
+        libro = libroService.libroMasVendido(anio,mes);
+        if(libroService.copiasVendidas(libro.getIdLibro(),anio,mes)!=0){
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tEl LIBRO mas vendido del Mes "<<mes<<" es:"<<std::endl;
+            std::cout<<" "<<std::endl;
+            libroService.mostrarLibro(libro);
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tSe vendieron: "<<libroService.copiasVendidas(libro.getIdLibro(),anio,mes)<<" copias."<<std::endl;
+            std::cout<<" "<<std::endl;
+        } else {
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tSnif snif, en ese mes NO se han vendido libros."<<std::endl;
+            std::cout<<" "<<std::endl;
+        }
+        system("pause");
+        menuEstadisticasLibros();
         break;
     case 0:
         menuEstadisticas();
@@ -1119,12 +1197,14 @@ void menuEstadisticasLibros(){
 
     system("pause");
     menuInicio();
-};
+    }
 }
 
 // menuEstadisticasRecaudacion
 void menuEstadisticasRecaudacion(){
     int opcion;
+    double recaudacion;
+    int anio,mes;
     system("cls");
     std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1132,17 +1212,18 @@ void menuEstadisticasRecaudacion(){
     std::cout<<" "<<std::endl;
     std::cout<<"\tMenu ESTADISTICAS DE RECAUDACION"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t1 - RECAUDACION POR EDITORIAL"<<std::endl;
+    std::cout<<"\t1 - Recaudacion TOTAL por EDITORIAL"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t2 - RECAUDACION POR GENERO"<<std::endl;
+    std::cout<<"\t2 - Recaudacion TOTAL por GENERO"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t3 - RECAUDACION POR TITULO"<<std::endl;
+    std::cout<<"\t3 - Recaudacion TOTAL por MEDIO DE PAGO"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t4 - RECAUDACION POR MEDIO DE PAGO"<<std::endl;
+    std::cout<<"\t4 - Recaudacion por TITULO"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t5 - RECAUDACION TOTAL POR MES"<<std::endl;
+    std::cout<<"\t5 - RECAUDACION por MES por ANIO"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t6 - RECAUDACION ANUAL"<<std::endl;
+    std::cout<<"\t6 - RECAUDACION TOTAL"<<std::endl;
+    std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
@@ -1150,24 +1231,115 @@ void menuEstadisticasRecaudacion(){
     std::cout<<" "<<std::endl;
     std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
-       switch(opcion){
+    switch(opcion){
     case 1:
-       // recaudacionByEditorial();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tRECAUDACION por EDITORIAL"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tIngrese el ANIO que desea conocer o bien 1 para la estadistica Total: ";
+        std::cin>>anio;
+        std::cout<<" "<<std::endl;
+        if(anio==1){
+            ventasService.recaudacionByEditorial();
+        } else {
+            ventasService.recaudacionByEditorial(anio);
+        }
+        system("pause");
+        menuEstadisticasRecaudacion();
         break;
     case 2:
-       // recaudacionByGenero();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tRECAUDACION por EDITORIAL"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tIngrese el ANIO que desea conocer o bien 1 para la estadistica Total: ";
+        std::cin>>anio;
+        std::cout<<" "<<std::endl;
+        if(anio==1){
+            ventasService.recaudacionByGenero();
+        } else {
+            ventasService.recaudacionByGenero(anio);
+        }
+        system("pause");
+        menuEstadisticasRecaudacion();
         break;
     case 3:
-       // recaudacionByTitulo();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tRECAUDACION por MEDIO de PAGO"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tIngrese el ANIO que desea conocer, o bien 5 para la estadistica Total: ";
+        std::cin>>anio;
+        std::cout<<" "<<std::endl;
+        if(anio==5){
+            ventasService.recaudacionByMedio();
+        } else {
+            ventasService.recaudacionByMedio(anio);
+        }
+        system("pause");
+        menuEstadisticasRecaudacion();
         break;
     case 4:
-       // recaudacionByMediodePago();
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tRECAUDACION por TITULO"<<std::endl;
+        std::cout<<" "<<std::endl;
+        ventasService.recaudacionByTitulo();
+        system("pause");
+        menuEstadisticasRecaudacion();
         break;
-     case 5:
-       // recaudacionTotalMes();
         break;
-      case 6:
-       // recaudacionAnual();
+    case 5:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tRECAUDACION por MES por ANIO"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tIngrese el anio: ";
+        std::cin>>anio;
+        recaudacion=ventasService.recaudacionTotalAnual(anio);
+        if(recaudacion!=0){
+            std::cout<<" "<<std::endl;
+            std::cout<< "\tRecaudacion TOTAL: $"<<ventasService.recaudacionTotalAnual(anio)<<std::endl;
+            std::cout<<" "<<std::endl;
+            ventasService.recaudacionTotal(anio);
+            std::cout<<" "<<std::endl;
+        } else {
+            std::cout<<" "<<std::endl;
+            std::cout<<"\tSnif Snif, en ese anio NO se vendieron libros."<<std::endl;
+            std::cout<<" "<<std::endl;
+        }
+        system("pause");
+        menuEstadisticasRecaudacion();
+        break;
+    case 6:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tRECAUDACION TOTAL"<<std::endl;
+        std::cout<<" "<<std::endl;
+        recaudacion=ventasService.recaudacionTotal();
+        std::cout<<"\tLa recaudacion hasta el momento es de $"<<recaudacion<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuEstadisticasRecaudacion();
         break;
     case 0:
         menuEstadisticas();
