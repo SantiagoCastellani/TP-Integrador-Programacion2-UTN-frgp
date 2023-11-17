@@ -725,13 +725,14 @@ void VentasService::recaudacionByEditorial(){
     Editorial e;
     archivo = fopen(ARCHIVO_EDITORIAL,"rb");
     while(fread(&e,sizeof(Editorial),1,archivo)==1){
-        double recaudacionEditorial=ventasPorEditorial(e.getIdEditorial());
+        double recaudacionEditorial=0;
+        recaudacionEditorial = ventasPorEditorial(e.getIdEditorial());
+        if(recaudacionEditorial!=0){
+            std::cout<<"\tEditorial "<<e.getNombre()<<" recaudo $"<<recaudacionEditorial<<std::endl;
+        }
         if(recaudacionEditorial>editorialMayorVenta){
             editorialMayorVenta=recaudacionEditorial;
             idMayorVenta=e.getIdEditorial();
-            if(recaudacionEditorial!=0){
-                std::cout<<"\tEditorial "<<e.getNombre()<<" recaudo $"<<recaudacionEditorial<<std::endl;
-            }
         }
     }
     fclose(archivo);
@@ -766,12 +767,12 @@ void VentasService::recaudacionByEditorial(int anio){
     archivo = fopen(ARCHIVO_EDITORIAL,"rb");
     while(fread(&e,sizeof(Editorial),1,archivo)==1){
         double recaudacionEditorial=ventasPorEditorial(e.getIdEditorial(),anio);
+        if(recaudacionEditorial!=0){
+            std::cout<<"\tEditorial "<<e.getNombre()<<" recaudo $"<<recaudacionEditorial<<std::endl;
+        }
         if(recaudacionEditorial>editorialMayorVenta){
             editorialMayorVenta=recaudacionEditorial;
             idMayorVenta=e.getIdEditorial();
-            if(recaudacionEditorial!=0){
-                std::cout<<"\tEditorial "<<e.getNombre()<<" recaudo $"<<recaudacionEditorial<<std::endl;
-            }
         }
     }
     fclose(archivo);
@@ -814,12 +815,12 @@ void VentasService::recaudacionByGenero(){
     archivo = fopen(ARCHIVO_GENEROS,"rb");
     while(fread(&g,sizeof(Genero),1,archivo)==1){
         double recaudacionGenero=ventasPorGenero(g.getIdGenero());
+        if((recaudacionGenero!=0)&&(g.getActivo())){
+            std::cout<<"\tGenero: "<<g.getGenero()<<" | Recaudacion: $"<<recaudacionGenero<<std::endl;
+        }
         if(recaudacionGenero>generoMayorVenta){
             generoMayorVenta=recaudacionGenero;
             idMayorVenta=g.getIdGenero();
-            if((recaudacionGenero!=0)&&(g.getActivo())){
-                std::cout<<"\tGenero: "<<g.getGenero()<<" | Recaudacion: $"<<recaudacionGenero<<std::endl;
-            }
         }
     }
     fclose(archivo);
@@ -856,12 +857,12 @@ void VentasService::recaudacionByGenero(int anio){
     archivo = fopen(ARCHIVO_GENEROS,"rb");
     while(fread(&g,sizeof(Genero),1,archivo)==1){
         double recaudacionGenero=ventasPorGenero(g.getIdGenero(),anio);
+        if((recaudacionGenero!=0)&&(g.getActivo())){
+            std::cout<<"\tGenero: "<<g.getGenero()<<" | Recaudacion: $"<<recaudacionGenero<<std::endl;
+        }
         if(recaudacionGenero>generoMayorVenta){
             generoMayorVenta=recaudacionGenero;
             idMayorVenta=g.getIdGenero();
-            if((recaudacionGenero!=0)&&(g.getActivo())){
-                std::cout<<"\tGenero: "<<g.getGenero()<<" | Recaudacion: $"<<recaudacionGenero<<std::endl;
-            }
         }
     }
     fclose(archivo);
@@ -898,12 +899,12 @@ void VentasService::recaudacionByMedio(){
     archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"rb");
     while(fread(&m,sizeof(MedioDePago),1,archivo)==1){
         double recaudacionMedio=ventasPorMedioDePago(m.getId());
+        if((recaudacionMedio!=0)){
+            std::cout<<"\tMedio de Pago: "<<m.getNombre()<<" | Recaudacion: $"<<recaudacionMedio<<std::endl;
+        }
         if(recaudacionMedio>medioMayorVenta){
             medioMayorVenta=recaudacionMedio;
             idMayorVenta=m.getId();
-            if((recaudacionMedio!=0)){
-                std::cout<<"\tMedio de Pago: "<<m.getNombre()<<" | Recaudacion: $"<<recaudacionMedio<<std::endl;
-            }
         }
     }
     fclose(archivo);
@@ -937,12 +938,12 @@ void VentasService::recaudacionByMedio(int anio){
     archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"rb");
     while(fread(&m,sizeof(MedioDePago),1,archivo)==1){
         double recaudacionMedio=ventasPorMedioDePago(m.getId(),anio);
+        if((recaudacionMedio!=0)){
+            std::cout<<"\tMedio de Pago: "<<m.getNombre()<<" | Recaudacion: $"<<recaudacionMedio<<std::endl;
+        }
         if(recaudacionMedio>medioMayorVenta){
             medioMayorVenta=recaudacionMedio;
             idMayorVenta=m.getId();
-            if((recaudacionMedio!=0)){
-                std::cout<<"\tMedio de Pago: "<<m.getNombre()<<" | Recaudacion: $"<<recaudacionMedio<<std::endl;
-            }
         }
     }
     fclose(archivo);

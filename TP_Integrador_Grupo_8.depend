@@ -188,7 +188,7 @@
 
 1699420291 c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\include\editorial.h
 
-1699934230 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\fecha.cpp
+1700197045 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\fecha.cpp
 	"Fecha.h"
 
 1700191984 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\genero.cpp
@@ -212,7 +212,7 @@
 	"string.h"
 	<cstdio>
 
-1700195575 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\menu.cpp
+1700196355 source:c:\users\santi\desktop\tp integrador\tp-integrador-programacion2-utn-frgp\src\menu.cpp
 	<iostream>
 	"menu.h"
 	"Libro.h"

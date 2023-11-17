@@ -18,12 +18,35 @@ std::string Fecha::fechaFormateada(){
 }
 
 // Cargar Fecha
+//Fecha Fecha::cargarFecha(){
+//    int dia,mes,anio;
+//    std::cout<<"Dia: ";
+//    std::cin>>dia;
+//    std::cout<<"Mes: ";
+//    std::cin>>mes;
+//    std::cout<<"Anio: ";
+//    std::cin>>anio;
+//    Fecha fecha(dia,mes,anio);
+//    return fecha;
+//};
+
+// Cargar Fecha
 Fecha Fecha::cargarFecha(){
     int dia,mes,anio;
     std::cout<<"Dia: ";
     std::cin>>dia;
+    if(dia>31){
+        std::cout<<""<<std::endl;
+        std::cout<<"El dia ingresado no es correcto. Por favor ingrese otro: ";
+        std::cin>>dia;
+    }
     std::cout<<"Mes: ";
     std::cin>>mes;
+    if(mes>12){
+        std::cout<<""<<std::endl;
+        std::cout<<"El mes ingresado no es correcto. Por favor ingrese otro: ";
+        std::cin>>mes;
+    }
     std::cout<<"Anio: ";
     std::cin>>anio;
     Fecha fecha(dia,mes,anio);
