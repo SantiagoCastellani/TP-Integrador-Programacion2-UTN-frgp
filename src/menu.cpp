@@ -70,6 +70,18 @@ void menuInicio(){
         finalizar();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuInicio();
         break;
     }
 }
@@ -133,9 +145,19 @@ void menuLibros(){
         menuInicio();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuLibros();
         break;
-    system("pause");
-    menuInicio();
 };
 }
 
@@ -161,7 +183,6 @@ void menuBuscarLibro(){
     std::cout<<" "<<std::endl;
     std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
-    ///TODOS: COLOCAR LAS FUNCIONES PARA BUSQUEDAS
     switch(opcion){
     case 1:
         system("cls");
@@ -193,9 +214,19 @@ void menuBuscarLibro(){
         menuLibros();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuBuscarLibro();
         break;
-    system("pause");
-    menuInicio();
   };
 }
 
@@ -234,18 +265,20 @@ void menuCargarLibro(){
         menuLibros();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuCargarLibro();
         break;
-    system("pause");
-    menuLibros();
     }
-}
-
-/// Menu MODIFICAR LIBRO -----------------------------
-
-void menuModificarLibro(){
-
-    system("pause");
-    menuInicio();
 }
 
 /// Menu LISTADO de LIBROS -----------------------------
@@ -264,7 +297,9 @@ void menuListadoLibros(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t2 - Listar por EDITORIAL"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<"\t3 - Listar por TITULO de la A a la Z"<<std::endl;
+    std::cout<<"\t3 - Listar por TITULO de la A a la Z (Info basica)"<<std::endl;
+    std::cout<<" "<<std::endl;
+    std::cout<<"\t4 - Listar TODOS"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
@@ -309,13 +344,35 @@ void menuListadoLibros(){
         std::cout<<" "<<std::endl;
         system("pause");
         menuListadoLibros();
+    case 4:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tListado TODOS"<<std::endl;
+        std::cout<<" "<<std::endl;
+        libroService.listarLibrosTodos();
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuListadoLibros();
     case 0:
         menuLibros();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuListadoLibros();
         break;
-    system("pause");
-    menuInicio();
     }
 }
 
@@ -358,9 +415,19 @@ void menuConfiguracionesGEA(){
         menuLibros();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguracionesGEA();
         break;
-    system("pause");
-    menuInicio();
   }
 }
 
@@ -438,9 +505,19 @@ void menuConfiguracionGenero(){
         menuLibros();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguracionGenero();
         break;
-    system("pause");
-    menuInicio();
   }
 }
 
@@ -516,9 +593,19 @@ void menuConfiguracionAutor(){
         menuLibros();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguracionAutor();
         break;
-    system("pause");
-    menuInicio();
   }
 }
 
@@ -594,10 +681,20 @@ void menuConfiguracionEditorial(){
         menuLibros();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguracionEditorial();
         break;
-    system("pause");
-    menuInicio();
-  }
+    }
 }
 
 
@@ -642,9 +739,19 @@ void menuVentas(){
         menuInicio();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuVentas();
         break;
-    system("pause");
-    menuInicio();
 };
 }
 
@@ -725,19 +832,28 @@ void menuDetalleVenta(){
         std::cout<<" "<<std::endl;
         std::cout<<"\tDETALLE de VENTA por DNI del Cliente"<<std::endl;
         std::cout<<" "<<std::endl;
-        std::cout<<"\tIngrese el numero de DNI: "<<std::endl;
-        std::cin>>id;
+        ventasService.ventasByCliente();
         std::cout<<" "<<std::endl;
         system("pause");
         menuVentas();
         break;
     case 0:
-        menuLibros();
+        menuVentas();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuDetalleVenta();
         break;
-    system("pause");
-    menuInicio();
   }
 }
 
@@ -854,10 +970,20 @@ void menuListadoVentas(){
         menuVentas();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuListadoVentas();
         break;
-    system("pause");
-    menuInicio();
-};
+    }
 }
 
 //menuAnularVenta
@@ -902,6 +1028,13 @@ void menuClientes(){
         menuClientes();
         break;
     case 2:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tMenu BUSCAR CLIENTE"<<std::endl;
+        std::cout<<" "<<std::endl;
         buscarCliente();
         system("pause");
         menuClientes();
@@ -925,32 +1058,40 @@ void menuClientes(){
         menuInicio();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuClientes();
         break;
-
-    system("pause");
-    menuInicio();
-};
+    }
 }
 
 /// Menu BUSCAR CLIENTE -----------------------------
 
 void buscarCliente(){
-char dni[9];
-std::cin.ignore();
-std::cout << "\tIngrese DNI a Buscar: "<<std::endl;
-std::cin.getline(dni,9);
-bool existe=clienteService.existeCliente(dni);
-std::cout<<existe;
-system("pause");
-if(existe){
-    Cliente cliente=clienteService.buscarClientexDni(dni);
-    clienteService.mostrarCliente(cliente);
-}
-else {std::cout<< "Cliente no Registrado"<<std::endl; };
-
-
-    system("pause");
-    menuInicio();
+    char dni[9];
+    std::cin.ignore();
+    std::cout << "\tIngrese DNI a Buscar: ";
+    std::cin.getline(dni,9);
+    bool existe=clienteService.existeCliente(dni);
+    if(existe){
+        std::cout<< " "<<std::endl;
+        std::cout<< "\tCliente:"<<std::endl;
+        Cliente cliente=clienteService.buscarClientexDni(dni);
+        clienteService.mostrarCliente(cliente);
+    } else {
+        std::cout<< " "<<std::endl;
+        std::cout<< "\tCliente NO Registrado"<<std::endl;
+        std::cout<< " "<<std::endl;
+    }
 }
 
 /// Menu CARGAR CLIENTE -----------------------------
@@ -1027,11 +1168,20 @@ void menuListadoClientes(){
         menuClientes();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuListadoClientes();
         break;
-
-    system("pause");
-    menuInicio();
-    };
+    }
 }
 
 ///*************************************************************************************
@@ -1076,16 +1226,25 @@ void menuEstadisticas(){
         menuInicio();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuEstadisticas();
         break;
-
-    system("pause");
-    menuInicio();
     }
 }
 
 
 
-// menuEstadisticasLibros
+/// Menu Estadisticas Libros
 void menuEstadisticasLibros(){
     int opcion;
     system("cls");
@@ -1193,14 +1352,23 @@ void menuEstadisticasLibros(){
         menuEstadisticas();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuEstadisticasLibros();
         break;
-
-    system("pause");
-    menuInicio();
     }
 }
 
-// menuEstadisticasRecaudacion
+/// Menu Estadisticas Recaudacion
 void menuEstadisticasRecaudacion(){
     int opcion;
     double recaudacion;
@@ -1345,14 +1513,23 @@ void menuEstadisticasRecaudacion(){
         menuEstadisticas();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuEstadisticasRecaudacion();
         break;
-
-    system("pause");
-    menuInicio();
-};
+    }
 }
 
-// menuEstadisticasCliente
+/// Menu Estadisticas Cliente
 void menuEstadisticasCliente(){
     int opcion;
     system("cls");
@@ -1397,18 +1574,27 @@ void menuEstadisticasCliente(){
         menuEstadisticas();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuEstadisticasCliente();
         break;
-
-    system("pause");
-    menuInicio();
-    };
+    }
 }
 
 /****************************************************************************************/
 
 /// MENU CONFIGUARCIONES
 
-// Menu Configuraciones
+/// Menu Configuraciones
 void menuConfiguraciones(){
     int opcion;
     system("cls");
@@ -1439,13 +1625,23 @@ void menuConfiguraciones(){
         menuInicio();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuConfiguraciones();
         break;
-    system("pause");
-    menuInicio();
-    };
+    }
 }
 
-// menuRealizarBackup
+/// Menu Realizar Backup
 void menuRealizarBackup(){
     int opcion;
     system("cls");
@@ -1517,13 +1713,23 @@ void menuRealizarBackup(){
         menuConfiguraciones();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuRealizarBackup();
         break;
-    system("pause");
-    menuInicio();
-};
+    }
 }
 
-//  menuRestaurarArchivos
+///  Menu Restaurar Archivos
 void  menuRestaurarArchivos(){
     int opcion;
     system("cls");
@@ -1541,7 +1747,7 @@ void  menuRestaurarArchivos(){
     std::cout<<" "<<std::endl;
     std::cout<<"\t0 - Regresar al menu anterior"<<std::endl;
     std::cout<<" "<<std::endl;
-    std::cout<<" - - - - - - - - - - - - "<<std::endl;
+    std::cout<<"*************************************************"<<std::endl;
     std::cout<<" "<<std::endl;
     std::cout<<" \t Elija una opcion: ";
     std::cin>>opcion;
@@ -1595,13 +1801,23 @@ void  menuRestaurarArchivos(){
         menuConfiguraciones();
         break;
     default:
+        system("cls");
+        std::cout<<"*************************************************"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tLibreria IOSTREAM"<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<"\tOpcion Incorrecta, ingrese otra opcion."<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        std::cout<<" "<<std::endl;
+        system("pause");
+        menuRestaurarArchivos();
         break;
-    system("pause");
-    menuInicio();
-    };
+    }
 }
 
-// Finalizar
+/// Finalizar
 void finalizar(){
     system("cls");
     std::cout<<" "<<std::endl;

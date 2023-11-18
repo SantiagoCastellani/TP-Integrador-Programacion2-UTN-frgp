@@ -636,3 +636,16 @@ int LibroService::copiasVendidas(int idLibro,int anio,int mes){
     fclose(archivo);
     return copias;
 }
+
+/// Listar TODOS los LIBROS
+void LibroService::listarLibrosTodos(){
+    FILE *archivo;
+    Libro l;
+    archivo = fopen(ARCHIVO_LIBROS,"rb");
+    std::cout<<" "<< std::endl;
+    while(fread(&l,sizeof(Libro),1,archivo)==1){
+        mostrarLibro(l);
+    }
+    std::cout<<" "<<std::endl;
+    fclose(archivo);
+}

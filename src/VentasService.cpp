@@ -18,7 +18,6 @@ LibroService lServ;
 Genero gSe;
 Editorial eSe;
 
-
 VentasService::VentasService(){};
 
 /*****************************************************************************/
@@ -31,8 +30,7 @@ Venta VentasService::buscarVentaById(int id){
     return v;
 };
 
-/// TODO: Metodo alternativo para cargar ventas.
-/// Carga una Venta
+/// Carga una Venta  (Metodo alternativo para cargar ventas)
 Venta VentasService::cargarVenta(){
     std::cout << "CARGAR VENTA" <<std::endl;
     char dni[9];
@@ -66,11 +64,11 @@ void VentasService::registrarVenta(Venta venta){
 void VentasService::mostrarVenta(Venta v){
     std::cout << " Nro Venta: "<<v.getIdVenta()<<std::endl;
     std::cout << " Dni Cliente: "<<v.getDniCliente()<<std::endl;
-    /// TODO: Reemplazar por Titulo de Libro
-    std::cout << " Id LIBRO: "<<v.getIdLibro()<<std::endl;
+    Libro libro = lServ.buscarLibroById(v.getIdLibro());
+    std::cout << " LIBRO: "<<libro.getTitulo()<<std::endl;
     std::cout << " Importe: $"<<v.getImporteVenta()<<std::endl;
-    /// TODO: Reemplazar por Medio de Pago
-    std::cout << " Id Medio de Pago: "<<v.getMedioDePago()<<std::endl;
+    MedioDePago medioDePago = buscarMedioDePagoById(v.getMedioDePago());
+    std::cout << " Medio de Pago: "<<medioDePago.getNombre()<<std::endl;
     std::cout << " Fecha: "<<v.getFecha().fechaFormateada()<<std::endl;
     std::cout << "  "<<std::endl;
 };
@@ -100,7 +98,7 @@ DetalleVenta VentasService::detalleDeVenta(int idVenta){
     return d;
 };
 
-// Devuelve el proximo IdVenta (el mayor +1 )
+/// Devuelve el proximo IdVenta (el mayor +1 )
 int VentasService::proximoIdVenta(){
     FILE *archivo;
     Venta v;
@@ -120,7 +118,7 @@ int VentasService::proximoIdVenta(){
 
 /// MEDIOS DE PAGO
 
-// Devuelve un MedioDePago ById
+/// Devuelve un MedioDePago ById
 MedioDePago VentasService::buscarMedioDePagoById(int id){
     FILE *archivo;
     MedioDePago medio;
@@ -138,7 +136,7 @@ MedioDePago VentasService::buscarMedioDePagoById(int id){
     return medio;
 };
 
-// Existe Medio?
+/// Existe Medio de Pago?
 bool VentasService::existeMedio(int id){
     FILE *archivo;
     MedioDePago m;
@@ -153,7 +151,7 @@ bool VentasService::existeMedio(int id){
     return existe;
 };
 
-// Cargar un MedioDePago
+/// Cargar un MedioDePago
 MedioDePago VentasService::cargarMedioDePago(){
     char nombre[30];
     float recargo;
@@ -172,7 +170,7 @@ MedioDePago VentasService::cargarMedioDePago(){
 };
 
 
-// Registrar MedioDePago en Archivo.
+/// Registrar MedioDePago en Archivo.
 void VentasService::registrarMedioDePago(MedioDePago medio){
     FILE *archivo;
     archivo = fopen(ARCHIVO_MEDIOSDEPAGO,"ab");
@@ -180,7 +178,7 @@ void VentasService::registrarMedioDePago(MedioDePago medio){
     fclose(archivo);
 };
 
-// Leer Archivo de Medios de Pago
+/// Leer Archivo de Medios de Pago
 void VentasService::leerArchivoMedioDePago(){
     FILE *archivo;
     MedioDePago m;
@@ -195,7 +193,7 @@ void VentasService::leerArchivoMedioDePago(){
     fclose(archivo);
 };
 
-// Mostrar Medio de Pago
+/// Mostrar Medio de Pago
 void VentasService::mostrarMedioDePago(MedioDePago m){
     std::cout<<"ID: "<< m.getId()<< std::endl;
     std::cout<<"NOMBRE: "<< m.getNombre()<< std::endl;
@@ -203,13 +201,16 @@ void VentasService::mostrarMedioDePago(MedioDePago m){
     std::cout<<"Cant CUOTAS: "<< m.getCantCuotas()<< std::endl;
 };
 
+/// Mostrar Medio De Pago (para elegir medio)
 void VentasService::mostrarMedioDePagoMenu(MedioDePago m){
     std::cout<<"ID: "<< m.getId()<<" - "<< m.getNombre()<<" - Cuotas: " << m.getCantCuotas()<< std::endl;
 };
 
+/// Mostrar Medio De Pago (1 linea)
 void VentasService::mostrarMedioDePagoDetalle(MedioDePago m){
     std::cout<<"\t"<<m.getNombre()<<" - Cuotas: " << m.getCantCuotas()<<" - (Rec:"<<m.getRecargo()<<")"<<std::endl;
 };
+
 
 void VentasService::leerArchivoMedioDePagoMenu(){
     FILE *archivo;
@@ -225,7 +226,7 @@ void VentasService::leerArchivoMedioDePagoMenu(){
     fclose(archivo);
 };
 
-// Modificar MedioDePago
+/// Modificar MedioDePago
 void VentasService::modificarMedioDePago(MedioDePago medio){
     FILE *archivo;
     int res=-1;
@@ -255,27 +256,15 @@ void VentasService::modificarMedioDePago(MedioDePago medio){
     }
 }
 
-// Devuelve el RECARGO segun el id elegido.
+/// Devuelve el RECARGO segun el id elegido.
 float VentasService::devolverRecargo(int id){
-//    bool existe=false;
-//    do{
-//        existe = existeMedio(id);
-//        if(!existe){
-//            std::cout<<"\tID invalido. Elija uno correcto."<<std::endl;
-//            std::cout << " ";
-//            std::cout << "Ingresar ID MEDIO de PAGO: ";
-//            int idMedioDePago;
-//            std::cin>>idMedioDePago;
-//            id=idMedioDePago;
-//        }
-//    }while(!existe);
     MedioDePago medio = buscarMedioDePagoById(id);
     return medio.getRecargo();
 }
 
 /*****************************************************************************/
 
-// Carga VENTA desde MENU
+/// Carga VENTA desde MENU
 Venta VentasService::cargarVentaDesdeMenu(){
     Fecha fS;
     char dni[9];
@@ -293,6 +282,13 @@ Venta VentasService::cargarVentaDesdeMenu(){
         std::cout << "\tLibro: "<<std::endl;
         lServ.infoBasicaLibro(idLibro);
         std::cout << " "<<std::endl;
+        if(libro.getStock()==0){
+            std::cout << " "<<std::endl;
+            std::cout << "\tLamentablemente NO hay Stock del libro elegido."<<std::endl;
+            std::cout << " "<<std::endl;
+            system("pause");
+            menuVentas();
+        }
     } else {
         std::cout << " "<<std::endl;
         std::cout << "\tId Incorrecto. Ese libro no esta registrado, por favor buscar nuevamente."<<std::endl;
@@ -345,7 +341,7 @@ Venta VentasService::cargarVentaDesdeMenu(){
     return v;
 };
 
-// Buscar y  Mostrar Venta
+/// Buscar y  Mostrar Venta
 void VentasService::buscarYMostrarVenta(int id){
     bool existe = existeVenta(id);
     if(existe){
@@ -360,7 +356,7 @@ void VentasService::buscarYMostrarVenta(int id){
     }
 }
 
-// Existe Venta?
+/// Existe Venta?
 bool VentasService::existeVenta(int id){
     bool existe = false;
     FILE *archivo;
@@ -375,7 +371,7 @@ bool VentasService::existeVenta(int id){
     return existe;
 };
 
-// Generar Comprobante
+/// Generar Comprobante
 void VentasService::generarComprobante(int id){
     FILE *archivo;
     Venta v;
@@ -391,10 +387,10 @@ void VentasService::generarComprobante(int id){
     dVS.imprimirDetalle(venta);
 };
 
-// Listar VENTAS por DNI Cliente
+/// Listar VENTAS por DNI Cliente
 void VentasService::ventasByCliente(){
     char dni[9];
-    std::cin.ignore();
+    //std::cin.ignore();
     std::cout<<"\tIngrese el DNI del Cliente: ";
     std::cin.getline(dni,9);
     bool existe = cServ.existeCliente(dni);

@@ -54,9 +54,6 @@ class LibroService
         // Funcion Busqueda de LIBRO por TITULO desde MENU
         void buscarLibroTitulo();
 
-//        // Buscar Libro By Titulo
-//        Libro buscarLibroByTitulo();
-
         // Funcion Busqueda de LIBRO por COD AUTOR desde MENU
         void buscarLibroCodAutor();
 
@@ -79,6 +76,9 @@ class LibroService
         void leerLibrosCargarVector(Libro * vectorLibros);
         void ordenarAlfabeticamente(Libro *vectorLibros,int cantLibros);
         void listarOrdenado(Libro *vectorLibros,int cantLibros);
+
+        //Listar Libros Todos
+        void listarLibrosTodos();
 
         // Modificar Libros
         void modificarLibro();
