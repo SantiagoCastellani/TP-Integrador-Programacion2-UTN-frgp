@@ -108,6 +108,7 @@ class VentasService
         void recaudacionByMedio(int anio);
         double ventasPorMedioDePago(int idMedio,int anio);
 
+        // Recaudacion por titulo
         void recaudacionByTitulo();
         double ventasPorTitulo(int idLibro);
 

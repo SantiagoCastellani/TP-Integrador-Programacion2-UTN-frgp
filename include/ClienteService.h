@@ -13,8 +13,6 @@ class ClienteService
 
 
        // cargarCliente
-
-//        void setIdGeneroFavorito(int);
        Cliente cargarCliente(char* dni);
 
        //mostrarCliente

@@ -10,7 +10,6 @@ class MedioDePago
         MedioDePago(int,char*,float,int);
 
 
-
         /// GETTERS
         int getId();
         const char* getNombre();

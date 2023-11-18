@@ -2,10 +2,10 @@
 #define MENU_H
 
 
-// Menu Principal
+/// Menu Principal
 void menuInicio();
 
-// Menu Libros
+/// Menu Libros
 void menuLibros();
 
 void menuBuscarLibro();
@@ -24,7 +24,7 @@ void  menuConfiguracionAutor();
 
 void menuConfiguracionEditorial();
 
-// Menu Ventas
+/// Menu Ventas
 void menuVentas();
 
 void menuCargarVenta();
@@ -35,7 +35,7 @@ void menuListadoVentas();
 
 void menuAnularVenta();
 
-// Menu Clientes
+/// Menu Clientes
 void menuClientes();
 
 void buscarCliente();
@@ -44,7 +44,7 @@ void cargarCliente();
 
 void menuListadoClientes();
 
-//Menu Estadisticas
+///Menu Estadisticas
 void menuEstadisticas();
 
 void menuEstadisticasLibros();
@@ -53,14 +53,14 @@ void menuEstadisticasRecaudacion();
 
 void menuEstadisticasCliente();
 
-//Menu Configuraciones
+///Menu Configuraciones
 void menuConfiguraciones();
 
 void menuRealizarBackup();
 
 void menuRestaurarArchivos();
 
-// Finalizar
+/// Finalizar
 void finalizar();
 
 #endif // MENU_H
